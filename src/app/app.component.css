@@ -1,0 +1,9 @@
+app-landing {
+  float: left;
+ }
+
+app-aside {
+ float: right;
+ bottom: 1rem;
+ align-self: flex-end;
+}
