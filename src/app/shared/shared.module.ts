@@ -10,6 +10,11 @@ import { AsideComponent } from './aside/aside.component';
   declarations: [FooterComponent, NavbarComponent, AsideComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    AsideComponent
   ]
 })
 export class SharedModule { }

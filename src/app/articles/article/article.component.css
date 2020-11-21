@@ -1,0 +1,44 @@
+.card {
+    display: inline-block;
+    margin: 10px;
+}
+
+.card-body {
+    padding: 3%;
+    padding-bottom: 50px;
+}
+
+.card-body span {
+   float: right;
+}
+.card-body a {
+    margin: 1px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.left a {
+    background-color: orange;
+    border-color: black;
+}
+
+.right a {
+    background-color: red;
+    border-color: black;
+}
+
+.right {
+    float: right;
+}
+
+.user {
+    margin: 1px;
+}
+
+.admin {
+    margin: 3.5px;
+}

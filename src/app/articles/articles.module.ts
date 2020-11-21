@@ -1,17 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PhonesComponent } from './phones/phones.component';
-import { CasesComponent } from './cases/cases.component';
-import { ScreenProtectorsComponent } from './screen-protectors/screen-protectors.component';
-import { AccessoriesComponent } from './accessories/accessories.component';
+import { RouterModule } from '@angular/router';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { ArticleComponent } from './article/article.component';
+import { DetailsArticleComponent } from './details-article/details-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
+import { DeleteArticleComponent } from './delete-article/delete-article.component';
 
 
 
 @NgModule({
-  declarations: [PhonesComponent, CasesComponent, ScreenProtectorsComponent, AccessoriesComponent, CreateArticleComponent],
+  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, DeleteArticleComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild([
+      {
+        path: 'create',
+        component: CreateArticleComponent
+      },
+      {
+        path: 'edit/:id',
+        component: EditArticleComponent
+      },
+      {
+        path: 'details/:id',
+        component: DetailsArticleComponent
+      },
+      {
+        path: 'delete/:id',
+        component: DeleteArticleComponent
+      }
+    ])
+  ],
+  exports: [ArticleComponent]
 })
 export class ArticlesModule { }

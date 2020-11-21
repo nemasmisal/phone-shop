@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScreenProtectorsComponent } from './screen-protectors.component';
+import { DetailsArticleComponent } from './details-article.component';
 
-describe('ScreenProtectorsComponent', () => {
-  let component: ScreenProtectorsComponent;
-  let fixture: ComponentFixture<ScreenProtectorsComponent>;
+describe('DetailsArticleComponent', () => {
+  let component: DetailsArticleComponent;
+  let fixture: ComponentFixture<DetailsArticleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScreenProtectorsComponent ]
+      declarations: [ DetailsArticleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScreenProtectorsComponent);
+    fixture = TestBed.createComponent(DetailsArticleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
