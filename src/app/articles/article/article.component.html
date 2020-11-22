@@ -1,228 +1,99 @@
 <div class="container-fluid">
-    <div class="card" style="width: 22rem;">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
+    <div class="card" style="width: 22rem;" *ngFor="let phone of phones$ | async">
+        <img src="{{phone.imageURL}}"
             class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Phone Case <span>Likes: 0</span></h5>
-            
-            <p class="card-text">Some quick example text </p>
+            <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
+
+            <p class="card-text">{{phone.description}}</p>
             <div class="user">
-                
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-              
-                <a href="#" class="btn btn-primary">Details</a>
-            </div>
-            <div class="admin" >
-                <div class="left">
-                    <a href="#" class="btn btn-primary">Edit</a>
-                </div>
-                <div class="right">
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card" style="width: 22rem;">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-            class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Phone Case</h5>
-            <p class="card-text">Some quick example text </p>
-            <div class="user">
+
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-                <a href="#" class="btn btn-primary">Details</a>
+
+                <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin" >
+            <div class="admin">
                 <div class="left">
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary">Edit</a>
                 </div>
                 <div class="right">
-                    <a href="#" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary">Delete</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card" style="width: 22rem;">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
+    <div class="card" style="width: 22rem;" *ngFor="let case of cases$ | async">
+        <img src="{{case.imageURL}}"
             class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Phone Case</h5>
-            <p class="card-text">Some quick example text </p>
+            <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
+
+            <p class="card-text">{{case.description}}</p>
             <div class="user">
+
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-                <a href="#" class="btn btn-primary">Details</a>
+
+                <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin" >
+            <div class="admin">
                 <div class="left">
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary">Edit</a>
                 </div>
                 <div class="right">
-                    <a href="#" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary">Delete</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card" style="width: 22rem;">
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-            class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Phone Case</h5>
-            <p class="card-text">Some quick example text </p>
-            <div class="user">
-                <a href="#" class="btn btn-primary">Add to Basket</a>
-                <a href="#" class="btn btn-primary">Add to Favorite</a>
-                <a href="#" class="btn btn-primary">Details</a>
+</div>
+<div class="card" style="width: 22rem;" *ngFor="let screenProtector of screenProtectors$ | async">
+    <img src="{{screenProtector.imageURL}}"
+        class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{screenProtector.name}} <span>Likes: {{screenProtector.likes.length}}</span>
+        </h5>
+
+        <p class="card-text">{{screenProtector.description}}</p>
+        <div class="user">
+
+            <a href="#" class="btn btn-primary">Add to Basket</a>
+            <a href="#" class="btn btn-primary">Add to Favorite</a>
+
+            <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
+        </div>
+        <div class="admin">
+            <div class="left">
+                <a [routerLink]="['/article','edit', screenProtector._id ]" class="btn btn-primary">Edit</a>
             </div>
-            <div class="admin" >
-                <div class="left">
-                    <a href="#" class="btn btn-primary">Edit</a>
-                </div>
-                <div class="right">
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
+            <div class="right">
+                <a [routerLink]="['/article','delete', screenProtector._id ]" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Screen Protector</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
+</div>
+<div class="card" style="width: 22rem;" *ngFor="let accessory of accessories$ | async">
+    <img src="{{accessory.imageURL}}"
+        class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
+
+        <p class="card-text">{{accessory.description}}</p>
+        <div class="user">
+
+            <a href="#" class="btn btn-primary">Add to Basket</a>
+            <a href="#" class="btn btn-primary">Add to Favorite</a>
+
+            <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
         </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Screen Protector</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
+        <div class="admin">
+            <div class="left">
+                <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary">Edit</a>
             </div>
-        </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Screen Protector</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Screen Protector</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
+            <div class="right">
+                <a [routerLink]="['/article','delete', accessory._id ]" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="width: 22rem;">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ACtwf8Itlrocx0ibi0oHOQHaEK%26pid%3DApi&f=1"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text </p>
-                <div>
-                    <a href="#" class="btn btn-primary">Add to Basket</a>
-                    <a href="#" class="btn btn-primary">Add to Favorite</a>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-                <div >
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>

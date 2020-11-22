@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IArticle } from 'src/app/core/models/article';
+import { ArticleService } from 'src/app/core/services/article.service';
 
 @Component({
   selector: 'app-article',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  phones$: Observable<Array<IArticle>>;
+  cases$: Observable<Array<IArticle>>;
+  screenProtectors$: Observable<Array<IArticle>>;
+  accessories$: Observable<Array<IArticle>>;
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.phones$ = this.articleService.getAllPhones()
+    this.cases$ = this.articleService.getAllCases()
+    this.screenProtectors$ = this.articleService.getAllScreenProtectors()
+    this.accessories$ = this.articleService.getAllAccessories()
   }
 
 }
