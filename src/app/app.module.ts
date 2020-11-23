@@ -6,6 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
+import { UserModule } from './user/user.module';
 import { ArticlesModule } from './articles/articles.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -22,6 +23,7 @@ import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    UserModule,
     ArticlesModule,
     CoreModule,
     SharedModule

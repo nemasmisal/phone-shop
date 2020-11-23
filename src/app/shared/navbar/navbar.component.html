@@ -1,33 +1,65 @@
 <header class="header">
-  <h1 class="logo"><a href="#">Phone Shop</a></h1>
+  <h1 class="logo"><a [routerLink]="['home']">Phone Shop</a></h1>
   <ul class="main-nav">
-    <li class="nav-item"><a href="#">Orders</a></li>
-    <li><a href="#">Users</a></li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Articles</a>
-      <div class="dropdown-menu" aria-labelledby="dropdown01">
-        <a href="" class="dropdown-item">Phones</a>
-        <a href="" class="dropdown-item">Phone Cases</a>
-        <a href="" class="dropdown-item">Screen Protectors</a>
-        <a href="" class="dropdown-item">Accessories</a>
-      </div>
-    </li>
-    <li><a href="#">My Favorites</a></li>
-    <li><a href="#">My Basket</a></li>
-    <li><a href="#">Login</a></li>
-    <li><a href="#">Register</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Log Out</a></li>
+    <li class='dropdown' *ngIf="admin">
+      <a href='#'>Admin Panel <i class="fa fa-angle-down"></i></a>
+      <div class='mega-menu'>
+        <div class="container">
+          <div class="item">
+            <h3>Users</h3>
+            <ul>
+              <li><a href='#'>Edit User</a></li>
+              <li><a href='#'>Make user admin</a></li>
+            </ul>
+          </div> <!-- /.item -->
+          <div class="item">
+            <h3>Articles</h3>
+            <ul>
+              <li><a [routerLink]="['article', 'create']">Create Article</a></li>
+              <li><a href='#'>Phones</a></li>
+              <li><a href='#'>Cases</a></li>
+              <li><a href='#'>Screen Protectors</a></li>
+              <li><a href='#'>Accessories</a></li>
+            </ul>
+          </div> <!-- /.item -->
+          <div class="item">
+            <h3>Orders</h3>
+            <ul>
+              <li><a href='#'>Aproved</a></li>
+              <li><a href='#'>Waiting for aprove</a></li>
+            </ul>
+          </div> <!-- /.item -->
+        </div><!-- /.container -->
+      </div><!-- /.mega-menu -->
+    </li><!-- /.dropdown -->
+    <li class='dropdown'>
+      <a href='#'>Category <i class="fa fa-angle-down"></i> </a>
+      <div class='mega-menu'>
+        <div class="container">
+          <div class="item">
+            <h3>Phones</h3>
+            <img src="http://placehold.it/250x200">
+          </div> <!-- /.item -->
+          <div class="item">
+            <h3>Cases</h3>
+            <img src="http://placehold.it/250x200">
+          </div> <!-- /.item -->
+          <div class="item">
+            <h3>Screen Protectors</h3>
+            <img src="http://placehold.it/250x200">
+          </div> <!-- /.item -->
+          <div class="item">
+            <h3>Accessories</h3>
+            <img src="http://placehold.it/250x200">
+          </div> <!-- /.item -->
+        </div><!-- .container -->
+      </div><!-- .mega-menu-->
+    </li><!-- .dropdown -->
+    <li *ngIf="userId && !admin"><a href="#">My Favorites</a></li>
+    <li *ngIf="userId" && !admin><a href="#">My Basket</a></li>
+    <li *ngIf="!userId"><a [routerLink]="['user', 'login']">Login</a></li>
+    <li *ngIf="!userId"><a [routerLink]="['user', 'register']">Register</a></li>
+    <li *ngIf="userId"><a href="#">Profile</a></li>
+    <li *ngIf="userId"><a (click)="logout()" href="">Log Out</a></li>
   </ul>
 </header>

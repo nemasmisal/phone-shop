@@ -17,10 +17,10 @@ export class ArticleComponent implements OnInit {
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
-    this.phones$ = this.articleService.getAllPhones()
-    this.cases$ = this.articleService.getAllCases()
-    this.screenProtectors$ = this.articleService.getAllScreenProtectors()
-    this.accessories$ = this.articleService.getAllAccessories()
+    this.phones$ = this.articleService.getAllPhones();
+    this.cases$ = this.articleService.getAllCases();
+    this.screenProtectors$ = this.articleService.getAllScreenProtectors();
+    this.accessories$ = this.articleService.getAllAccessories();
   }
 
 }

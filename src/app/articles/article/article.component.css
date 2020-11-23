@@ -1,3 +1,6 @@
+.category {
+    display: block;
+}
 .card {
     display: inline-block;
     margin: 10px;

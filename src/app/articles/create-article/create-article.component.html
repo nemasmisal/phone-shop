@@ -5,48 +5,43 @@
             <h4>Please fill all fields.</h4>
         </div>
     </div>
-    <form>
+    <form [formGroup]="form" (submit)="createArticle()">
         <div class="row space-top">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-control-label" for="new-make">Name</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" formControlName="name">
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone">Category</i> </span>
                     </div>
-                    <select class="custom-select">
-                        <option value="Phone">Phone</option>
-                        <option value="Case">Case</option>
-                        <option value="Screen Protector">Screen Protector</option>
-                        <option value="Accesory">Accesory</option>
+                    <select class="custom-select" formControlName="category">
+                        <option value="phones">Phone</option>
+                        <option value="cases">Case</option>
+                        <option value="screenProtectors">Screen Protector</option>
+                        <option value="accessories">Accessory</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-year">Price</label>
-                    <input class="form-control" type="number">
+                    <input class="form-control" type="number" formControlName="price">
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-year">Quantity</label>
-                    <input class="form-control" type="number">
+                    <input class="form-control" type="number" formControlName="quantity">
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-description">Description</label>
-                    <textarea class="form-control" type="text"></textarea>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label class="form-control-label" for="new-price">Price</label>
-                    <input class="form-control" type="number">
+                    <textarea class="form-control" type="text" formControlName="description"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-image">Image</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="url" formControlName="imageURL">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Create" />
+                <button type="submit" class="btn btn-primary" value="Create">Create</button>
             </div>
         </div>
+
     </form>
 </div>

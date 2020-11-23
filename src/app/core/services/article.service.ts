@@ -14,27 +14,27 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getAllPhones(): Observable<Array<IArticle>> {
-    return this.http.get<Array<IArticle>>(apiURL + 'phones');
+    return this.http.get<Array<IArticle>>(apiURL + '/article/phones');
   }
 
   getAllCases(): Observable<Array<IArticle>> {
-    return this.http.get<Array<IArticle>>(apiURL + 'cases');
+    return this.http.get<Array<IArticle>>(apiURL + '/article/cases');
   }
 
   getAllScreenProtectors(): Observable<Array<IArticle>> {
-    return this.http.get<Array<IArticle>>(apiURL + 'screenProtectors');
+    return this.http.get<Array<IArticle>>(apiURL + '/article/screenProtectors');
   }
 
   getAllAccessories(): Observable<Array<IArticle>> {
-    return this.http.get<Array<IArticle>>(apiURL + 'accessories');
+    return this.http.get<Array<IArticle>>(apiURL + '/article/accessories');
   }
 
   createArticle(article) {
-    return this.http.post(apiURL + '/create', article);
+    return this.http.post(apiURL + '/article/create', article);
   }
 
   getEditArticle(id: string): Observable<IArticle> {
-    return this.http.get<IArticle>(apiURL + `article/${id}`);
+    return this.http.get<IArticle>(apiURL + `/article/${id}`);
   }
 
   postEditArticle(id: string, article) {
