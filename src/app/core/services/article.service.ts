@@ -29,16 +29,16 @@ export class ArticleService {
     return this.http.get<Array<IArticle>>(apiURL + '/article/accessories');
   }
 
-  createArticle(article) {
+  createArticle(article: IArticle) {
     return this.http.post(apiURL + '/article/create', article);
   }
 
-  getEditArticle(id: string): Observable<IArticle> {
+  getArticleById(id: string): Observable<IArticle> {
     return this.http.get<IArticle>(apiURL + `/article/${id}`);
   }
 
-  postEditArticle(id: string, article) {
-    return this.http.post(apiURL + `/edit/${id}`, article);
+  postEditArticle(id: string, article: IArticle) {
+    return this.http.post(apiURL + `/article/edit/${id}`, article);
   }
 
 }
