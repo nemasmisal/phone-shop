@@ -10,7 +10,7 @@ const apiURL = environment.apiURL;
   providedIn: 'root'
 })
 export class ArticleService {
-  
+
   constructor(private http: HttpClient) { }
 
   getAllPhones(): Observable<Array<IArticle>> {
@@ -39,6 +39,14 @@ export class ArticleService {
 
   postEditArticle(id: string, article: IArticle) {
     return this.http.post(apiURL + `/article/edit/${id}`, article);
+  }
+
+  likeArticle(articleId: string, userId: string) {
+    return this.http.post(apiURL + '/article/like', { articleId, userId });
+  }
+
+  removeArticle(articleId: string) {
+    return this.http.delete(apiURL + `/article/remove/${articleId}`);
   }
 
 }

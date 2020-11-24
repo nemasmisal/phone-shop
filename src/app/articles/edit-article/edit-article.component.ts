@@ -22,7 +22,7 @@ export class EditArticleComponent implements OnInit {
   id: string;
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id']
+    this.id = this.route.snapshot.params['id'];
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
       category: ['', [Validators.required, Validators.minLength(5)]],

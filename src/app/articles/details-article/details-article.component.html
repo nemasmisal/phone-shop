@@ -1,1 +1,35 @@
-<p>details-article works!</p>
+<div class="container">
+    <div class="row" *ngIf="article$ | async as article; else loading">
+        <h1 class="my-4">Title : {{article.name}}</h1>
+        <div class="col-md-8">
+            <img class="img-fluid" src="{{article.imageURL}}" alt="{{article.name}}" />
+        </div>
+        <div class="col-md-4 text-center">
+            <h4 class="my-3">Price: </h4>
+            <p>{{article.price}}</p>
+            <h4 class="my-3">Quantity: </h4>
+            <p>{{article.quantity}}</p>
+            <h3 class="my-3">Description</h3>
+            <p>{{article.description}}</p>
+            <div class="user" *ngIf="!admin">
+                <a class="btn btn-primary" (click)="addToFavorites()">Add to favorites</a>
+                <a class="btn btn-primary" (click)="addToBasket()">Add to basket</a>
+                <a class="btn btn-primary" (click)="like()">Like</a>
+            </div>
+            <div class="admin" *ngIf="admin">
+                <div class="right">
+                    <a class="btn btn-warning" [routerLink]="['/article', 'edit', article._id]">Edit</a>
+                    <a class="btn btn-danger" (click)="removeArticle()">Delete</a>
+                </div>
+            </div>
+          
+            <span class="enrolled-span">You are already like the product.</span>
+            <a class="btn btn-primary">Comment</a>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div class="spinner-border" role="status" class="text-center">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </ng-template>
+</div>

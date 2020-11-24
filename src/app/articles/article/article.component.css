@@ -14,22 +14,19 @@
 .card-body span {
    float: right;
 }
+
 .card-body a {
     margin: 1px;
     font-size: 15px;
     text-align: center;
 }
 
-.left {
-    float: left;
-}
-
-.left a {
+.edit {
     background-color: orange;
     border-color: black;
 }
 
-.right a {
+.delete {
     background-color: red;
     border-color: black;
 }

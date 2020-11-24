@@ -9,6 +9,7 @@ import { ArticleService } from 'src/app/core/services/article.service';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  admin: string;
   phones$: Observable<Array<IArticle>>;
   cases$: Observable<Array<IArticle>>;
   screenProtectors$: Observable<Array<IArticle>>;
@@ -17,6 +18,7 @@ export class ArticleComponent implements OnInit {
   constructor(private articleService: ArticleService) { }
 
   ngOnInit(): void {
+    this.admin = sessionStorage.getItem('admin');
     this.phones$ = this.articleService.getAllPhones();
     this.cases$ = this.articleService.getAllCases();
     this.screenProtectors$ = this.articleService.getAllScreenProtectors();

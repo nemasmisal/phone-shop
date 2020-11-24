@@ -24,4 +24,12 @@ export class UserService {
   getUserLogout(): Observable<any> {
     return this.http.get<any>(apiURL + '/user/logout');
   }
+
+  addToBasket(userId: string, articleId: string) {
+    return this.http.post(apiURL + '/user/basket/add', { userId, articleId });
+  }
+
+  addToFavorites(userId: string, articleId: string) {
+    return this.http.post(apiURL + '/user/favorites/add', { userId, articleId });
+  }
 }

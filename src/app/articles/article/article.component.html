@@ -5,20 +5,17 @@
             <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
 
             <p class="card-text">{{phone.description}}</p>
-            <div class="user">
-
+            <div class="user" *ngIf="!admin">
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-
                 <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin">
-                <div class="left">
-                    <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary">Edit</a>
-                </div>
+            <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary edit">Edit</a>
+                    <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary delete">Delete</a>
                 </div>
+                <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
             </div>
         </div>
     </div>
@@ -28,24 +25,20 @@
             <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
 
             <p class="card-text">{{case.description}}</p>
-            <div class="user">
-
+            <div class="user" *ngIf="!admin">
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-
                 <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin">
-                <div class="left">
-                    <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary">Edit</a>
-                </div>
+            <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary edit">Edit</a>
+                    <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary delete">Delete</a>
                 </div>
+                <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
             </div>
         </div>
     </div>
-
     <div class="card" style="width: 22rem;" *ngFor="let screenProtector of screenProtectors$ | async">
         <img src="{{screenProtector.imageURL}}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -53,20 +46,18 @@
             </h5>
 
             <p class="card-text">{{screenProtector.description}}</p>
-            <div class="user">
-
+            <div class="user" *ngIf="!admin">
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-
                 <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin">
-                <div class="left">
-                    <a [routerLink]="['/article','edit', screenProtector._id ]" class="btn btn-primary">Edit</a>
-                </div>
+            <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a [routerLink]="['/article','delete', screenProtector._id ]" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','edit', screenProtector._id ]" class="btn btn-primary edit">Edit</a>
+                    <a [routerLink]="['/article','delete', screenProtector._id ]"
+                        class="btn btn-primary delete">Delete</a>
                 </div>
+                <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
             </div>
         </div>
     </div>
@@ -76,20 +67,17 @@
             <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
 
             <p class="card-text">{{accessory.description}}</p>
-            <div class="user">
-
+            <div class="user" *ngIf="!admin">
                 <a href="#" class="btn btn-primary">Add to Basket</a>
                 <a href="#" class="btn btn-primary">Add to Favorite</a>
-
                 <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
             </div>
-            <div class="admin">
-                <div class="left">
-                    <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary">Edit</a>
-                </div>
+            <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a [routerLink]="['/article','delete', accessory._id ]" class="btn btn-primary">Delete</a>
+                    <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
+                    <a [routerLink]="['/article','delete', accessory._id ]" class="btn btn-primary delete">Delete</a>
                 </div>
+                <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
             </div>
         </div>
     </div>
