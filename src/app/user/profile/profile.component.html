@@ -1,0 +1,43 @@
+<div class="container" *ngIf="user$ | async as user; else loading">
+  <div class="card">
+    <div class="card-header">
+      General info
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>Username: {{user.username}}</p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Favorites
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p *ngFor="let article of user.favorites"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}}</a></p>
+        <footer class="blockquote-footer">Total articles in Favorites: <cite
+            title="Source Title">{{user?.favorites.length}} </cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Basket
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p *ngFor="let article of user.basket"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}}</a></p>
+        <footer class="blockquote-footer">Total articles in Basket: <cite
+            title="Source Title">{{user?.favorites.length}}</cite>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-template>

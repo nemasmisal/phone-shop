@@ -33,33 +33,33 @@
       </div><!-- /.mega-menu -->
     </li><!-- /.dropdown -->
     <li class='dropdown'>
-      <a href='#'>Category <i class="fa fa-angle-down"></i> </a>
+      <a [routerLink]="['home']">Category <i class="fa fa-angle-down"></i> </a>
       <div class='mega-menu'>
         <div class="container">
           <div class="item">
-            <h3>Phones</h3>
-            <img src="http://placehold.it/250x200">
+            <h5>Phones</h5>
+            <a [routerLink]="['article', 'category', 'phones']"><img src="http://placehold.it/250x200"></a>
           </div> <!-- /.item -->
           <div class="item">
-            <h3>Cases</h3>
-            <img src="http://placehold.it/250x200">
+            <h5>Cases</h5>
+            <a [routerLink]="['article', 'category', 'cases']"><img src="http://placehold.it/250x200"></a>
           </div> <!-- /.item -->
           <div class="item">
-            <h3>Screen Protectors</h3>
-            <img src="http://placehold.it/250x200">
+            <h5>Screen Protectors</h5>
+            <a [routerLink]="['article', 'category', 'screenProtectors']"><img src="http://placehold.it/250x200"></a>
           </div> <!-- /.item -->
           <div class="item">
-            <h3>Accessories</h3>
-            <img src="http://placehold.it/250x200">
+            <h5>Accessories</h5>
+            <a [routerLink]="['article','category', 'accessories']"><img src="http://placehold.it/250x200"></a>
           </div> <!-- /.item -->
         </div><!-- .container -->
       </div><!-- .mega-menu-->
     </li><!-- .dropdown -->
-    <li *ngIf="userId && !admin"><a href="#">My Favorites</a></li>
-    <li *ngIf="userId" && !admin><a href="#">My Basket</a></li>
+    <li *ngIf="userId && !admin"><a [routerLink]="['user', 'favorites']">My Favorites</a></li>
+    <li *ngIf="userId && !admin"><a [routerLink]="['user', 'basket']">My Basket</a></li>
     <li *ngIf="!userId"><a [routerLink]="['user', 'login']">Login</a></li>
     <li *ngIf="!userId"><a [routerLink]="['user', 'register']">Register</a></li>
-    <li *ngIf="userId"><a href="#">Profile</a></li>
+    <li *ngIf="userId"><a [routerLink]="['user', 'profile', userId]">Profile</a></li>
     <li *ngIf="userId"><a (click)="logout()" href="">Log Out</a></li>
   </ul>
 </header>

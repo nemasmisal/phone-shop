@@ -13,6 +13,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  getProfile(userId: string): Observable<IUser> {
+    return this.http.get<IUser>(apiURL + `/user/profile/${userId}`);
+  }
+
   postUserLogin(userCredentials): Observable<IUser> {
     return this.http.post<IUser>(apiURL + '/user/login', userCredentials);
   }
@@ -31,5 +35,9 @@ export class UserService {
 
   addToFavorites(userId: string, articleId: string) {
     return this.http.post(apiURL + '/user/favorites/add', { userId, articleId });
+  }
+
+  placeOrder() {
+    return this.http.get(apiURL + '/user/order');
   }
 }

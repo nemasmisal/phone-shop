@@ -1,9 +1,14 @@
 .category {
-    display: block;
+    display: inline-block;
 }
 .card {
     display: inline-block;
     margin: 10px;
+}
+
+.card-img-top {
+    width: 302px;
+    height: 340px;
 }
 
 .card-body {

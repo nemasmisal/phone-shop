@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class NavbarComponent implements OnInit, DoCheck {
   username:string;
   userId:string;
-  admin:string ;
+  admin:boolean ;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit, DoCheck {
   ngDoCheck() {
     this.username = sessionStorage.getItem('username');
     this.userId = sessionStorage.getItem('userId');
-    this.admin = sessionStorage.getItem('admin');
+    this.admin = sessionStorage.getItem('admin') === 'true'? true: false;
   }
 
   logout() {

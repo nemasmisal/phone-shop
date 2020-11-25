@@ -5,11 +5,14 @@ import { RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BasketComponent } from './basket/basket.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent, LoginComponent, ProfileComponent, BasketComponent, FavoritesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -21,6 +24,18 @@ import { LoginComponent } from './login/login.component';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'profile/:id',
+        component: ProfileComponent
+      },
+      {
+        path: 'basket',
+        component: BasketComponent
+      },
+      {
+        path: 'favorites',
+        component: FavoritesComponent
       }
     ])
   ]

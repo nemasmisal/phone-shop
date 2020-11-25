@@ -96,6 +96,7 @@ nav > ul > li:hover > a {
 .mega-menu .item {
 	flex-grow: 1;
     margin: 0 10px;
+    text-align: center;
 }
 .mega-menu .item img {
     width: 80%;
@@ -108,8 +109,9 @@ nav > ul > li:hover > a {
 }
 .mega-menu a:hover {color: #2d6a91;}
 
-
-.dropdown {position: static;}
+.dropdown {
+    position: static;
+}
 
 .dropdown:hover .mega-menu {
     visibility: visible;

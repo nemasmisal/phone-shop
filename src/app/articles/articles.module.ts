@@ -7,11 +7,12 @@ import { ArticleComponent } from './article/article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 
 @NgModule({
-  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, DeleteArticleComponent],
+  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, DeleteArticleComponent, CategoryListComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -31,6 +32,10 @@ import { DeleteArticleComponent } from './delete-article/delete-article.componen
       {
         path: 'delete/:id',
         component: DeleteArticleComponent
+      },
+      {
+        path: 'category/:name',
+        component: CategoryListComponent
       }
     ])
   ],

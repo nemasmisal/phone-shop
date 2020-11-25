@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AsideComponent } from './aside/aside.component';
+import { UserModule } from '../user/user.module';
 
 
 
@@ -11,7 +12,8 @@ import { AsideComponent } from './aside/aside.component';
   declarations: [FooterComponent, NavbarComponent, AsideComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    UserModule
   ],
   exports: [
     NavbarComponent,

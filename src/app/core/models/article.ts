@@ -5,12 +5,11 @@ export interface IArticle {
     price: number;
     quantity: number;
     imageURL: string;
-    comments: Object[],
+    comments: string[],
     creator: string;
-    likes: Object[];
+    likes: string[];
     _id: string;
     created_at: string;
     updatedAt: string;
     __v: number
-
 }

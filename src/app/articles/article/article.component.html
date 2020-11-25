@@ -1,13 +1,14 @@
 <div class="container-fluid category">
-    <div class="card" style="width: 22rem;" *ngFor="let phone of phones$ | async">
-        <img src="{{phone.imageURL}}" class="card-img-top" alt="...">
+    <h1>Phones</h1>
+    <div class="card" style="width: 19rem;" *ngFor="let phone of phones$ | async">
+        <img src="{{phone.imageURL}}" class="card-img-top" alt="{{phone.name}}">
         <div class="card-body">
             <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
 
             <p class="card-text">{{phone.description}}</p>
             <div class="user" *ngIf="!admin">
-                <a href="#" class="btn btn-primary">Add to Basket</a>
-                <a href="#" class="btn btn-primary">Add to Favorite</a>
+                <a (click)="addToBasket(phone._id)" class="btn btn-primary">Add to Basket</a>
+                <a (click)="addToFavorites(phone._id)" class="btn btn-primary">Add to Favorite</a>
                 <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
             </div>
             <div class="admin" *ngIf="admin">
@@ -19,15 +20,16 @@
             </div>
         </div>
     </div>
-    <div class="card" style="width: 22rem;" *ngFor="let case of cases$ | async">
-        <img src="{{case.imageURL}}" class="card-img-top" alt="...">
+    <h1>Phone Cases</h1>
+    <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async">
+        <img src="{{case.imageURL}}" class="card-img-top" alt="{{case.name}}">
         <div class="card-body">
             <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
 
             <p class="card-text">{{case.description}}</p>
             <div class="user" *ngIf="!admin">
-                <a href="#" class="btn btn-primary">Add to Basket</a>
-                <a href="#" class="btn btn-primary">Add to Favorite</a>
+                <a (click)="addToBasket(case._id)" class="btn btn-primary">Add to Basket</a>
+                <a (click)="addToFavorites(case._id)" class="btn btn-primary">Add to Favorite</a>
                 <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
             </div>
             <div class="admin" *ngIf="admin">
@@ -39,16 +41,17 @@
             </div>
         </div>
     </div>
-    <div class="card" style="width: 22rem;" *ngFor="let screenProtector of screenProtectors$ | async">
-        <img src="{{screenProtector.imageURL}}" class="card-img-top" alt="...">
+    <h1>Screen Protectors</h1>
+    <div class="card" style="width: 19rem;" *ngFor="let screenProtector of screenProtectors$ | async">
+        <img src="{{screenProtector.imageURL}}" class="card-img-top" alt="{{screenProtector.name}}">
         <div class="card-body">
             <h5 class="card-title">{{screenProtector.name}} <span>Likes: {{screenProtector.likes.length}}</span>
             </h5>
 
             <p class="card-text">{{screenProtector.description}}</p>
             <div class="user" *ngIf="!admin">
-                <a href="#" class="btn btn-primary">Add to Basket</a>
-                <a href="#" class="btn btn-primary">Add to Favorite</a>
+                <a (click)="addToBasket(screenProtector._id)" class="btn btn-primary">Add to Basket</a>
+                <a (click)="addToFavorites(screenProtector._id)" class="btn btn-primary">Add to Favorite</a>
                 <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
             </div>
             <div class="admin" *ngIf="admin">
@@ -61,15 +64,16 @@
             </div>
         </div>
     </div>
-    <div class="card" style="width: 22rem;" *ngFor="let accessory of accessories$ | async">
-        <img src="{{accessory.imageURL}}" class="card-img-top" alt="...">
+    <h1>Accessories</h1>
+    <div class="card" style="width: 19rem;" *ngFor="let accessory of accessories$ | async">
+        <img src="{{accessory.imageURL}}" class="card-img-top" alt="{{accessory.name}}">
         <div class="card-body">
             <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
 
             <p class="card-text">{{accessory.description}}</p>
             <div class="user" *ngIf="!admin">
-                <a href="#" class="btn btn-primary">Add to Basket</a>
-                <a href="#" class="btn btn-primary">Add to Favorite</a>
+                <a (click)="addToBasket(accessory._id)" class="btn btn-primary">Add to Basket</a>
+                <a (click)="addToFavorites(accessory._id)" class="btn btn-primary">Add to Favorite</a>
                 <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
             </div>
             <div class="admin" *ngIf="admin">

@@ -13,6 +13,10 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
+  getArticlesByCategory(category) {
+    return this.http.get<Array<IArticle>>(apiURL + `/article/${category}`);
+  }
+
   getAllPhones(): Observable<Array<IArticle>> {
     return this.http.get<Array<IArticle>>(apiURL + '/article/phones');
   }
@@ -47,6 +51,14 @@ export class ArticleService {
 
   removeArticle(articleId: string) {
     return this.http.delete(apiURL + `/article/remove/${articleId}`);
+  }
+
+  addToBasket(articleId: string, userId: string) {
+    return this.http.post(apiURL + '/user/basket/add', { articleId, userId });
+  }
+
+  addToFavorites(articleId: string, userId: string) {
+    return this.http.post(apiURL + '/user/favorites/add', { articleId, userId });
   }
 
 }
