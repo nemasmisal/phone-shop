@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
 import { IUser } from 'src/app/core/models/user';
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class BasketComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
   userId: string;
   basket: IArticle[];
   totalAmount: number;
@@ -26,7 +27,7 @@ export class BasketComponent implements OnInit {
 
   placeOrder() {
     this.userService.placeOrder().subscribe((res) => {
-      console.log(res);
+      this.router.navigate(['home']);
     }, err => console.error(err))
   }
 

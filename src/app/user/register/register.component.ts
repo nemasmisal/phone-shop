@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.userService.postUserRegister(this.form.value).subscribe((user) => {
       sessionStorage.setItem('username', user.username);
-      sessionStorage.setItem('userId', user.id);
+      sessionStorage.setItem('userId', user._id);
       this.router.navigate(['home'])
     }, err => {
       console.error(err);

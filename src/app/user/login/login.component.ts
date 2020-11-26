@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.postUserLogin(this.form.value).subscribe((user) => {
       sessionStorage.setItem('username', user.username);
-      sessionStorage.setItem('userId', user.id);
+      sessionStorage.setItem('userId', user._id);
       sessionStorage.setItem('admin', user.admin);
       this.router.navigate(['home'])
     }, err => {

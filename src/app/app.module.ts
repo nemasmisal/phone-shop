@@ -11,7 +11,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
-
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
     UserModule,
     ArticlesModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    AdminModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],

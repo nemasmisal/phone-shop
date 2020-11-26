@@ -1,4 +1,6 @@
-export interface IArticle {
+import { IBase } from './base';
+
+export interface IArticle extends IBase {
     name: string;
     category: string;
     description: string;
@@ -8,8 +10,4 @@ export interface IArticle {
     comments: string[],
     creator: string;
     likes: string[];
-    _id: string;
-    created_at: string;
-    updatedAt: string;
-    __v: number
 }

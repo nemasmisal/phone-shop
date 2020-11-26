@@ -22,6 +22,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
+    console.log('this is userid ' + this.userId);
     this.admin = sessionStorage.getItem('admin') === 'true'? true: false;
     this.phones$ = this.articleService.getAllPhones().pipe(map(articles => articles.slice(0,4)));
     this.cases$ = this.articleService.getAllCases().pipe(map(articles => articles.slice(0,4)));
