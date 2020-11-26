@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BasketComponent } from './basket/basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { IsLoggedGuard } from '../core/guards/is-logged.guard';
+import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
 
 
 
@@ -19,23 +21,31 @@ import { FavoritesComponent } from './favorites/favorites.component';
     RouterModule.forChild([
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+        canActivate: [IsNotLoggedGuard]
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        canActivate: [IsNotLoggedGuard]
+
       },
       {
         path: 'profile/:id',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [IsLoggedGuard]
       },
       {
         path: 'basket',
-        component: BasketComponent
+        component: BasketComponent,
+        canActivate: [IsLoggedGuard]
+
       },
       {
         path: 'favorites',
-        component: FavoritesComponent
+        component: FavoritesComponent,
+        canActivate: [IsLoggedGuard]
+
       }
     ])
   ]

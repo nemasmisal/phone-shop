@@ -8,6 +8,8 @@ import { DetailsArticleComponent } from './details-article/details-article.compo
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { IsLoggedGuard } from '../core/guards/is-logged.guard';
+import { IsAdminGuard } from '../core/guards/is-admin.guard';
 
 
 
@@ -19,11 +21,13 @@ import { CategoryListComponent } from './category-list/category-list.component';
     RouterModule.forChild([
       {
         path: 'create',
-        component: CreateArticleComponent
+        component: CreateArticleComponent,
+        canActivate: [IsAdminGuard]
       },
       {
         path: 'edit/:id',
-        component: EditArticleComponent
+        component: EditArticleComponent,
+        canActivate: [IsAdminGuard]
       },
       {
         path: 'details/:id',
@@ -31,7 +35,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
       },
       {
         path: 'delete/:id',
-        component: DeleteArticleComponent
+        component: DeleteArticleComponent,
+        canActivate: [IsAdminGuard]
       },
       {
         path: 'category/:name',

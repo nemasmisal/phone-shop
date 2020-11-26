@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
+import { ArticleComponent } from './articles/article/article.component';
+import { IsAdminGuard } from './core/guards/is-admin.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: LandingComponent
+    component: ArticleComponent
   },
   {
     path: 'article',
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: './admin/admin.module#AdminModule'
+    loadChildren: './admin/admin.module#AdminModule',
+    canActivate: [IsAdminGuard]
   }
 ];
 
