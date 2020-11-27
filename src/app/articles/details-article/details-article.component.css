@@ -1,0 +1,38 @@
+.row {
+  margin: 25px;
+  width: 70%;
+}
+
+.img-container {
+  width: 50%;
+  float: left;
+}
+
+.img-container img {
+  height: 500px;
+}
+
+.text-container {
+  width: 20%;
+  float: left;
+  padding: 20px;
+}
+
+.title {
+  width: 100%;
+  padding-left: 30px;
+}
+
+.user a {
+  margin: 3px;
+}
+
+.admin a {
+  margin: 3px;
+}
+
+.comment {
+  background-color: orangered;
+  border-color: black;
+  color: black;
+}

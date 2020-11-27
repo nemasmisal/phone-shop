@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment'
-import { IArticle } from '../models/article'
+import { IArticle, INewestArticles } from '../models'
 
 const apiURL = environment.apiURL;
 
@@ -61,4 +61,7 @@ export class ArticleService {
     return this.http.post(apiURL + '/user/favorites/add', { articleId, userId });
   }
 
+  getNewestArticle(): Observable<INewestArticles> {
+    return this.http.get<INewestArticles>(apiURL + '/article/newest')
+  }
 }

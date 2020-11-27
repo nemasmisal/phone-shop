@@ -1,3 +1,25 @@
-.container {
-  display: inline-block;
+.li-img {
+  width: 100%;
+  border: none;
+}
+
+li:focus {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.share li {
+  float: inherit;
+  text-align: center;
+  text-shadow: black;
+  display: inline-flex;
+  width: 30%;
+}
+
+li:hover {
+   color: darkslategrey;
+  cursor: pointer;
 }

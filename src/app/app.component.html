@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
-<div class="container-fluid">
-  <router-outlet></router-outlet>
-  <app-aside></app-aside>
+<div class="container-fluid float-container">
+  <div class="float-child-main">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="float-child-aside">
+    <app-aside></app-aside>
+  </div>
 </div>
 <app-footer></app-footer>
