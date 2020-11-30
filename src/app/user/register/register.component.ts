@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { Store } from '@ngrx/store';
+import { ActionTypes } from 'src/app/+store/auth/actions';
 import { comparePasswordsValidator } from "./confirmed.validator";
 
 @Component({
@@ -11,7 +11,7 @@ import { comparePasswordsValidator } from "./confirmed.validator";
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -23,13 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.userService.postUserRegister(this.form.value).subscribe((user) => {
-      sessionStorage.setItem('username', user.username);
-      sessionStorage.setItem('userId', user._id);
-      this.router.navigate(['home'])
-    }, err => {
-      console.error(err);
-    })
+    this.store.dispatch({ type: ActionTypes.Register, payload: this.form.value });
   }
 
   get f() {

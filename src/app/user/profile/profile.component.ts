@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(){
     this.userId = sessionStorage.getItem('userId');
-    this.user$ = this.userService.getProfile(this.userId);
+    this.user$ = this.userService.profile(this.userId);
   }
 
 }

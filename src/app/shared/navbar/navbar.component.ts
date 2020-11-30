@@ -1,35 +1,26 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/services/user.service';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getAuthAdmin, getAuthUserId, getAuthUsername, IAppState } from 'src/app/+store';
+import { ActionTypes } from 'src/app/+store/auth/actions';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, DoCheck {
-  username:string;
-  userId:boolean;
-  admin:boolean ;
-  constructor(private userService: UserService, private router: Router) { }
-
-  ngOnInit(): void {
-  
-  }
-
-  ngDoCheck() {
-    this.username = sessionStorage.getItem('username');
-    this.userId = sessionStorage.getItem('userId')? true:false;
-    this.admin = sessionStorage.getItem('admin') === 'true'? true: false;
+export class NavbarComponent {
+  username$: Observable<string>;
+  userId$: Observable<string>;
+  admin$: Observable<boolean>;
+  constructor(private store: Store<IAppState>) {
+    this.username$ = store.select(getAuthUsername);
+    this.userId$ = store.select(getAuthUserId);
+    this.admin$ = store.select(getAuthAdmin);
   }
 
   logout() {
-    this.userService.getUserLogout().subscribe(() => {
-      sessionStorage.clear();
-      this.router.navigate(['home']);
-    }, err => {
-      console.error(err)
-    })
+    this.store.dispatch({ type: ActionTypes.Logout });
   }
 
 }

@@ -6,4 +6,5 @@ export interface IUser extends IBase {
     username: string;
     favorites: IArticle[];
     basket: IArticle[];
+    userId: string;
 }

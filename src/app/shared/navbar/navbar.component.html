@@ -1,36 +1,39 @@
 <header class="header">
   <h1 class="logo"><a [routerLink]="['home']">Phone Shop</a></h1>
   <ul class="main-nav">
-    <li class='dropdown' *ngIf="admin">
-      <a href='#'>Admin Panel <i class="fa fa-angle-down"></i></a>
-      <div class='mega-menu'>
-        <div class="container">
-          <div class="item">
-            <h3>Users</h3>
-            <ul>
-              <li><a [routerLink]="['admin', 'editUsers']">Edit User</a></li>
-              <li><a href='#'>Make user admin</a></li>
-            </ul>
-          </div> <!-- /.item -->
-          <div class="item">
-            <h3>Articles</h3>
-            <ul>
-              <li><a [routerLink]="['article', 'create']">Create Article</a></li>
-              <li><a href='#'>Phones</a></li>
-              <li><a href='#'>Cases</a></li>
-              <li><a href='#'>Screen Protectors</a></li>
-              <li><a href='#'>Accessories</a></li>
-            </ul>
-          </div> <!-- /.item -->
-          <div class="item">
-            <h3>Orders</h3>
-            <ul>
-              <li><a [routerLink]="['admin', 'historyOrders']">Aproved</a></li>
-              <li><a [routerLink]="['admin', 'orders']">Waiting for aprove</a></li>
-            </ul>
-          </div> <!-- /.item -->
-        </div><!-- /.container -->
-      </div><!-- /.mega-menu -->
+    <li class='dropdown'>
+      <ng-container *ngIf="(admin$ | async) then admin"></ng-container>
+      <ng-template #admin>
+        <a href='#'>Admin Panel <i class="fa fa-angle-down"></i></a>
+        <div class='mega-menu'>
+          <div class="container">
+            <div class="item">
+              <h3>Users</h3>
+              <ul>
+                <li><a [routerLink]="['admin', 'editUsers']">Edit User</a></li>
+                <li><a href='#'>Make user admin</a></li>
+              </ul>
+            </div> <!-- /.item -->
+            <div class="item">
+              <h3>Articles</h3>
+              <ul>
+                <li><a [routerLink]="['article', 'create']">Create Article</a></li>
+                <li><a href='#'>Phones</a></li>
+                <li><a href='#'>Cases</a></li>
+                <li><a href='#'>Screen Protectors</a></li>
+                <li><a href='#'>Accessories</a></li>
+              </ul>
+            </div> <!-- /.item -->
+            <div class="item">
+              <h3>Orders</h3>
+              <ul>
+                <li><a [routerLink]="['admin', 'historyOrders']">Aproved</a></li>
+                <li><a [routerLink]="['admin', 'orders']">Waiting for aprove</a></li>
+              </ul>
+            </div> <!-- /.item -->
+          </div><!-- /.container -->
+        </div><!-- /.mega-menu -->
+      </ng-template>
     </li><!-- /.dropdown -->
     <li class='dropdown'>
       <a [routerLink]="['home']">Category <i class="fa fa-angle-down"></i> </a>
@@ -38,28 +41,34 @@
         <div class="container">
           <div class="item">
             <h5>Phones</h5>
-            <a [routerLink]="['article', 'category', 'phones']"><img src="http://placehold.it/250x200"></a>
+            <a [routerLink]="['article', 'category', 'phones']"><img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.samsung.com%2Fis%2Fimage%2Fsamsung%2Fuk%2Fgalaxy-note20%2Fgallery%2Fuk-galaxy-z-fold2-sm-f916-sm-f916bznabtu-frontmysticbronze-thumb-274139626&f=1&nofb=1"></a>
           </div> <!-- /.item -->
           <div class="item">
             <h5>Cases</h5>
-            <a [routerLink]="['article', 'category', 'cases']"><img src="http://placehold.it/250x200"></a>
+            <a [routerLink]="['article', 'category', 'cases']"><img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngriver.com%2Fwp-content%2Fuploads%2F2018%2F03%2FDownload-Phone-Case-PNG-Image-420x261-For-Designing-Use.png&f=1&nofb=1"></a>
           </div> <!-- /.item -->
           <div class="item">
             <h5>Screen Protectors</h5>
-            <a [routerLink]="['article', 'category', 'screenProtectors']"><img src="http://placehold.it/250x200"></a>
+            <a [routerLink]="['article', 'category', 'screenProtectors']"><img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB18LCfawMPMeJjy1Xd761srXXab%2FBaseus-iPX-0-3mm-Silk-3D-Anti.png_350x350.png&f=1&nofb=1"></a>
           </div> <!-- /.item -->
           <div class="item">
             <h5>Accessories</h5>
-            <a [routerLink]="['article','category', 'accessories']"><img src="http://placehold.it/250x200"></a>
+            <a [routerLink]="['article','category', 'accessories']"><img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fnextshop.pk%2Fwp-content%2Fuploads%2F2018%2F08%2Faccessories.png&f=1&nofb=1"></a>
           </div> <!-- /.item -->
         </div><!-- .container -->
       </div><!-- .mega-menu-->
     </li><!-- .dropdown -->
-    <li *ngIf="userId && !admin"><a [routerLink]="['user', 'favorites']">My Favorites</a></li>
-    <li *ngIf="userId && !admin"><a [routerLink]="['user', 'basket']">My Basket</a></li>
-    <li *ngIf="!userId"><a [routerLink]="['user', 'login']">Login</a></li>
-    <li *ngIf="!userId"><a [routerLink]="['user', 'register']">Register</a></li>
-    <li *ngIf="userId"><a [routerLink]="['user', 'profile', userId]">Profile</a></li>
-    <li *ngIf="userId" (click)="logout()"><a class="btn">Log Out</a></li>
+    <li *ngIf="(userId$ | async) && !(admin$ | async)"><a [routerLink]="['user', 'favorites']">My Favorites</a></li>
+    <li *ngIf="(userId$ | async)&& !(admin$ | async)"><a [routerLink]="['user', 'basket']">My Basket</a></li>
+    <li *ngIf="!(userId$ | async)"><a [routerLink]="['user', 'login']">Login</a></li>
+    <li *ngIf="!(userId$ | async)"><a [routerLink]="['user', 'register']">Register</a></li>
+    <li *ngIf="(userId$ | async)"><a [routerLink]="['user', 'profile', (userId$ | async)]">Profile</a></li>
+    <li *ngIf="(userId$ | async)"><a class="btn" (click)="logout()" >Log Out</a></li> 
   </ul>
 </header>
+
+<ng-template #notLogged></ng-template>

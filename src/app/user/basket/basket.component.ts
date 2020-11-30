@@ -19,7 +19,7 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
-    this.userService.getProfile(this.userId).subscribe((user: IUser) => {
+    this.userService.profile(this.userId).subscribe((user: IUser) => {
       this.basket = user.basket;
       this.totalAmount = this.basket.reduce((acc: number, curr: IArticle) => acc + curr.price, 0)
     }, err => console.error(err))
@@ -29,6 +29,12 @@ export class BasketComponent implements OnInit {
     this.userService.placeOrder().subscribe((res) => {
       this.router.navigate(['home']);
     }, err => console.error(err))
+  }
+
+  removeFromBasket(articleId: string) {
+    this.userService.removeFromBasket(articleId).subscribe((result) => {
+      console.log(result);
+    })
   }
 
 }

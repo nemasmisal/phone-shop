@@ -12,11 +12,12 @@
         <p>{{article.quantity}}</p>
         <h3 class="my-3">Description</h3>
         <p>{{article.description}}</p>
-        <div class="user" *ngIf="!admin">
-            <a class="btn btn-primary" (click)="addToFavorites()">Add to favorites</a>
-            <a class="btn btn-primary" (click)="addToBasket()">Add to basket</a>
-            <a *ngIf="!alreadyLiked" class="btn btn-primary" (click)="like()">Like</a>
-            <p *ngIf="alreadyLiked" class="enrolled-span">You are already like the product.</p>
+        <div class="user" *ngIf="!admin && userId">
+            <a class="btn btn-outline-primary" (click)="addToFavorites()">Add to favorites</a>
+            <a class="btn btn-outline-primary" (click)="addToBasket()">Add to basket</a>
+            <a *ngIf="!alreadyLiked" class="btn btn-outline-warning" (click)="like()">Like</a>
+            <a class="btn btn-outline-secondary">Write comment</a>
+            <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p>
         </div>
         <div class="admin" *ngIf="admin">
             <div class="right">
@@ -24,7 +25,6 @@
                 <a class="btn btn-danger" (click)="removeArticle()">Delete</a>
             </div>
         </div>
-        <a class="btn btn-primary comment">Write comment</a>
         <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div>
     </div>
 </div>

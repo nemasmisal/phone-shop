@@ -13,24 +13,28 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile(userId: string): Observable<IUser> {
+  profile(userId: string): Observable<IUser> {
     return this.http.get<IUser>(apiURL + `/user/profile/${userId}`);
   }
 
-  postUserLogin(userCredentials): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/login', userCredentials);
+  login(data: { username: string, password: string }): Observable<IUser> {
+    return this.http.post<IUser>(apiURL + '/user/login', data);
   }
 
-  postUserRegister(userCredentials): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/register', userCredentials);
+  register(data: { username: string, password: string }): Observable<IUser> {
+    return this.http.post<IUser>(apiURL + '/user/register', data);
   }
 
-  getUserLogout(): Observable<any> {
+  logout(): Observable<any> {
     return this.http.get<any>(apiURL + '/user/logout');
   }
 
   addToBasket(userId: string, articleId: string) {
     return this.http.post(apiURL + '/user/basket/add', { userId, articleId });
+  }
+
+  removeFromBasket(articleId: string) {
+    return this.http.post(apiURL + '/user/basket/remove', { id: articleId });
   }
 
   addToFavorites(userId: string, articleId: string) {

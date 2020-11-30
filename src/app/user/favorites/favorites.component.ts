@@ -14,7 +14,7 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
-    this.userService.getProfile(this.userId).subscribe((user) => {
+    this.userService.profile(this.userId).subscribe((user) => {
       this.favorites = user.favorites;
     }, err => console.error(err))
   }

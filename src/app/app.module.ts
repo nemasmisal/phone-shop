@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects'
+import { AuthEffects } from './+store/auth/effects'
+import { reducer } from './+store/auth/reducer'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,21 +15,26 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { AdminModule } from './admin/admin.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({ auth: reducer }),
+    EffectsModule.forRoot([AuthEffects]),
     AppRoutingModule,
     FormsModule,
     UserModule,
     ArticlesModule,
     CoreModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    StoreDevtoolsModule.instrument({})
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
