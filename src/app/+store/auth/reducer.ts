@@ -1,16 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { errorMonitor } from 'events';
+import { IState } from '../models';
 import * as auth from './actions';
-
-
-export interface IState {
-  _id: string;
-  username: string;
-  admin: boolean;
-  basket: [];
-  favorites: [];
-  error: string;
-}
 
 const initialState: IState = {
   _id: null,
@@ -21,21 +11,23 @@ const initialState: IState = {
   error: null
 }
 
-const reduce = createReducer(
+export interface IAction extends Action {
+  payload: any;
+}
+
+const authReducer = createReducer(
   initialState,
   on(auth.login, state => ({ ...state })),
-  on(auth.loginSuccess, (state, action: any) => ({ ...state, ...action.payload })),
-  on(auth.loginFailed, (state, action: any) => ({ ...state, ...action.payload })),
+  on(auth.loginSuccess, (state, props) => ({ ...state, ...props })),
+  on(auth.loginFailed, (state, props) => ({ ...state, ...props.error })),
   on(auth.logout, state => ({ ...state })),
-  on(auth.logoutSuccess, (state, action: any) => ({ ...state, ...initialState })),
-  on(auth.logoutFailed, (state, action: any) => ({ ...state, ...initialState })),
+  on(auth.logoutSuccess, () => ({ ...initialState })),
+  on(auth.logoutFailed, (state, props) => ({ ...state, ...props.error })),
   on(auth.register, state => ({ ...state })),
-  on(auth.registerSuccess, (state, action: any) => ({ ...state, ...action.payload })),
-  on(auth.registerFailed, (state, action: any) => ({ ...state, ...action.payload }))
-
-
+  on(auth.registerSuccess, (state, props) => ({ ...state, ...props })),
+  on(auth.registerFailed, (state, props) => ({ ...state, ...props }))
 );
 
 export function reducer(state: IState, action: Action): IState {
-  return reduce(state, action);
+  return authReducer(state, action);
 }

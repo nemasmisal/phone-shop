@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { getAuthAdmin, getAuthUserId, getAuthUsername, IAppState } from 'src/app/+store';
-import { ActionTypes } from 'src/app/+store/auth/actions';
+import { logout } from '../../+store/auth/actions';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +20,6 @@ export class NavbarComponent {
   }
 
   logout() {
-    this.store.dispatch({ type: ActionTypes.Logout });
+    this.store.dispatch(logout());
   }
-
 }

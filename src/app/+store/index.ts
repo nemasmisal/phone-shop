@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IState } from './auth/reducer'
+import { IState } from './models';
 import * as auth from './auth/selectors'
      
 export interface IAppState {

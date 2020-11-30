@@ -6,9 +6,11 @@ import { mergeMap, map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs'
 import { UserService } from 'src/app/core/services/user.service';
 import { ActionTypes } from './actions';
+import { loginSuccess } from '../auth/actions'
 
-export interface IAction extends Action {
-  payload: any;
+interface ILogin extends Action {
+  username: string;
+  password: string;
 }
 
 @Injectable()
@@ -17,26 +19,27 @@ export class AuthEffects {
   constructor(private actions$: Actions, private userService: UserService, private router: Router) { }
 
   login$ = createEffect(() => this.actions$.pipe(
-    ofType<IAction>(ActionTypes.Login),
+    ofType<ILogin>(ActionTypes.Login),
     mergeMap(action => {
-      return this.userService.login(action.payload).pipe(
-        map(data => (
-          this.router.navigate(['home']),
-          { type: ActionTypes.LoginSuccess, payload: data }
+      const { username, password } = action;
+      return this.userService.login({ username, password }).pipe(
+        map(action => (
+          this.router.navigate(['home']), { type: ActionTypes.LoginSuccess, ...action }
         )),
-        catchError((err) => of({ type: ActionTypes.LoginFailed, payload: err.error }))
+        catchError((err) => of({ type: ActionTypes.LoginFailed, ...err }))
       )
     })
   ))
 
   register$ = createEffect(() => this.actions$.pipe(
-    ofType<IAction>(ActionTypes.Register),
+    ofType<ILogin>(ActionTypes.Register),
     mergeMap(action => {
-      return this.userService.register(action.payload).pipe(
-        map(data => (
-          this.router.navigate(['home']), { type: ActionTypes.RegisterSuccess, payload: data }
+      const { username, password } = action;
+      return this.userService.register({ username, password }).pipe(
+        map(action => (
+          this.router.navigate(['home']), { type: ActionTypes.RegisterSuccess, ...action }
         )),
-        catchError((err) => of({ type: ActionTypes.RegisterFailed, payload: err.error }))
+        catchError((err) => of({ type: ActionTypes.RegisterFailed, ...err }))
       )
     })
   ))
@@ -45,7 +48,7 @@ export class AuthEffects {
     ofType(ActionTypes.Logout),
     switchMap(() => this.userService.logout().pipe(
       map(() => ({ type: ActionTypes.LogoutSuccess })),
-      catchError((err) => of({ type: ActionTypes.LogoutrFailed, error: err.error }))
+      catchError((err) => of({ type: ActionTypes.LogoutrFailed, ...err }))
     ))
   ))
 }

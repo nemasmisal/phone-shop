@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ActionTypes } from '../../+store/auth/actions'
+import { ActionTypes } from '../../+store/auth/actions';
+import * as auth from '../../+store/auth/actions';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private store: Store) { }
   form: FormGroup;
-  
+
   ngOnInit() {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.store.dispatch({ type: ActionTypes.Login, payload: this.form.value });
+    const { username, password } = this.form.value;
+    this.store.dispatch(auth.login({ username, password }));
   }
 }

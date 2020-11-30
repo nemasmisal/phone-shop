@@ -16,7 +16,6 @@ import { SharedModule } from './shared/shared.module';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { AdminModule } from './admin/admin.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [

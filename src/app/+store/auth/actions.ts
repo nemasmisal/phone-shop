@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { IArticle } from 'src/app/core/models';
 
 export const ActionTypes = {
   Login: '[Login Page] Login',
@@ -18,12 +19,9 @@ export const loginSuccess = createAction(ActionTypes.LoginSuccess, props<{ usern
 export const loginFailed = createAction(ActionTypes.LoginFailed, props<{ error: any }>());
 
 export const register = createAction(ActionTypes.Register, props<{ username: string, password: string }>());
-export const registerSuccess = createAction(ActionTypes.RegisterSuccess);
+export const registerSuccess = createAction(ActionTypes.RegisterSuccess, props<{ username: string, _id: string, admin: boolean, basket: [], favorites: [] }>());
 export const registerFailed = createAction(ActionTypes.RegisterFailed, props<{ error: any }>());
 
 export const logout = createAction(ActionTypes.Logout);
 export const logoutSuccess = createAction(ActionTypes.LogoutSuccess);
 export const logoutFailed = createAction(ActionTypes.LogoutrFailed, props<{ error: any }>());
-
-
-
