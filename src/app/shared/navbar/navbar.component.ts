@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getAuthAdmin, getAuthUserId, getAuthUsername, IAppState } from 'src/app/+store';
-import { logout } from '../../+store/auth/actions';
+import { IAppState } from 'src/app/+store';
+import * as auth from 'src/app/+store';
+import { logout } from 'src/app/+store/auth/actions';
 
 @Component({
   selector: 'app-navbar',
@@ -14,9 +15,9 @@ export class NavbarComponent {
   userId$: Observable<string>;
   admin$: Observable<boolean>;
   constructor(private store: Store<IAppState>) {
-    this.username$ = store.select(getAuthUsername);
-    this.userId$ = store.select(getAuthUserId);
-    this.admin$ = store.select(getAuthAdmin);
+    this.username$ = store.select(auth.getAuthUsername);
+    this.userId$ = store.select(auth.getAuthUserId);
+    this.admin$ = store.select(auth.getAuthAdmin);
   }
 
   logout() {

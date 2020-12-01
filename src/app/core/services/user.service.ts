@@ -29,12 +29,20 @@ export class UserService {
     return this.http.get<any>(apiURL + '/user/logout');
   }
 
+  getBasket() {
+    return this.http.get(apiURL + '/user/basket');
+  }
+
   addToBasket(userId: string, articleId: string) {
     return this.http.post(apiURL + '/user/basket/add', { userId, articleId });
   }
 
   removeFromBasket(articleId: string) {
     return this.http.post(apiURL + '/user/basket/remove', { id: articleId });
+  }
+
+  getFavorites() {
+    return this.http.get(apiURL + '/user/favorites');
   }
 
   addToFavorites(userId: string, articleId: string) {

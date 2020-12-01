@@ -6,8 +6,6 @@ const initialState: IState = {
   _id: null,
   username: null,
   admin: false,
-  basket: [],
-  favorites: [],
   error: null
 }
 

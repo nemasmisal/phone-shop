@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models';
 
 export const ActionTypes = {
   Login: '[Login Page] Login',

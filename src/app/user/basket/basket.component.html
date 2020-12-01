@@ -1,12 +1,13 @@
 <div class="card">
   <div class="card-header">
     Basket
+    from async pipe = {{(basket$ | async)}}
   </div>
-  <div *ngIf="basket?.length > 0; else noArticles"class="card-body">
+  <div *ngIf="(basket$ | async); else noArticles"class="card-body">
     <blockquote class="blockquote mb-0">
-      <p *ngFor="let article of basket"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}} : {{article.price}}</a><button (click)="removeFromBasket(article._id)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+      <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}} : {{article.price}}</a><button (click)="removeFromBasket(article._id)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
       <footer class="blockquote-footer">Total amount:  <cite
-        title="Source Title">{{totalAmount}} </cite>
+        title="Source Title">no total amount </cite>
         Place order:<button class="btn btn-outline-success" (click)="placeOrder()">Order</button>
       </footer>
     </blockquote>

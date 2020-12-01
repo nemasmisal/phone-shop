@@ -6,7 +6,6 @@ import { mergeMap, map, catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs'
 import { UserService } from 'src/app/core/services/user.service';
 import { ActionTypes } from './actions';
-import { loginSuccess } from '../auth/actions'
 
 interface ILogin extends Action {
   username: string;

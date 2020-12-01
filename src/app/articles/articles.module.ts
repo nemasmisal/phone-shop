@@ -8,8 +8,8 @@ import { DetailsArticleComponent } from './details-article/details-article.compo
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { IsLoggedGuard } from '../core/guards/is-logged.guard';
-import { IsAdminGuard } from '../core/guards/is-admin.guard';
+//import { IsLoggedGuard } from '../core/guards/is-logged.guard';
+//import { IsAdminGuard } from '../core/guards/is-admin.guard';
 
 
 
@@ -22,12 +22,12 @@ import { IsAdminGuard } from '../core/guards/is-admin.guard';
       {
         path: 'create',
         component: CreateArticleComponent,
-        canActivate: [IsAdminGuard]
+        //canActivate: [IsAdminGuard]
       },
       {
         path: 'edit/:id',
         component: EditArticleComponent,
-        canActivate: [IsAdminGuard]
+        //canActivate: [IsAdminGuard]
       },
       {
         path: 'details/:id',
@@ -36,7 +36,7 @@ import { IsAdminGuard } from '../core/guards/is-admin.guard';
       {
         path: 'delete/:id',
         component: DeleteArticleComponent,
-        canActivate: [IsAdminGuard]
+        //canActivate: [IsAdminGuard]
       },
       {
         path: 'category/:name',
