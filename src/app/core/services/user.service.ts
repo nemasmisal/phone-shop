@@ -33,20 +33,24 @@ export class UserService {
     return this.http.get(apiURL + '/user/basket');
   }
 
-  addToBasket(userId: string, articleId: string) {
-    return this.http.post(apiURL + '/user/basket/add', { userId, articleId });
+  addToBasket(articleId) {
+    return this.http.post(apiURL + '/user/basket/add', { articleId });
   }
 
-  removeFromBasket(articleId: string) {
-    return this.http.post(apiURL + '/user/basket/remove', { id: articleId });
+  removeFromBasket(articleId) {
+    return this.http.post(apiURL + '/user/basket/remove', { articleId });
   }
 
   getFavorites() {
     return this.http.get(apiURL + '/user/favorites');
   }
 
-  addToFavorites(userId: string, articleId: string) {
-    return this.http.post(apiURL + '/user/favorites/add', { userId, articleId });
+  addToFavorites(articleId) {
+    return this.http.post(apiURL + '/user/favorites/add', { articleId });
+  }
+
+  removeFromFavorites(articleId) {
+    return this.http.post(apiURL + '/user/favorites/remove', { articleId });
   }
 
   placeOrder() {

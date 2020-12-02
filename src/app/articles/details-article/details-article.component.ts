@@ -35,7 +35,7 @@ export class DetailsArticleComponent implements OnInit {
   }
 
   addToBasket() {
-    this.userService.addToBasket(this.userId, this.articleId).subscribe(() => {
+    this.userService.addToBasket(this.articleId).subscribe(() => {
       this.router.navigate(['article', 'details', this.articleId]);
     }, err => {
       console.error(err);
@@ -43,7 +43,7 @@ export class DetailsArticleComponent implements OnInit {
   }
 
   addToFavorites() {
-    this.userService.addToFavorites(this.userId, this.articleId).subscribe(() => {
+    this.userService.addToFavorites(this.articleId).subscribe(() => {
       this.router.navigate(['article', 'details', this.articleId]);
     }, err => console.error(err))
   }

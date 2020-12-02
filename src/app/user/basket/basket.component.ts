@@ -3,13 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
-import { IUser } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services/user.service';
 import * as user from 'src/app/+store'
-import { } from 'src/app/+store/user/actions'
-import { TypedAction } from '@ngrx/store/src/models';
-import { IUserState } from 'src/app/+store/user/reducer';
-import { ActionTypes } from 'src/app/+store/user/actions';
+import { basket, orderBasket, removeFromBasket } from 'src/app/+store/user/actions'
 
 @Component({
   selector: 'app-basket',
@@ -20,24 +16,20 @@ export class BasketComponent implements OnInit {
   basket$: Observable<IArticle[]>;
   //totalAmount: number;
 
-  constructor(private userService: UserService, private router: Router, private store: Store) {
-    this.basket$ = store.select(user.getUserBasket)
+  constructor(private store: Store) {
+    this.basket$ = store.select(user.getUserBasket);
   }
 
   ngOnInit(): void {
-    this.store.dispatch({ type: ActionTypes.getBasket });
+    this.store.dispatch(basket());
   }
 
   placeOrder() {
-    this.userService.placeOrder().subscribe((res) => {
-      this.router.navigate(['home']);
-    }, err => console.error(err))
+    this.store.dispatch(orderBasket());
   }
 
   removeFromBasket(articleId: string) {
-    this.userService.removeFromBasket(articleId).subscribe((result) => {
-      console.log(result);
-    })
+    this.store.dispatch(removeFromBasket({ payload: articleId }));
   }
 
 }

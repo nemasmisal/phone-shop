@@ -4,18 +4,22 @@
         <img src="{{phone.imageURL}}" class="card-img-top" alt="{{phone.name}}">
         <div class="card-body">
             <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
-
             <p class="card-text">{{phone.description}}</p>
-            <div class="user" *ngIf="!admin && userId">
-                <a (click)="addToBasket(phone._id)" class="btn btn-primary">Add to Basket</a>
-                <a (click)="addToFavorites(phone._id)" class="btn btn-primary">Add to Favorite</a>
-            </div>
-            <div class="admin" *ngIf="admin">
-                <div class="right">
-                    <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary edit">Edit</a>
-                    <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary delete">Delete</a>
+            <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
+            <ng-template #admin>
+                <div class="admin">
+                    <div class="right">
+                        <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary delete">Delete</a>
+                    </div>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #user>
+                <div class="user" *ngIf="(userId$ | async)">
+                    <a (click)="addToBasket(phone._id)" class="btn btn-primary">Add to Basket</a>
+                    <a (click)="addToFavorites(phone._id)" class="btn btn-primary">Add to Favorite</a>
+                </div>
+            </ng-template>
             <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
@@ -24,18 +28,22 @@
         <img src="{{case.imageURL}}" class="card-img-top" alt="{{case.name}}">
         <div class="card-body">
             <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
-
             <p class="card-text">{{case.description}}</p>
-            <div class="user" *ngIf="!admin && userId">
-                <a (click)="addToBasket(case._id)" class="btn btn-primary">Add to Basket</a>
-                <a (click)="addToFavorites(case._id)" class="btn btn-primary">Add to Favorite</a>
-            </div>
-            <div class="admin" *ngIf="admin">
-                <div class="right">
-                    <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary edit">Edit</a>
-                    <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary delete">Delete</a>
+            <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
+            <ng-template #user>
+                <div class="user" *ngIf="(userId$ | async)">
+                    <a (click)="addToBasket(case._id)" class="btn btn-primary">Add to Basket</a>
+                    <a (click)="addToFavorites(case._id)" class="btn btn-primary">Add to Favorite</a>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #admin>
+                <div class="admin">
+                    <div class="right">
+                        <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary delete">Delete</a>
+                    </div>
+                </div>
+            </ng-template>
             <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
@@ -45,19 +53,24 @@
         <div class="card-body">
             <h5 class="card-title">{{screenProtector.name}} <span>Likes: {{screenProtector.likes.length}}</span>
             </h5>
-
             <p class="card-text">{{screenProtector.description}}</p>
-            <div class="user" *ngIf="!admin && userId">
-                <a (click)="addToBasket(screenProtector._id)" class="btn btn-primary">Add to Basket</a>
-                <a (click)="addToFavorites(screenProtector._id)" class="btn btn-primary">Add to Favorite</a>
-            </div>
-            <div class="admin" *ngIf="admin">
-                <div class="right">
-                    <a [routerLink]="['/article','edit', screenProtector._id ]" class="btn btn-primary edit">Edit</a>
-                    <a [routerLink]="['/article','delete', screenProtector._id ]"
-                        class="btn btn-primary delete">Delete</a>
+            <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
+            <ng-template #admin>
+                <div class="admin">
+                    <div class="right">
+                        <a [routerLink]="['/article','edit', screenProtector._id ]"
+                            class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','delete', screenProtector._id ]"
+                            class="btn btn-primary delete">Delete</a>
+                    </div>
                 </div>
-            </div>
+            </ng-template>
+            <ng-template #user>
+                <div class="user" *ngIf="(userId$ | async)">
+                    <a (click)="addToBasket(screenProtector._id)" class="btn btn-primary">Add to Basket</a>
+                    <a (click)="addToFavorites(screenProtector._id)" class="btn btn-primary">Add to Favorite</a>
+                </div>
+            </ng-template>
             <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
@@ -68,17 +81,23 @@
             <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
 
             <p class="card-text">{{accessory.description}}</p>
-            <div class="user" *ngIf="!admin && userId">
-                <a (click)="addToBasket(accessory._id)" class="btn btn-primary">Add to Basket</a>
-                <a (click)="addToFavorites(accessory._id)" class="btn btn-primary">Add to Favorite</a>
-            </div>
-            <div class="admin" *ngIf="admin">
-                <div class="right">
-                    <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
-                    <a [routerLink]="['/article','delete', accessory._id ]" class="btn btn-primary delete">Delete</a>
+            <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
+            <ng-template #admin>
+                <div class="admin">
+                    <div class="right">
+                        <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','delete', accessory._id ]"
+                            class="btn btn-primary delete">Delete</a>
+                    </div>
                 </div>
-                <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
-            </div>
+            </ng-template>
+            <ng-template #user>
+                <div class="user" *ngIf="(userId$ | async)">
+                    <a (click)="addToBasket(accessory._id)" class="btn btn-primary">Add to Basket</a>
+                    <a (click)="addToFavorites(accessory._id)" class="btn btn-primary">Add to Favorite</a>
+                </div>
+            </ng-template>
+            <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
 </div>

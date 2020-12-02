@@ -1,7 +1,6 @@
 <div class="card">
   <div class="card-header">
     Basket
-    from async pipe = {{(basket$ | async)}}
   </div>
   <div *ngIf="(basket$ | async); else noArticles"class="card-body">
     <blockquote class="blockquote mb-0">

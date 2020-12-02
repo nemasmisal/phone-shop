@@ -53,12 +53,12 @@ export class ArticleService {
     return this.http.delete(apiURL + `/article/remove/${articleId}`);
   }
 
-  addToBasket(articleId: string, userId: string) {
-    return this.http.post(apiURL + '/user/basket/add', { articleId, userId });
+  addToBasket(articleId: string) {
+    return this.http.post(apiURL + '/user/basket/add', { articleId });
   }
 
-  addToFavorites(articleId: string, userId: string) {
-    return this.http.post(apiURL + '/user/favorites/add', { articleId, userId });
+  addToFavorites(articleId: string) {
+    return this.http.post(apiURL + '/user/favorites/add', { articleId });
   }
 
   getNewestArticle(): Observable<INewestArticles> {
