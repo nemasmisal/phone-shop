@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable, zip } from 'rxjs';
 import { environment } from '../../../environments/environment'
 import { IArticle, INewestArticles } from '../models'
 
@@ -15,6 +15,10 @@ export class ArticleService {
 
   getArticlesByCategory(category) {
     return this.http.get<Array<IArticle>>(apiURL + `/article/${category}`);
+  }
+
+  getAllArticles() {
+   return this.http.get(apiURL + '/article/all');
   }
 
   getAllPhones(): Observable<Array<IArticle>> {
@@ -45,8 +49,8 @@ export class ArticleService {
     return this.http.post(apiURL + `/article/edit/${id}`, article);
   }
 
-  likeArticle(articleId: string, userId: string) {
-    return this.http.post(apiURL + '/article/like', { articleId, userId });
+  likeArticle(articleId: string) {
+    return this.http.post(apiURL + '/article/like', { articleId });
   }
 
   removeArticle(articleId: string) {

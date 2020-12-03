@@ -12,19 +12,24 @@
         <p>{{article.quantity}}</p>
         <h3 class="my-3">Description</h3>
         <p>{{article.description}}</p>
-        <div class="user" *ngIf="!admin && userId">
-            <a class="btn btn-outline-primary" (click)="addToFavorites()">Add to favorites</a>
-            <a class="btn btn-outline-primary" (click)="addToBasket()">Add to basket</a>
-            <a *ngIf="!alreadyLiked" class="btn btn-outline-warning" (click)="like()">Like</a>
-            <a class="btn btn-outline-secondary">Write comment</a>
-            <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p>
-        </div>
-        <div class="admin" *ngIf="admin">
-            <div class="right">
-                <a class="btn btn-warning" [routerLink]="['/article', 'edit', article._id]">Edit</a>
-                <a class="btn btn-danger" (click)="removeArticle()">Delete</a>
+        <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
+        <ng-template #admin>
+            <div class="admin" *ngIf="admin">
+                <div class="right">
+                    <a class="btn btn-warning" [routerLink]="['/article', 'edit', article._id]">Edit</a>
+                    <a class="btn btn-danger" (click)="removeArticle(article._id)">Delete</a>
+                </div>
             </div>
-        </div>
+        </ng-template>
+        <ng-template #user>
+            <div class="user" *ngIf="(userId$ | async)">
+                <a class="btn btn-outline-primary" (click)="addToFavorites(article._id)">Add to favorites</a>
+                <a class="btn btn-outline-primary" (click)="addToBasket(article._id)">Add to basket</a>
+                <a *ngIf="!alreadyLiked" class="btn btn-outline-warning" (click)="like(article._id)">Like</a>
+                <a class="btn btn-outline-secondary">Write comment</a>
+                <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p>
+            </div>
+        </ng-template>
         <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div>
     </div>
 </div>

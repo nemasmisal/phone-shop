@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
+
 import { IArticle } from 'src/app/core/models/article';
-import { ArticleService } from 'src/app/core/services/article.service';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { UserService } from 'src/app/core/services/user.service';
-import { getAuthUserId, getAuthAdmin } from 'src/app/+store/index';
+import { getAuthUserId, getAuthAdmin } from 'src/app/+store';
+import * as article from 'src/app/+store'
+import { getPhones, getCases, getScreenProtectors, getAccessories } from 'src/app/+store/article/action'
+import { addToBasket, addToFavorites } from 'src/app/+store/user/actions'
+
 
 @Component({
   selector: 'app-article',
@@ -21,28 +23,27 @@ export class ArticleComponent implements OnInit {
   screenProtectors$: Observable<Array<IArticle>>;
   accessories$: Observable<Array<IArticle>>;
 
-  constructor(private articleService: ArticleService, private userService: UserService, private auth: AuthService, private store: Store) {
-   
+  constructor(private store: Store) {
+    this.phones$ = store.select(article.getPhones).pipe(map(phones => phones.slice(0, 4)));
+    this.cases$ = store.select(article.getCases).pipe(map(cases => cases.slice(0, 4)));
+    this.screenProtectors$ = store.select(article.getScreenProtectors).pipe(map(screenProtectors => screenProtectors.slice(0, 4)));
+    this.accessories$ = store.select(article.getAccessories).pipe(map(accessories => accessories.slice(0, 4)));
   }
 
   ngOnInit(): void {
+    this.store.dispatch(getPhones());
+    this.store.dispatch(getCases());
+    this.store.dispatch(getScreenProtectors());
+    this.store.dispatch(getAccessories());
     this.userId$ = this.store.select(getAuthUserId);
     this.admin$ = this.store.select(getAuthAdmin);
-    this.phones$ = this.articleService.getAllPhones().pipe(map(articles => articles.slice(0, 4)));
-    this.cases$ = this.articleService.getAllCases().pipe(map(articles => articles.slice(0, 4)));
-    this.screenProtectors$ = this.articleService.getAllScreenProtectors().pipe(map(articles => articles.slice(0, 4)));
-    this.accessories$ = this.articleService.getAllAccessories().pipe(map(articles => articles.slice(0, 4)));
   }
 
   addToBasket(articleId: string) {
-    this.articleService.addToBasket(articleId).subscribe(() => {
-      console.log('success')
-    }, err => { console.error(err); })
+    this.store.dispatch(addToBasket({ payload: articleId }));
   }
 
   addToFavorites(articleId: string) {
-    this.articleService.addToFavorites(articleId).subscribe(() => {
-      console.log('success')
-    }, err => { console.error(err); })
+    this.store.dispatch(addToFavorites({ payload: articleId }));
   }
 }

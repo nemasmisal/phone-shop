@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects'
-import { AuthEffects } from './+store/auth/effects'
-import { reducer as authReducer } from './+store/auth/reducer'
-import { reducer as userReducer } from './+store/user/reducer'
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './+store/auth/effects';
+import { reducer as authReducer } from './+store/auth/reducer';
+import { reducer as userReducer } from './+store/user/reducer';
+import { reducer as articleReducer } from './+store/article/reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { AdminModule } from './admin/admin.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserEffects } from './+store/user/effects';
+import { ArticleEffects } from './+store/article/effects';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,8 @@ import { UserEffects } from './+store/user/effects';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ auth: authReducer, user: userReducer }),
-    EffectsModule.forRoot([AuthEffects, UserEffects]),
+    StoreModule.forRoot({ auth: authReducer, user: userReducer, article: articleReducer }),
+    EffectsModule.forRoot([AuthEffects, UserEffects, ArticleEffects]),
     AppRoutingModule,
     FormsModule,
     UserModule,

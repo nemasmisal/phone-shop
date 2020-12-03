@@ -20,11 +20,15 @@ const userReducer = createReducer(
   on(user.addToBasket, state => ({ ...state })),
   on(user.removeFromBasket, (state, { payload }) => {
     const basket = state.basket.filter((article: IArticle) => article._id !== payload);
-    return { favorites: state.favorites, basket };
+    return { ...state, basket };
   }),
   on(user.removeFromBasketFailed, (state, props) => ({ ...state, ...props })),
   on(user.orderBasketSuccess, state => ({ ...state, basket: [] })),
-  on(user.favoritesSuccess, (state, props) => ({ ...state, ...props }))
+  on(user.favoritesSuccess, (state, props) => ({ ...state, ...props })),
+  on(user.removeFromFavorites, (state, { payload }) => {
+    const favorites = state.favorites.filter((article: IArticle) => article._id !== payload);
+    return { ...state, favorites };
+  })
 )
 
 export function reducer(state: IUserState, action: Action): IUserState {

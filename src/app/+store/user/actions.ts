@@ -33,7 +33,7 @@ export const basket = createAction(ActionTypes.getBasket);
 export const basketSuccess = createAction(ActionTypes.getBasketSuccess, props<{ basket: IArticle[] }>());
 export const basketFailed = createAction(ActionTypes.getBasketFailed, props<{ error: any }>());
 
-export const addToBasket = createAction(ActionTypes.addToBasket, props<{ articleId: string }>());
+export const addToBasket = createAction(ActionTypes.addToBasket, props<{ payload }>());
 export const addToBasketSuccess = createAction(ActionTypes.addToBasket);
 export const addToBasketFailed = createAction(ActionTypes.addToBasket, props<{ error: string }>());
 
@@ -49,8 +49,8 @@ export const favorites = createAction(ActionTypes.getFavorites);
 export const favoritesSuccess = createAction(ActionTypes.getFavoritesSuccess, props<{ favorites: [] }>());
 export const favoritestFailed = createAction(ActionTypes.getFavoritesFailed, props<{ error: string }>());
 
-export const addToFavorites = createAction(ActionTypes.addToFavorites, props<{ articleId: string }>());
-export const addToFavoritesSuccess = createAction(ActionTypes.addToFavoritesSuccess);
+export const addToFavorites = createAction(ActionTypes.addToFavorites, props<{ payload }>());
+export const addToFavoritesSuccess = createAction(ActionTypes.addToFavorites);
 export const addToFavoritesFailed = createAction(ActionTypes.addToFavoritesFailed, props<{ error: string }>());
 
 export const removeFromFavorites = createAction(ActionTypes.removeFromFavorites, props<{ payload }>());

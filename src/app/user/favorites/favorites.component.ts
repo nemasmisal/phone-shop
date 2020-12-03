@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
-import { UserService } from 'src/app/core/services/user.service';
 import * as user from 'src/app/+store'
-import { favorites } from 'src/app/+store/user/actions'
+import { favorites, removeFromFavorites } from 'src/app/+store/user/actions'
 
 
 @Component({
@@ -20,10 +19,10 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(favorites())
-    // this.userId = sessionStorage.getItem('userId');
-    // this.userService.profile(this.userId).subscribe((user) => {
-    //   this.favorites = user.favorites;
-    // }, err => console.error(err))
+  }
+
+  removeFromFavorites(articleId) {
+    this.store.dispatch(removeFromFavorites({ payload: articleId }));
   }
 
 }

@@ -21,7 +21,7 @@ export class UserEffects {
 
   addToBasket$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.addToBasket),
-    mergeMap((articleId: Object) => this.userService.addToBasket(articleId).pipe(
+    mergeMap(action => this.userService.addToBasket((action as IAction).payload).pipe(
       map(() => ({ type: ActionTypes.addToBasketSuccess })),
       catchError((err) => of({ type: ActionTypes.addToBasketFailed, ...err }))
     ))
@@ -53,8 +53,8 @@ export class UserEffects {
 
   addToFavorites$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.addToFavorites),
-    mergeMap((articleId: Object) => this.userService.addToFavorites(articleId).pipe(
-      map(() => ({ type: ActionTypes.removeFromFavoritesSuccess })),
+    mergeMap(action => this.userService.addToFavorites((action as IAction).payload).pipe(
+      map(() => ({ type: ActionTypes.addToFavoritesSuccess })),
       catchError((err) => of({ type: ActionTypes.removeFromFavoritesFailed, ...err }))
     ))
   ))
@@ -62,8 +62,7 @@ export class UserEffects {
   removeFromFavorites$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.removeFromFavorites),
     mergeMap(action => this.userService.removeFromFavorites((action as IAction).payload).pipe(
-      map(() => (this.router.navigate(['user', 'favorites']),
-        { type: ActionTypes.removeFromFavoritesSuccess, action })),
+      map(() => ({ type: ActionTypes.removeFromFavoritesSuccess, action })),
       catchError((err) => of({ type: ActionTypes.removeFromFavoritesFailed, ...err }))
     ))
   ))
