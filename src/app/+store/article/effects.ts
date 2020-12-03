@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { ArticleService } from 'src/app/core/services/article.service';
@@ -7,7 +8,7 @@ import { ActionTypes } from './action'
 
 @Injectable()
 export class ArticleEffects {
-  constructor(private actions$: Actions, private articleService: ArticleService) {}
+  constructor(private actions$: Actions, private articleService: ArticleService, private store: Store) {}
 
   phones$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getPhones),
@@ -40,5 +41,5 @@ export class ArticleEffects {
       catchError((err) => of({ type: ActionTypes.getAccessoriesFailed, ...err}))
     ))
   ))
-  
+
 }

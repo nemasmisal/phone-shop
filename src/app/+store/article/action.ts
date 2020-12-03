@@ -1,5 +1,4 @@
 import { Action, createAction, props } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models/article'
 
 export interface IAction extends Action {
   payload: any;
@@ -18,6 +17,9 @@ export const ActionTypes = {
   getAccessories: '[Accessories Page] Loading',
   getAccessoriesSuccess: '[Accessories Page] Loading Success',
   getAccessoriesFailed: '[Accessories Page] Loading Failed',
+  getCategory: '[Category Page] Loading',
+  getCategorySuccess: '[Category Page] Loading Success',
+  getCategoryFailed: '[Category Page] Loading Failed'
 }
 
 export const getPhones = createAction(ActionTypes.getPhones);
@@ -35,3 +37,10 @@ export const getScreenProtectorsFailed = createAction(ActionTypes.getScreenProte
 export const getAccessories = createAction(ActionTypes.getAccessories);
 export const getAccessoriesSuccess = createAction(ActionTypes.getAccessoriesSuccess, props<{ payload }>());
 export const getAccessoriesFailed = createAction(ActionTypes.getAccessoriesFailed, props<{ error: any }>());
+
+export const getCategory = createAction(ActionTypes.getAccessories);
+export const getCategorySuccess = createAction(ActionTypes.getAccessoriesSuccess, props<{ payload }>());
+export const getACategoryFailed = createAction(ActionTypes.getAccessoriesFailed, props<{ error: any }>());
+
+
+

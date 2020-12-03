@@ -6,6 +6,7 @@ import { IArticle } from 'src/app/core/models/article';
 import { ArticleService } from 'src/app/core/services/article.service';
 import * as auth from 'src/app/+store';
 import { addToBasket, addToFavorites } from 'src/app/+store/user/actions'
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-details-article',
@@ -28,13 +29,13 @@ export class DetailsArticleComponent implements OnInit {
     this.article$ = this.articleService.getArticleById(this.articleId);
   }
 
-  like(articleId: string) {
-    this.articleService.likeArticle(articleId).subscribe(() => {
-      this.router.navigate(['article', 'details', articleId]);
-    }, err => {
-      console.error(err);
-    })
-  }
+  // like(articleId: string) {
+  //   this.articleService.likeArticle(articleId).subscribe(() => {
+  //     this.router.navigate(['article', 'details', articleId]);
+  //   }, err => {
+  //     console.error(err);
+  //   })
+  // }
 
   addToBasket(articleId: string) {
     this.store.dispatch(addToBasket({ payload: articleId }));

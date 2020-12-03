@@ -8,6 +8,7 @@ import { AuthEffects } from './+store/auth/effects';
 import { reducer as authReducer } from './+store/auth/reducer';
 import { reducer as userReducer } from './+store/user/reducer';
 import { reducer as articleReducer } from './+store/article/reducer';
+import { reducer as adminReducer } from './+store/admin/reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { AdminModule } from './admin/admin.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserEffects } from './+store/user/effects';
 import { ArticleEffects } from './+store/article/effects';
+import { AdminEffects } from './+store/admin/effects';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,8 @@ import { ArticleEffects } from './+store/article/effects';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ auth: authReducer, user: userReducer, article: articleReducer }),
-    EffectsModule.forRoot([AuthEffects, UserEffects, ArticleEffects]),
+    StoreModule.forRoot({ auth: authReducer, user: userReducer, article: articleReducer, admin: adminReducer }),
+    EffectsModule.forRoot([AuthEffects, UserEffects, ArticleEffects, AdminEffects]),
     AppRoutingModule,
     FormsModule,
     UserModule,

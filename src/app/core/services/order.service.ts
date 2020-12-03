@@ -11,7 +11,6 @@ const apiURL = environment.apiURL;
   providedIn: 'root'
 })
 export class OrderService {
-  result;
   constructor(private http: HttpClient, private router: Router) { }
 
   getOrders(): Observable<IOrder[]> {
