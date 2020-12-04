@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IUser } from 'src/app/core/models/user';
-import { UserService } from 'src/app/core/services/user.service';
+import { IArticle } from 'src/app/core/models';
+import * as state from 'src/app/+store';
+import { basket, favorites } from 'src/app/+store/user/actions'
 
 @Component({
   selector: 'app-profile',
@@ -9,13 +11,17 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userId: string;
-  user$: Observable<IUser>;
-  constructor(private userService: UserService) { }
-
-  ngOnInit(){
-    this.userId = sessionStorage.getItem('userId');
-    this.user$ = this.userService.profile(this.userId);
+  basket$: Observable<IArticle[]>;
+  favorites$: Observable<IArticle[]>;
+  username$: Observable<string>
+  constructor(private store: Store) {
+    this.username$ = store.select(state.getAuthUsername);
+    this.basket$ = store.select(state.getUserBasket);
+    this.favorites$ = store.select(state.getUserFavorites);
   }
 
+  ngOnInit() {
+    this.store.dispatch(basket());
+    this.store.dispatch(favorites());
+  }
 }

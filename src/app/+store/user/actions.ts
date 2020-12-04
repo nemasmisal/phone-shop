@@ -27,6 +27,9 @@ export const ActionTypes = {
   removeFromFavorites: '[Remove From Favorites] Loading',
   removeFromFavoritesSuccess: '[Remove From Favorites] Removing Success',
   removeFromFavoritesFailed: '[Remove From Favorites] Removing Failed',
+  getProfile: '[User Profile Page] Loading',
+  getProfileSuccess: '[User Profile Page] Loading Success',
+  getProfileFailed: '[User Profile Page] Loading Failed',
 }
 
 export const basket = createAction(ActionTypes.getBasket);
