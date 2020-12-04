@@ -1,4 +1,4 @@
-import {Action, createAction, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { IHistory, IOrder } from 'src/app/core/models';
 
 export const ActionTypes = {

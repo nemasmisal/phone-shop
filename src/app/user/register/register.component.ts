@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    const { username, password } = this.form.value
+    if(this.form.invalid) { return; }
+    const { username, password } = this.form.value;
     this.store.dispatch(register({ username, password }));
   }
 

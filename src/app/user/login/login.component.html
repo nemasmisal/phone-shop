@@ -1,68 +1,38 @@
 <div id="contentContainer" class="container">
-    <div class="row">
-        <div id="realContent" class="col-xs-12">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12 col-sm-offset-0">
-                    <h1>Sign Up</h1>
-                </div>
-            </div>
-            <div class="row">
-                <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12 col-sm-offset-0">
-                    <div class="well well-lg">
-                        <div class="row">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <h3>Welcome</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Login Form -->
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <form id="signupForm" accept-charset="UTF-8" validate [formGroup]="form" (submit)="login()">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="icon-user icon-2x"></i></span>
-                                                <input id="handle" class="form-control input-lg" placeholder="Username" type="text" name="handle" formControlName="username">
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="icon-asterisk icon-2x"></i></span>
-                                                <input id="password" class="form-control input-lg"
-                                                    placeholder="Password" type="password"
-                                                    name="password" formControlName="password">
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="g-recaptcha"
-                                                    data-sitekey="6LdJRxETAAAAABZT0MUNO1r5at_-JuSGeAPTqIM6"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" id="btn-signup"
-                                                    class="btn btn-block btn-primary btn-lg">Login</button>
-                                            </div>
-                                        </form>
-                                        <div class="form-group">
-                                            <div class="topCushion">Don`t have account? <a
-                                                    [routerLink]="['..','register']">Register</a></div>
-                                        </div>
-                                    </div>
-                                    <!-- /.col-xs-12 -->
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                            <!-- /.col-sm-6 col-xs-12 -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.well well-lg -->
-                </section>
-                <!-- /.col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12 col-sm-offset-0 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#realContent -->
+    <div class="msg">
+        <h1>Welcome</h1>
+        <h3>Sign in using your username and password</h3>
     </div>
-    <!-- /.row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <form id="signupForm" accept-charset="UTF-8" validate [formGroup]="form" (ngSubmit)="login()">
+                <div class="input-group">
+                    <input id="handle" class="form-control input-lg" placeholder="Username" type="text" name="handle"
+                        formControlName="username">
+                </div>
+                <div class="alert alert-danger" *ngIf="f.username.errors?.required && f.username.touched">Username is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="f.username.errors?.pattern">Username
+                    must includes only english letters and/or digits.</div>
+                <div class="alert alert-danger" *ngIf="f.username.errors?.minlength || f.username.errors?.maxlength">
+                    Username must be at least 4 characters but not more then 20</div>
+                <div class="input-group">
+                    <input id="password" class="form-control input-lg" placeholder="Password" type="password"
+                        name="password" formControlName="password">
+                </div>
+                <div class="alert alert-danger" *ngIf="f.password.errors?.required && f.password.touched">Password is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="f.password.errors?.pattern">Password
+                    must includes only english letters and/or digits.</div>
+                <div class="alert alert-danger" *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">
+                    Password must be at least 5 characters but not more then 20</div>
+                <div class="form-group">
+                    <button [disabled]="form.invalid" id="btn-signup" class="btn btn-block btn-primary btn-lg">Login</button>
+                </div>
+            </form>
+            <div class="form-group">
+                <div class="topCushion">Don`t have account? <a [routerLink]="['..','register']">Register</a></div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /#contentContainer -->

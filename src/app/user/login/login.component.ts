@@ -15,13 +15,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20), Validators.pattern('[A-Za-z0-9]+')]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.pattern('[A-Za-z0-9]+')]],
     });
   }
 
   login() {
+    if (this.form.invalid) { return; }
     const { username, password } = this.form.value;
     this.store.dispatch(auth.login({ username, password }));
+  }
+
+  get f() {
+    return this.form.controls;
   }
 }

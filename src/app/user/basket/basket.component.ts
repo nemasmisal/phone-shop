@@ -12,7 +12,7 @@ import { basket, orderBasket, removeFromBasket } from 'src/app/+store/user/actio
 })
 export class BasketComponent implements OnInit {
   basket$: Observable<IArticle[]>;
-  //totalAmount: number;
+  totalAmount: number;
 
   constructor(private store: Store) {
     this.basket$ = store.select(user.getUserBasket);
@@ -20,6 +20,9 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(basket());
+    this.store.select(user.getUserBasket).subscribe(basket => {
+      this.totalAmount = basket.reduce((acc, curr) => acc + Number(curr.price), 0)
+    })
   }
 
   placeOrder() {

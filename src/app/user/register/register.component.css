@@ -13,11 +13,7 @@
         font-size: 7em;
     }
 }
-.well h3 {
-    padding-top: 0;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
+
 #signupForm .input-group {
     margin-bottom: 20px;
 }
@@ -49,6 +45,25 @@
 .checkbox-inline, .radio-inline {
     margin-right: 28px;
     font-size: 16px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.row {
+    display: block;
+}
+
+.msg {
+    width: 50%;
+    float: left;
+    padding: 20;
+}
+
+.form {
+    width: 50%;
+    float: right;
 }
 
 

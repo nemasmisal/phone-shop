@@ -10,10 +10,9 @@
                 <section class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12 col-sm-offset-0">
                     <div class="well well-lg">
                         <div class="row">
-                            <div class="col-sm-6 col-xs-12">
+                            <div class="col-sm-6 col-xs-12  msg">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <h3>Welcome</h3>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -21,7 +20,7 @@
                                     <div class="col-xs-12">
                                         <p class="lead">Register now for <span class="text-success">FREE</span></p>
                                         <ul class="list-unstyled"
-                                            style="line-height: 3; font-size: 1.4em; font-weight: 500;">
+                                            style="line-height: 2; font-size: 1.4em; font-weight: 500;">
                                             <li><span class="fa fa-check text-success"></span> Ability to save your
                                                 favorite articles!</li>
                                             <li><span class="fa fa-check text-success"></span> You can buy any product
@@ -35,39 +34,52 @@
                                 </div>
                             </div>
                             <!-- Registration Form -->
-                            <div class="col-sm-6 col-xs-12">
+                            <div class="col-sm-6 col-xs-12 form">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <form id="signupForm" accept-charset="UTF-8" [formGroup]="form" (submit)="register()">
+                                        <form id="signupForm" accept-charset="UTF-8" [formGroup]="form"
+                                            (ngSubmit)="register()">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class="icon-user icon-2x"></i></span>
                                                 <input id="handle" class="form-control input-lg" placeholder="Username"
                                                     type="text" name="handle" formControlName="username">
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="f.username.errors?.required && f.username.touched">Username is required.</div>
+                                            <div class="alert alert-danger"
+                                                *ngIf="f.username.errors?.required && f.username.touched">Username is
+                                                required.</div>
+                                            <div class="alert alert-danger" *ngIf="f.username.errors?.pattern">Username
+                                                must includes only english letters and/or digits.</div>
+                                            <div class="alert alert-danger"
+                                                *ngIf="f.username.errors?.minlength || f.username.errors?.maxlength">
+                                                Username must be at least 4 characters but not more then 20</div>
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="icon-asterisk icon-2x"></i></span>
                                                 <input id="password" class="form-control input-lg"
-                                                    placeholder="Password" type="password" name="password" formControlName="password">
+                                                    placeholder="Password" type="password" name="password"
+                                                    formControlName="password">
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="f.password.errors?.required && f.password.touched">Password is required.</div>
+                                            <div class="alert alert-danger"
+                                                *ngIf="f.password.errors?.required && f.password.touched">Password is
+                                                required.</div>
+                                            <div class="alert alert-danger" *ngIf="f.password.errors?.pattern">Password
+                                                must includes only english letters and/or digits.</div>
+                                            <div class="alert alert-danger"
+                                                *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">
+                                                Password must be at least 5 characters but not more then 20</div>
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="icon-asterisk icon-2x"></i></span>
                                                 <input id="password_confirmation" class="form-control input-lg"
                                                     placeholder="Confirm Password" type="password"
                                                     name="password_confirmation" formControlName="confirmPassword">
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="f.confirmPassword.errors?.required && f.confirmPassword.touched">Confirm password is required.</div>
-                                            <div class="alert alert-danger" *ngIf="f.confirmPassword.errors?.mustMatch">Passwords do not match.</div>
+                                            <div class="alert alert-danger"
+                                                *ngIf="f.confirmPassword.errors?.required && f.confirmPassword.touched">
+                                                Confirm password is required.</div>
+                                            <div class="alert alert-danger" *ngIf="f.confirmPassword.errors?.mustMatch">
+                                                Passwords do not match.</div>
                                             <div class="form-group">
                                                 <div class="g-recaptcha"
                                                     data-sitekey="6LdJRxETAAAAABZT0MUNO1r5at_-JuSGeAPTqIM6"></div>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" id="btn-signup"
-                                                    class="btn btn-block btn-primary btn-lg">Sign Up</button>
+                                                <button [disabled]="!form.valid" type="submit" id="btn-signup" class="btn btn-block btn-primary btn-lg">Sign Up</button>
                                             </div>
                                         </form>
                                         <div class="form-group">
@@ -75,22 +87,12 @@
                                                     [routerLink]="['..','login']">Login</a></div>
                                         </div>
                                     </div>
-                                    <!-- /.col-xs-12 -->
                                 </div>
-                                <!-- /.row -->
                             </div>
-                            <!-- /.col-sm-6 col-xs-12 -->
                         </div>
-                        <!-- /.row -->
                     </div>
-                    <!-- /.well well-lg -->
                 </section>
-                <!-- /.col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12 col-sm-offset-0 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /#realContent -->
     </div>
-    <!-- /.row -->
 </div>
-<!-- /#contentContainer -->
