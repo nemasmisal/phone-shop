@@ -6,15 +6,14 @@ import { CreateArticleComponent } from './create-article/create-article.componen
 import { ArticleComponent } from './article/article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
-import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 //import { IsLoggedGuard } from '../core/guards/is-logged.guard';
-//import { IsAdminGuard } from '../core/guards/is-admin.guard';
+import { IsAdminGuard } from '../core/guards/is-admin.guard';
 
 
 
 @NgModule({
-  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, DeleteArticleComponent, CategoryListComponent],
+  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,7 +21,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
       {
         path: 'create',
         component: CreateArticleComponent,
-        //canActivate: [IsAdminGuard]
+        canActivate: [IsAdminGuard]
       },
       {
         path: 'edit/:id',
@@ -34,16 +33,10 @@ import { CategoryListComponent } from './category-list/category-list.component';
         component: DetailsArticleComponent
       },
       {
-        path: 'delete/:id',
-        component: DeleteArticleComponent,
-        //canActivate: [IsAdminGuard]
-      },
-      {
         path: 'category/:name',
         component: CategoryListComponent
       }
     ])
   ],
-  exports: [ArticleComponent]
 })
 export class ArticlesModule { }

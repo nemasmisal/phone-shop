@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ArticleService } from 'src/app/core/services/article.service';
+import { Store } from '@ngrx/store';
+import { createArticle } from 'src/app/+store/article/action'
 
 @Component({
   selector: 'app-create-article',
@@ -10,9 +10,7 @@ import { ArticleService } from 'src/app/core/services/article.service';
 })
 export class CreateArticleComponent implements OnInit {
   form: FormGroup;
-  constructor(private articleService: ArticleService,
-    private fb: FormBuilder,
-    private router: Router) { }
+  constructor( private fb: FormBuilder, private store: Store) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -26,11 +24,8 @@ export class CreateArticleComponent implements OnInit {
   }
 
   createArticle() {
-    this.articleService.createArticle(this.form.value).subscribe((data) => {
-      this.router.navigate(['home'])
-    }, err => {
-      console.error(err);
-    })
+    if (this.form.invalid) { return; }
+    this.store.dispatch(createArticle({ payload: this.form.value }));
   }
 
 }

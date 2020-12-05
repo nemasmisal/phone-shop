@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IArticle } from 'src/app/core/models/article';
 import { getAuthUserId, getAuthAdmin } from 'src/app/+store';
-import * as article from 'src/app/+store'
-import { getPhones, getCases, getScreenProtectors, getAccessories } from 'src/app/+store/article/action'
-import { addToBasket, addToFavorites } from 'src/app/+store/user/actions'
+import * as article from 'src/app/+store';
+import { getPhones, getCases, getScreenProtectors, getAccessories, removeArticle } from 'src/app/+store/article/action';
+import { addToBasket, addToFavorites } from 'src/app/+store/user/actions';
 
 
 @Component({
@@ -24,10 +23,10 @@ export class ArticleComponent implements OnInit {
   accessories$: Observable<Array<IArticle>>;
 
   constructor(private store: Store) {
-    this.phones$ = store.select(article.getPhones).pipe(map(phones => phones.slice(0, 4)));
-    this.cases$ = store.select(article.getCases).pipe(map(cases => cases.slice(0, 4)));
-    this.screenProtectors$ = store.select(article.getScreenProtectors).pipe(map(screenProtectors => screenProtectors.slice(0, 4)));
-    this.accessories$ = store.select(article.getAccessories).pipe(map(accessories => accessories.slice(0, 4)));
+    this.phones$ = store.select(article.getPhones);
+    this.cases$ = store.select(article.getCases);
+    this.screenProtectors$ = store.select(article.getScreenProtectors);
+    this.accessories$ = store.select(article.getAccessories);
   }
 
   ngOnInit(): void {
@@ -45,5 +44,9 @@ export class ArticleComponent implements OnInit {
 
   addToFavorites(articleId: string) {
     this.store.dispatch(addToFavorites({ payload: articleId }));
+  }
+
+  removeArticle(articleId: string) {
+    this.store.dispatch(removeArticle({ id: articleId }));
   }
 }

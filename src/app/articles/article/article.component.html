@@ -1,6 +1,6 @@
 <div class="category">
     <h1>Phones</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let phone of phones$ | async">
+    <div class="card" style="width: 19rem;" *ngFor="let phone of phones$ | async | slice:0:4">
         <img src="{{phone.imageURL}}" class="card-img-top" alt="{{phone.name}}">
         <div class="card-body">
             <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
@@ -10,7 +10,7 @@
                 <div class="admin">
                     <div class="right">
                         <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary edit">Edit</a>
-                        <a [routerLink]="['/article','delete', phone._id ]" class="btn btn-primary delete">Delete</a>
+                        <a (click)="removeArticle(phone._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
             </ng-template>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <h1>Phone Cases</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async">
+    <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async | slice:0:4">
         <img src="{{case.imageURL}}" class="card-img-top" alt="{{case.name}}">
         <div class="card-body">
             <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
@@ -40,7 +40,7 @@
                 <div class="admin">
                     <div class="right">
                         <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary edit">Edit</a>
-                        <a [routerLink]="['/article','delete', case._id ]" class="btn btn-primary delete">Delete</a>
+                        <a (click)="removeArticle(case._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
             </ng-template>
@@ -48,7 +48,7 @@
         </div>
     </div>
     <h1>Screen Protectors</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let screenProtector of screenProtectors$ | async">
+    <div class="card" style="width: 19rem;" *ngFor="let screenProtector of screenProtectors$ | async | slice:0:4">
         <img src="{{screenProtector.imageURL}}" class="card-img-top" alt="{{screenProtector.name}}">
         <div class="card-body">
             <h5 class="card-title">{{screenProtector.name}} <span>Likes: {{screenProtector.likes.length}}</span>
@@ -60,8 +60,7 @@
                     <div class="right">
                         <a [routerLink]="['/article','edit', screenProtector._id ]"
                             class="btn btn-primary edit">Edit</a>
-                        <a [routerLink]="['/article','delete', screenProtector._id ]"
-                            class="btn btn-primary delete">Delete</a>
+                        <a (click)="removeArticle(screenProtector._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
             </ng-template>
@@ -75,7 +74,7 @@
         </div>
     </div>
     <h1>Accessories</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let accessory of accessories$ | async">
+    <div class="card" style="width: 19rem;" *ngFor="let accessory of accessories$ | async | slice:0:4">
         <img src="{{accessory.imageURL}}" class="card-img-top" alt="{{accessory.name}}">
         <div class="card-body">
             <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
@@ -86,8 +85,7 @@
                 <div class="admin">
                     <div class="right">
                         <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
-                        <a [routerLink]="['/article','delete', accessory._id ]"
-                            class="btn btn-primary delete">Delete</a>
+                        <a (click)="removeArticle(accessory._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
             </ng-template>

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators'
+import { tap } from 'rxjs/operators';
 import { IArticle } from 'src/app/core/models/article';
 import { ArticleService } from 'src/app/core/services/article.service';
+import { editArticle } from 'src/app/+store/article/action';
 
 @Component({
   selector: 'app-edit-article',
@@ -14,8 +16,8 @@ import { ArticleService } from 'src/app/core/services/article.service';
 export class EditArticleComponent implements OnInit {
 
   constructor(private articleService: ArticleService,
-    private fb: FormBuilder, private router: Router,
-    private route: ActivatedRoute) { }
+    private fb: FormBuilder, private route: ActivatedRoute,
+    private store: Store) { }
 
   form: FormGroup;
   article$: Observable<IArticle>;
@@ -35,10 +37,7 @@ export class EditArticleComponent implements OnInit {
   }
 
   editArticle() {
-    this.articleService.postEditArticle(this.id, this.form.value).subscribe((data) => {
-      this.router.navigate(['article', 'details', this.id])
-    }, err => {
-      console.error(err)
-    })
+    if (this.form.invalid) { return; }
+    this.store.dispatch(editArticle({ id: this.id, payload: this.form.value }))
   }
 }

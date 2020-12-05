@@ -25,9 +25,10 @@
             <div class="user" *ngIf="(userId$ | async)">
                 <a class="btn btn-outline-primary" (click)="addToFavorites(article._id)">Add to favorites</a>
                 <a class="btn btn-outline-primary" (click)="addToBasket(article._id)">Add to basket</a>
-                <!-- <a *ngIf="alreadyLiked" class="btn btn-outline-warning" (click)="like(article._id)">Like</a>
+                <a *ngIf="alreadyLiked" class="btn btn-outline-warning" (click)="like(article._id)">Like</a>
                 <a class="btn btn-outline-secondary">Write comment</a>
-                <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p> -->
+                <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p>
+                from likeAlready = {{alreadyLiked}}
             </div>
         </ng-template>
         <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div>

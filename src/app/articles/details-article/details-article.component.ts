@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
 import { ArticleService } from 'src/app/core/services/article.service';
 import * as auth from 'src/app/+store';
-import { addToBasket, addToFavorites } from 'src/app/+store/user/actions'
-import { tap } from 'rxjs/operators';
+import { addToBasket, addToFavorites } from 'src/app/+store/user/actions';
+import { removeArticle, likeArticle } from 'src/app/+store/article/action';
 
 @Component({
   selector: 'app-details-article',
@@ -17,25 +17,21 @@ export class DetailsArticleComponent implements OnInit {
   admin$: Observable<boolean>;
   userId$: Observable<string>;
   article$: Observable<IArticle>;
-  alreadyLiked: boolean;
+  alreadyLiked: Observable<boolean>;
   articleId: string;
 
-  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute, private store: Store) {
-    this.userId$ = store.select(auth.getAuthUserId);
+  constructor(private articleService: ArticleService, private route: ActivatedRoute, private store: Store) {
     this.admin$ = store.select(auth.getAuthAdmin);
+    this.userId$ = this.store.select(auth.getAuthUserId);
   }
   ngOnInit() {
     this.articleId = this.route.snapshot.params['id'];
     this.article$ = this.articleService.getArticleById(this.articleId);
   }
 
-  // like(articleId: string) {
-  //   this.articleService.likeArticle(articleId).subscribe(() => {
-  //     this.router.navigate(['article', 'details', articleId]);
-  //   }, err => {
-  //     console.error(err);
-  //   })
-  // }
+  like(articleId: string) {
+    this.store.dispatch(likeArticle({ id: articleId }));
+  }
 
   addToBasket(articleId: string) {
     this.store.dispatch(addToBasket({ payload: articleId }));
@@ -46,8 +42,6 @@ export class DetailsArticleComponent implements OnInit {
   }
 
   removeArticle(articleId: string) {
-    this.articleService.removeArticle(articleId).subscribe(() => {
-      this.router.navigate(['home']);
-    }, err => { console.error(err); })
+    this.store.dispatch(removeArticle({ id: articleId }));
   }
 }

@@ -24,9 +24,7 @@ export class AuthEffects {
       const { username, password } = action;
       return this.userService.login({ username, password }).pipe(
         tap(() => this.toastr.success('Successfully logged in !')),
-        map(action => (
-          this.router.navigate(['home']), { type: ActionTypes.LoginSuccess, ...action }
-        )),
+        map(action => (this.router.navigate(['home']), { type: ActionTypes.LoginSuccess, ...action })),
         catchError((err) => of({ type: ActionTypes.LoginFailed, ...err }))
       )
     })
@@ -38,9 +36,7 @@ export class AuthEffects {
       const { username, password } = action;
       return this.userService.register({ username, password }).pipe(
         tap(() => this.toastr.success('Successfully Registered !')),
-        map(action => (
-          this.router.navigate(['home']), { type: ActionTypes.RegisterSuccess, ...action }
-        )),
+        map(action => (this.router.navigate(['home']), { type: ActionTypes.RegisterSuccess, ...action })),
         catchError((err) => of({ type: ActionTypes.RegisterFailed, ...err }))
       )
     })
