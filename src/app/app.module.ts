@@ -27,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { ResponseHandlerInterceptorService } from './core/services/response-handler-interceptor.service';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { ResponseHandlerInterceptorService } from './core/services/response-hand
     EffectsModule.forRoot([AuthEffects, UserEffects, ArticleEffects, AdminEffects]),
     AppRoutingModule,
     ArticlesModule,
+    AdminModule,
     CoreModule,
     SharedModule,
     StoreDevtoolsModule.instrument({})

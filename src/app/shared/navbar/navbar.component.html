@@ -10,7 +10,7 @@
             <div class="item">
               <h3>Users</h3>
               <ul>
-                <li><a [routerLink]="['admin', 'editUsers']">Edit User</a></li>
+                <li><a [routerLink]="['admin', 'users']">Edit User</a></li>
                 <li><a href='#'>Make user admin</a></li>
               </ul>
             </div> <!-- /.item -->
@@ -18,10 +18,10 @@
               <h3>Articles</h3>
               <ul>
                 <li><a [routerLink]="['article', 'create']">Create Article</a></li>
-                <li><a href='#'>Phones</a></li>
-                <li><a href='#'>Cases</a></li>
-                <li><a href='#'>Screen Protectors</a></li>
-                <li><a href='#'>Accessories</a></li>
+                <li><a [routerLink]="['article', 'category', 'phones']">Phones</a></li>
+                <li><a [routerLink]="['article', 'category', 'cases']">Cases</a></li>
+                <li><a [routerLink]="['article', 'category', 'screenProtectors']">Screen Protectors</a></li>
+                <li><a [routerLink]="['article', 'category', 'accessories']">Accessories</a></li>
               </ul>
             </div> <!-- /.item -->
             <div class="item">
@@ -35,7 +35,7 @@
         </div><!-- /.mega-menu -->
       </ng-template>
     </li><!-- /.dropdown -->
-    <li class='dropdown'>
+    <li class='dropdown' *ngIf="!(admin$ | async)">
       <a [routerLink]="['home']">Category <i class="fa fa-angle-down"></i> </a>
       <div class='mega-menu'>
         <div class="container">

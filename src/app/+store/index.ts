@@ -30,3 +30,6 @@ export const getCategory = createSelector(getArticleStore, article.getCategory);
 export const getAdminStore = createFeatureSelector('admin');
 export const getOrders = createSelector(getAdminStore, admin.getOrders);
 export const getHistoryOrders = createSelector(getAdminStore, admin.getHistoryOrders);
+export const getUsers = createSelector(getAdminStore, admin.getUsers);
+export const getUser = createSelector(getAdminStore, admin.getUser);
+

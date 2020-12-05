@@ -1,1 +1,46 @@
-<p>edit-users works!</p>
+<div class="container">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1>Update current user</h1>
+    </div>
+  </div>
+  <form *ngIf="user$ | async as user; else loading" [formGroup]="form" (ngSubmit)="editUser(user._id)">
+    <div class="row space-top">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="form-control-label" for="new-make">Username</label>
+          <input value="{{user.username}}" class="form-control" type="text" formControlName="username">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.username.errors?.required && f.username.touched">Username is
+          required.</div>
+        <div class="alert alert-danger" *ngIf="f.username.errors?.pattern">Username
+          must includes only english letters and/or digits.</div>
+        <div class="alert alert-danger" *ngIf="f.username.errors?.minlength || f.username.errors?.maxlength">
+          Username must be at least 4 characters but not more then 20</div>
+        <div class="form-group">
+          <label class="form-control-label" for="new-year">New password</label>
+          <input value="" class="form-control" type="text" formControlName="password">
+        </div>
+        <div class="alert alert-danger" *ngIf="f.password.errors?.pattern">Password
+          must includes only english letters and/or digits.</div>
+        <div class="alert alert-danger" *ngIf="f.password.errors?.minlength || f.password.errors?.maxlength">
+          Username must be at least 4 characters but not more then 20</div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Admin</span>
+          </div>
+          <select value="{{user.admin}}" class="custom-select" formControlName="admin">
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" value="Create">Edit</button>
+      </div>
+    </div>
+  </form>
+  <ng-template #loading>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
+</div>

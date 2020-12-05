@@ -1,15 +1,17 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { IHistory, IOrder } from 'src/app/core/models';
+import { IHistory, IOrder, IUser } from 'src/app/core/models';
 import * as admin from './actions';
 
 export interface IAdminState {
   orders: IOrder[];
   historyOrders: IHistory[];
+  users: IUser[];
 }
 
 const initialState: IAdminState = {
   orders: [],
-  historyOrders: []
+  historyOrders: [],
+  users: []
 }
 
 const adminReducer = createReducer(
@@ -17,7 +19,9 @@ const adminReducer = createReducer(
   on(admin.getOrdersSuccess, (state, props) => ({ ...state, ...props })),
   on(admin.getOrdersFailed, (state, props) => ({ ...state, ...props })),
   on(admin.getHistoryOrdersSuccess, (state, props) => ({ ...state, ...props })),
-  on(admin.getHistoryOrdersFailed, (state, props) => ({ ...state, ...props }))
+  on(admin.getHistoryOrdersFailed, (state, props) => ({ ...state, ...props })),
+  on(admin.usersSuccess, (state, props) => ({ ...state, ...props })),
+  on(admin.usersFailed, (state, props) => ({ ...state, ...props })),
 )
 
 export function reducer(state: IAdminState, action: Action): IAdminState {

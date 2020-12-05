@@ -56,4 +56,12 @@ export class UserService {
   placeOrder() {
     return this.http.get(apiURL + '/user/order');
   }
+
+  getUsers() {
+    return this.http.get(apiURL + '/user/all');
+  }
+
+  updateUser(user) {
+    return this.http.post(apiURL + '/user/update', user);
+  }
 }

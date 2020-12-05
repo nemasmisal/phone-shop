@@ -46,7 +46,7 @@ export class AuthEffects {
     ofType(ActionTypes.Logout),
     switchMap(() => this.userService.logout().pipe(
       tap(() => this.toastr.success('Successfully logged out !')),
-      map(() => this.router.navigate(['home']), ({ type: ActionTypes.LogoutSuccess })),
+      map(() => (this.router.navigate(['home']), { type: ActionTypes.LogoutSuccess })),
       catchError((err) => of({ type: ActionTypes.LogoutrFailed, ...err }))
     ))
   ))
