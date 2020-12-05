@@ -1,13 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models';
+import { Action, createReducer, on, props } from '@ngrx/store';
 import * as article from './action';
-
-export interface IArticleState {
-  phones: IArticle[];
-  cases: IArticle[];
-  screenProtectors: IArticle[];
-  accessories: IArticle[];
-}
+import { IArticleState } from '../models'
 
 const initialState: IArticleState = {
   phones: [],
@@ -18,14 +11,7 @@ const initialState: IArticleState = {
 
 const articleReducer = createReducer(
   initialState,
-  on(article.getPhones, state => ({ ...state})),
-  on(article.getPhonesSuccess, (state, props) => ({ ...state, ...props })),
-  on(article.getCases, state => ({ ...state})),
-  on(article.getCasesSuccess, (state, props) => ({ ...state, ...props })),
-  on(article.getScreenProtectors, state => ({ ...state})),
-  on(article.getScreenProtectorsSuccess, (state, props) => ({ ...state, ...props })),
-  on(article.getAccessories, state => ({ ...state})),
-  on(article.getAccessoriesSuccess, (state, props) => ({ ...state, ...props }))
+  on(article.getAllSuccess, (state, props) => ({ ...state, ...props }))
 )
 
 export function reducer(state: IArticleState, action: Action): IArticleState {

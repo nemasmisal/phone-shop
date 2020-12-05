@@ -1,4 +1,4 @@
-export interface IState {
+export interface IAuthState {
   _id: string;
   username: string;
   admin: boolean;

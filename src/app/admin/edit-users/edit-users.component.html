@@ -19,7 +19,7 @@
           Username must be at least 4 characters but not more then 20</div>
         <div class="form-group">
           <label class="form-control-label" for="new-year">New password</label>
-          <input value="" class="form-control" type="text" formControlName="password">
+          <input value="" class="form-control" type="text" formControlName="password" placeholder="Leave empty to keep old password">
         </div>
         <div class="alert alert-danger" *ngIf="f.password.errors?.pattern">Password
           must includes only english letters and/or digits.</div>

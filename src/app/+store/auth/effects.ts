@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { mergeMap, map, catchError, switchMap, tap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs'
 import { UserService } from 'src/app/core/services/user.service';
 import { ActionTypes } from './actions';
 import { ToastrService } from 'ngx-toastr';
-
-interface ILogin extends Action {
-  username: string;
-  password: string;
-}
+import { IUser } from '../models'
 
 @Injectable()
 export class AuthEffects {
@@ -19,8 +14,8 @@ export class AuthEffects {
   constructor(private actions$: Actions, private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
   login$ = createEffect(() => this.actions$.pipe(
-    ofType<ILogin>(ActionTypes.Login),
-    mergeMap(action => {
+    ofType<IUser>(ActionTypes.Login),
+    switchMap(action => {
       const { username, password } = action;
       return this.userService.login({ username, password }).pipe(
         tap(() => this.toastr.success('Successfully logged in !')),
@@ -31,8 +26,8 @@ export class AuthEffects {
   ))
 
   register$ = createEffect(() => this.actions$.pipe(
-    ofType<ILogin>(ActionTypes.Register),
-    mergeMap(action => {
+    ofType<IUser>(ActionTypes.Register),
+    switchMap(action => {
       const { username, password } = action;
       return this.userService.register({ username, password }).pipe(
         tap(() => this.toastr.success('Successfully Registered !')),

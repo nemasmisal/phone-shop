@@ -1,51 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { Action, Store } from '@ngrx/store';
+import { forkJoin, of } from 'rxjs';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { ArticleService } from 'src/app/core/services/article.service';
 import { ActionTypes } from './action';
 import { ToastrService } from 'ngx-toastr';
+import { IAction } from '../models'
 
-interface IAction extends Action {
-  payload: any;
-}
 
 @Injectable()
 export class ArticleEffects {
-  constructor(private actions$: Actions, private articleService: ArticleService, private router: Router, private toastr: ToastrService, private store: Store) { }
+  constructor(private actions$: Actions, private articleService: ArticleService, private router: Router, private toastr: ToastrService) { }
 
-  phones$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.getPhones),
-    mergeMap(() => this.articleService.getAllPhones().pipe(
-      map(phones => ({ type: ActionTypes.getPhonesSuccess, phones })),
-      catchError((err) => of({ type: ActionTypes.getPhonesFailed, ...err }))
-    ))
-  ))
-
-  cases$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.getCases),
-    mergeMap(() => this.articleService.getAllCases().pipe(
-      map(cases => ({ type: ActionTypes.getCasesSuccess, cases })),
-      catchError((err) => of({ type: ActionTypes.getCasesFailed, ...err }))
-    ))
-  ))
-
-  screenProtectors$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.getCases),
-    mergeMap(() => this.articleService.getAllScreenProtectors().pipe(
-      map(screenProtectors => ({ type: ActionTypes.getScreenProtectorsSuccess, screenProtectors })),
-      catchError((err) => of({ type: ActionTypes.getScreenProtectorsFailed, ...err }))
-    ))
-  ))
-
-  accessories$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.getCases),
-    mergeMap(() => this.articleService.getAllAccessories().pipe(
-      map(accessories => ({ type: ActionTypes.getAccessoriesSuccess, accessories })),
-      catchError((err) => of({ type: ActionTypes.getAccessoriesFailed, ...err }))
-    ))
+  all$ = createEffect(() => this.actions$.pipe(
+    ofType(ActionTypes.getArticles),
+    mergeMap(() => {
+      return forkJoin({
+        phones: this.articleService.getAllPhones(),
+        cases: this.articleService.getAllCases(),
+        screenProtectors: this.articleService.getAllScreenProtectors(),
+        accessories: this.articleService.getAllAccessories()
+      }).pipe(
+        map(articles => ({ type: ActionTypes.getArticlesSuccess, ...articles })),
+        catchError((err) => of({ type: ActionTypes.getArticlesFailed, ...err }))
+      )
+    })
   ))
 
   createArticle$ = createEffect(() => this.actions$.pipe(

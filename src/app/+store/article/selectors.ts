@@ -1,4 +1,4 @@
-import { IArticleState } from './reducer';
+import { IArticleState } from '../models';
 
 export const getPhones = (state: IArticleState) => state.phones;
 export const getCases = (state: IArticleState) => state.cases;

@@ -1,9 +1,5 @@
-import { Action, createAction, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { IArticle } from 'src/app/core/models/article'
-
-export interface IAction extends Action {
-  payload: any;
-}
 
 export const ActionTypes = {
   getBasket: '[User Basket Page] Loading',

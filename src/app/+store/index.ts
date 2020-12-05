@@ -1,13 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IState } from './models';
+import { IAuthState } from './models';
 import * as auth from './auth/selectors';
 import * as user from './user/selectors';
 import * as article from './article/selectors'
 import * as admin from './admin/selectors';
 
-export interface IAppState {
-  auth: IState;
-}
+// export interface IAppState {
+//   auth: IAuthState;
+// }
  
 export const getAuthStore = createFeatureSelector('auth');
 export const getAuthUsername = createSelector(getAuthStore, auth.getUsername);
@@ -25,6 +25,7 @@ export const getCases = createSelector(getArticleStore, article.getCases);
 export const getScreenProtectors = createSelector(getArticleStore, article.getScreenProtectors);
 export const getAccessories = createSelector(getArticleStore, article.getAccessories);
 
+export const getAll = createSelector(getArticleStore, article.getArticleState);
 export const getCategory = createSelector(getArticleStore, article.getCategory);
 
 export const getAdminStore = createFeatureSelector('admin');

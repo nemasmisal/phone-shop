@@ -1,5 +1,5 @@
 import { IUser } from 'src/app/core/models';
-import { IAdminState } from './reducer';
+import { IAdminState } from '../models';
 
 export const getOrders = (state: IAdminState) => state.orders;
 export const getHistoryOrders = (state: IAdminState) => state.historyOrders;

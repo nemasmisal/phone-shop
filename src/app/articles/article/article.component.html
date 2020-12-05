@@ -23,6 +23,11 @@
             <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
+    <ng-template #loading>
+        <div class="spinner-border" role="status" class="text-center">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </ng-template>
     <h1>Phone Cases</h1>
     <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async | slice:0:4">
         <img src="{{case.imageURL}}" class="card-img-top" alt="{{case.name}}">

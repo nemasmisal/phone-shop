@@ -1,5 +1,5 @@
-import { IState } from '../models';
+import { IAuthState } from '../models';
 
-export const getUserId = (state: IState) => state._id;
-export const getUsername = (state: IState) => state.username;
-export const getAdmin = (state: IState) => state.admin;
+export const getUserId = (state: IAuthState) => state._id;
+export const getUsername = (state: IAuthState) => state.username;
+export const getAdmin = (state: IAuthState) => state.admin;

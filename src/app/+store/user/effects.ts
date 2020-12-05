@@ -4,7 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { UserService } from 'src/app/core/services/user.service';
-import { ActionTypes, IAction } from './actions';
+import { ActionTypes } from './actions';
+import { IAction } from '../models'
 
 @Injectable()
 export class UserEffects {

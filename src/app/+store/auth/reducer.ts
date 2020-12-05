@@ -1,16 +1,12 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { IState } from '../models';
+import { IAuthState } from '../models';
 import * as auth from './actions';
 
-const initialState: IState = {
+const initialState: IAuthState = {
   _id: null,
   username: null,
   admin: false,
   error: null
-}
-
-export interface IAction extends Action {
-  payload: any;
 }
 
 const authReducer = createReducer(
@@ -26,6 +22,6 @@ const authReducer = createReducer(
   on(auth.registerFailed, (state, props) => ({ ...state, ...props }))
 );
 
-export function reducer(state: IState, action: Action): IState {
+export function reducer(state: IAuthState, action: Action): IAuthState {
   return authReducer(state, action);
 }

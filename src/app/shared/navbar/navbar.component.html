@@ -4,14 +4,13 @@
     <li class='dropdown'>
       <ng-container *ngIf="(admin$ | async) then admin"></ng-container>
       <ng-template #admin>
-        <a href='#'>Admin Panel <i class="fa fa-angle-down"></i></a>
+        <a>Admin Panel <i class="fa fa-angle-down"></i></a>
         <div class='mega-menu'>
           <div class="container">
             <div class="item">
               <h3>Users</h3>
               <ul>
                 <li><a [routerLink]="['admin', 'users']">Edit User</a></li>
-                <li><a href='#'>Make user admin</a></li>
               </ul>
             </div> <!-- /.item -->
             <div class="item">

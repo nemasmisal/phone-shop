@@ -1,12 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { IHistory, IOrder, IUser } from 'src/app/core/models';
 import * as admin from './actions';
-
-export interface IAdminState {
-  orders: IOrder[];
-  historyOrders: IHistory[];
-  users: IUser[];
-}
+import { IAdminState } from '../models'
 
 const initialState: IAdminState = {
   orders: [],

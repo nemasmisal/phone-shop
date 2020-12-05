@@ -20,7 +20,7 @@ export class AdminEffects {
   orders$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getOrders),
     switchMap(() => this.orderService.getOrders().pipe(
-      map(orders => ({ type: ActionTypes.getOrdersSuccess, ...orders })),
+      map(orders => ({ type: ActionTypes.getOrdersSuccess, orders })),
       catchError((err) => of({ type: ActionTypes.getOrdersFailed, ...err }))
     ))
   ))

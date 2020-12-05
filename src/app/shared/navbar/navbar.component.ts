@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { IAppState } from 'src/app/+store';
 import * as auth from 'src/app/+store';
 import { logout } from 'src/app/+store/auth/actions';
 
@@ -14,7 +13,7 @@ export class NavbarComponent {
   username$: Observable<string>;
   userId$: Observable<string>;
   admin$: Observable<boolean>;
-  constructor(private store: Store<IAppState>) {
+  constructor(private store: Store) {
     this.username$ = store.select(auth.getAuthUsername);
     this.userId$ = store.select(auth.getAuthUserId);
     this.admin$ = store.select(auth.getAuthAdmin);

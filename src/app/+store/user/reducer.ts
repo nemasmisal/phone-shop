@@ -1,11 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models';
 import * as user from './actions';
+import { IArticle } from 'src/app/core/models';
+import { IUserState } from '../models'
 
-export interface IUserState {
-  basket: IArticle[];
-  favorites: IArticle[];
-}
 
 const initialState: IUserState = {
   basket: [],
