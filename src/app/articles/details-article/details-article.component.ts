@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
 import { ArticleService } from 'src/app/core/services/article.service';
-import * as auth from 'src/app/+store';
+import { auth } from 'src/app/+store';
 import { addToBasket, addToFavorites } from 'src/app/+store/user/actions';
 import { removeArticle, likeArticle } from 'src/app/+store/article/action';
 
@@ -21,8 +21,8 @@ export class DetailsArticleComponent implements OnInit {
   articleId: string;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute, private store: Store) {
-    this.admin$ = store.select(auth.getAuthAdmin);
-    this.userId$ = this.store.select(auth.getAuthUserId);
+    this.admin$ = store.select(auth.admin);
+    this.userId$ = this.store.select(auth.userId);
   }
   ngOnInit() {
     this.articleId = this.route.snapshot.params['id'];

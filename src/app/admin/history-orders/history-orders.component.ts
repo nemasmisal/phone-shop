@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IHistory } from '../../core/models';
-import * as admin from 'src/app/+store';
+import { admin } from 'src/app/+store';
 import { getHistoryOrders } from 'src/app/+store/admin/actions';
 
 @Component({
@@ -13,7 +13,7 @@ import { getHistoryOrders } from 'src/app/+store/admin/actions';
 export class HistoryOrdersComponent implements OnInit {
   historyOrders$: Observable<IHistory[]>;
   constructor(private store: Store) {
-    this.historyOrders$ = store.select(admin.getHistoryOrders);
+    this.historyOrders$ = store.select(admin.historyOrders);
    }
 
   ngOnInit(): void {

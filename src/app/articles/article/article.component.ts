@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { IArticle } from 'src/app/core/models/article';
-import { getAuthUserId, getAuthAdmin } from 'src/app/+store';
-import * as article from 'src/app/+store';
+import { auth } from 'src/app/+store';
+import { article } from 'src/app/+store';
 import { removeArticle, getAll } from 'src/app/+store/article/action';
 import { addToBasket, addToFavorites } from 'src/app/+store/user/actions';
 import { IArticleState } from 'src/app/+store/models';
@@ -24,13 +24,13 @@ export class ArticleComponent implements OnInit {
   accessories$: Observable<Array<IArticle>>;
   all$: Observable<IArticleState>;
   constructor(private store: Store) {
-    this.phones$ = store.select(article.getPhones);
-    this.cases$ = store.select(article.getCases);
-    this.screenProtectors$ = store.select(article.getScreenProtectors);
-    this.accessories$ = store.select(article.getAccessories);
-    this.all$ = store.select(article.getAll);
-    this.userId$ = store.select(getAuthUserId);
-    this.admin$ = store.select(getAuthAdmin);
+    this.phones$ = store.select(article.phones);
+    this.cases$ = store.select(article.cases);
+    this.screenProtectors$ = store.select(article.screenProtectors);
+    this.accessories$ = store.select(article.accessories);
+    this.all$ = store.select(article.all);
+    this.userId$ = store.select(auth.userId);
+    this.admin$ = store.select(auth.admin);
   }
 
   ngOnInit(): void {

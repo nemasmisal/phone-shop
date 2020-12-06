@@ -17,6 +17,10 @@ export class UserService {
     return this.http.get<IUser>(apiURL + `/user/profile/${userId}`);
   }
 
+  checkAuth() {
+    return this.http.get(apiURL + '/user/checkAuth');
+  }
+
   login(data: { username: string, password: string }): Observable<IUser> {
     return this.http.post<IUser>(apiURL + '/user/login', data);
   }

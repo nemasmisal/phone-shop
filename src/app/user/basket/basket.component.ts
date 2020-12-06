@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
-import * as user from 'src/app/+store'
+import { user } from 'src/app/+store'
 import { basket, orderBasket, removeFromBasket } from 'src/app/+store/user/actions'
 
 @Component({
@@ -12,16 +12,16 @@ import { basket, orderBasket, removeFromBasket } from 'src/app/+store/user/actio
 })
 export class BasketComponent implements OnInit {
   basket$: Observable<IArticle[]>;
-  totalAmount: number;
+  totalAmount: string;
 
   constructor(private store: Store) {
-    this.basket$ = store.select(user.getUserBasket);
+    this.basket$ = store.select(user.basket);
   }
 
   ngOnInit(): void {
     this.store.dispatch(basket());
-    this.store.select(user.getUserBasket).subscribe(basket => {
-      this.totalAmount = basket.reduce((acc, curr) => acc + Number(curr.price), 0)
+    this.store.select(user.basket).subscribe(basket => {
+      this.totalAmount = basket.reduce((acc, curr) => acc + Number(curr.price), 0).toFixed(2);
     })
   }
 

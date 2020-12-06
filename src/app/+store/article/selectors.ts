@@ -7,3 +7,4 @@ export const getAccessories = (state: IArticleState) => state.accessories;
 export const getArticleState = (state: IArticleState) => state;
 export const getCategory = (state: IArticleState, { name }) => state[name];
 
+

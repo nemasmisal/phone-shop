@@ -13,6 +13,15 @@ export class AuthEffects {
 
   constructor(private actions$: Actions, private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
+  init$ = createEffect(() => this.actions$.pipe(
+    ofType('@ngrx/effects/init'),
+    switchMap(() => this.userService.checkAuth().pipe(
+      tap(action => this.toastr.success(`Welcome back ${(action as any).username}`)),
+      map(action => (this.router.navigate(['home']), { type: ActionTypes.LoginSuccess, ...action })),
+      catchError((err) => of({ type: ActionTypes.LogoutrFailed, ...err }))
+    ))
+  ))
+
   login$ = createEffect(() => this.actions$.pipe(
     ofType<IUser>(ActionTypes.Login),
     switchMap(action => {

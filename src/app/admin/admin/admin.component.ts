@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/core/models';
-import { getUsers } from 'src/app/+store'
+import { admin } from 'src/app/+store'
 import { users } from 'src/app/+store/admin/actions'
 
 @Component({
@@ -13,7 +13,7 @@ import { users } from 'src/app/+store/admin/actions'
 export class AdminComponent implements OnInit {
   users$: Observable<IUser[]>;
   constructor(private store: Store) {
-    this.users$ = this.store.select(getUsers);
+    this.users$ = this.store.select(admin.users);
   }
 
   ngOnInit(): void {

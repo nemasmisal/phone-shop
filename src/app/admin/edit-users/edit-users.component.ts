@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { getUser } from 'src/app/+store';
+import { admin } from 'src/app/+store';
 import { IUser } from 'src/app/core/models';
 import { updateUser } from 'src/app/+store/admin/actions'
 
@@ -27,7 +27,7 @@ export class EditUsersComponent implements OnInit {
       password: ['', [Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[A-Za-z0-9]+')]],
       admin: ['', [Validators.required]],
     })
-    this.user$ = this.store.select(getUser, { id: this.id }).pipe(tap(user => {
+    this.user$ = this.store.select(admin.userById, { id: this.id }).pipe(tap(user => {
       this.form.setValue({ username: user.username, admin: user.admin ? 'true' : 'false', password: '' });
     }))
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models';
-import * as state from 'src/app/+store';
+import {auth, user} from 'src/app/+store';
 import { basket, favorites } from 'src/app/+store/user/actions'
 
 @Component({
@@ -15,9 +15,9 @@ export class ProfileComponent implements OnInit {
   favorites$: Observable<IArticle[]>;
   username$: Observable<string>
   constructor(private store: Store) {
-    this.username$ = store.select(state.getAuthUsername);
-    this.basket$ = store.select(state.getUserBasket);
-    this.favorites$ = store.select(state.getUserFavorites);
+    this.username$ = store.select(auth.username);
+    this.basket$ = store.select(user.basket);
+    this.favorites$ = store.select(user.favorites);
   }
 
   ngOnInit() {

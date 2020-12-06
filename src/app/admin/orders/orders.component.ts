@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IOrder } from 'src/app/core/models';
 import { OrderService } from '../../core/services/order.service';
-import * as admin from 'src/app/+store';
+import { admin } from 'src/app/+store';
 import { getOrders } from 'src/app/+store/admin/actions';
 
 @Component({
@@ -15,7 +15,7 @@ import { getOrders } from 'src/app/+store/admin/actions';
 export class OrdersComponent implements OnInit {
   orders$: Observable<IOrder[]>;
   constructor(private orderService: OrderService, private router: Router, private store: Store) {
-    this.orders$ = store.select(admin.getOrders);
+    this.orders$ = store.select(admin.orders);
    }
 
   ngOnInit(): void {

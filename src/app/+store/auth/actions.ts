@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 export const ActionTypes = {
+  setInitialAuth: '[Set initial Auth State] Loading',
   Login: '[Login Page] Login',
   LoginSuccess: '[Login Page] Login Success',
   LoginFailed: '[Login Page] Login Failed',

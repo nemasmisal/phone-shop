@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as auth from 'src/app/+store';
+import { auth } from 'src/app/+store';
 import { logout } from 'src/app/+store/auth/actions';
 
 @Component({
@@ -14,9 +14,9 @@ export class NavbarComponent {
   userId$: Observable<string>;
   admin$: Observable<boolean>;
   constructor(private store: Store) {
-    this.username$ = store.select(auth.getAuthUsername);
-    this.userId$ = store.select(auth.getAuthUserId);
-    this.admin$ = store.select(auth.getAuthAdmin);
+    this.username$ = store.select(auth.username);
+    this.userId$ = store.select(auth.userId);
+    this.admin$ = store.select(auth.admin);
   }
 
   logout() {

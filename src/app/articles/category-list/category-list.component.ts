@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IArticle } from 'src/app/core/models/article';
-import { getCategory } from 'src/app/+store';
-
+import { article } from 'src/app/+store';
 
 @Component({
   selector: 'app-category-list',
@@ -16,6 +15,6 @@ export class CategoryListComponent {
   category: string;
   constructor(private route: ActivatedRoute, private store: Store) {
     this.category = route.snapshot.params['name'];
-    this.category$ = store.select(getCategory, { name: this.category });
+    this.category$ = store.select(article.category, { name: this.category });
   }
 }

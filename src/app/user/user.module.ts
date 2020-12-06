@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BasketComponent } from './basket/basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { IsLoggedGuard } from '../core/guards/is-logged.guard';
-//import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
+import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
 
 
 
@@ -33,7 +33,7 @@ import { IsLoggedGuard } from '../core/guards/is-logged.guard';
       {
         path: 'profile/:id',
         component: ProfileComponent,
-        //canActivate: [IsLoggedGuard]
+        canActivate: [IsLoggedGuard]
       },
       {
         path: 'basket',
@@ -44,7 +44,7 @@ import { IsLoggedGuard } from '../core/guards/is-logged.guard';
       {
         path: 'favorites',
         component: FavoritesComponent,
-        //canActivate: [IsLoggedGuard]
+        canActivate: [IsLoggedGuard]
 
       }
     ])
