@@ -16,7 +16,7 @@
         <ng-template #admin>
             <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a class="btn btn-warning" [routerLink]="['/article', 'edit', article._id]">Edit</a>
+                    <a class="btn btn-warning" [routerLink]="['/article', 'category', article.category, 'edit', article._id]">Edit</a>
                     <a class="btn btn-danger" (click)="removeArticle(article._id)">Delete</a>
                 </div>
             </div>

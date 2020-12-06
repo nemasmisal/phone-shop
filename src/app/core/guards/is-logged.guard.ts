@@ -11,12 +11,11 @@ import { auth } from 'src/app/+store'
 export class IsLoggedGuard implements CanActivate {
   constructor(private store: Store, private router: Router) { }
   canActivate(): Observable<boolean> {
-    return this.store.select(auth.isLogged()).pipe(
-      tap(x => {
-        if (x) { return of(true); }
-        this.router.navigate(['home']);
-        return of(false);
-      })
+    return this.store.select(auth.isLogged()).pipe(tap(x => {
+      if (x) { return of(true); }
+      this.router.navigate(['home']);
+      return of(false);
+    })
     );
   }
 }

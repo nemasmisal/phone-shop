@@ -20,9 +20,6 @@ export const ActionTypes = {
   likeArticle: '[Like Article] Loading',
   likeArticleSuccess: '[Like Article] Success',
   likeArticleFailed: '[Like Article] Failed',
-  getArticle: '[Get Article] Loading',
-  getArticleSuccess: '[Get Article] Success',
-  getArticleFailed: '[Get Article] Failed',
 }
 
 export const getAll = createAction(ActionTypes.getArticles);

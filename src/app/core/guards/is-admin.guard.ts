@@ -14,11 +14,11 @@ export class IsAdminGuard implements CanActivate {
   canActivate(): Observable<boolean> {
     return this.store.select(auth.admin).pipe(
       tap(x => {
-        if (!x) {
-          this.router.navigateByUrl('/');
-          return of(false);
+        if (x) {
+          return of(true);
         }
-        return of(true);
+        this.router.navigate(['home']);
+        return of(false);
       })
     );
   }

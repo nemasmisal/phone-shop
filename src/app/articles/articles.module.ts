@@ -7,10 +7,7 @@ import { ArticleComponent } from './article/article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-//import { IsLoggedGuard } from '../core/guards/is-logged.guard';
 import { IsAdminGuard } from '../core/guards/is-admin.guard';
-
-
 
 @NgModule({
   declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent],
@@ -24,12 +21,12 @@ import { IsAdminGuard } from '../core/guards/is-admin.guard';
         canActivate: [IsAdminGuard]
       },
       {
-        path: 'edit/:id',
+        path: 'category/:name/edit/:id',
         component: EditArticleComponent,
-        //canActivate: [IsAdminGuard]
+        canActivate: [IsAdminGuard]
       },
       {
-        path: 'details/:id',
+        path: 'category/:name/details/:id',
         component: DetailsArticleComponent
       },
       {

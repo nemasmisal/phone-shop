@@ -22,7 +22,7 @@ import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
       {
         path: 'register',
         component: RegisterComponent,
-        //canActivate: [IsNotLoggedGuard]
+        //canActivateChild: [IsNotLoggedGuard]
       },
       {
         path: 'login',

@@ -1,6 +1,6 @@
 <div class="category">
     <h1>Phones</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let phone of phones$ | async | slice:0:4">
+    <div class="card" style="width: 19rem;" *ngFor="let phone of phones$ | async | slice:0:3">
         <img src="{{phone.imageURL}}" class="card-img-top" alt="{{phone.name}}">
         <div class="card-body">
             <h5 class="card-title">{{phone.name}} <span>Likes: {{phone.likes.length}}</span></h5>
@@ -9,7 +9,7 @@
             <ng-template #admin>
                 <div class="admin">
                     <div class="right">
-                        <a [routerLink]="['/article','edit', phone._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','category', phone.category, 'edit' , phone._id ]" class="btn btn-primary edit">Edit</a>
                         <a (click)="removeArticle(phone._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <a (click)="addToFavorites(phone._id)" class="btn btn-primary">Add to Favorite</a>
                 </div>
             </ng-template>
-            <a [routerLink]="['/article','details', phone._id ]" class="btn btn-primary">Details</a>
+            <a [routerLink]="['/article','category', phone.category , 'details', phone._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
     <ng-template #loading>
@@ -29,7 +29,7 @@
         </div>
     </ng-template>
     <h1>Phone Cases</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async | slice:0:4">
+    <div class="card" style="width: 19rem;" *ngFor="let case of cases$ | async | slice:0:3">
         <img src="{{case.imageURL}}" class="card-img-top" alt="{{case.name}}">
         <div class="card-body">
             <h5 class="card-title">{{case.name}} <span>Likes: {{case.likes.length}}</span></h5>
@@ -44,16 +44,16 @@
             <ng-template #admin>
                 <div class="admin">
                     <div class="right">
-                        <a [routerLink]="['/article','edit', case._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','category', case.category, 'edit', case._id ]" class="btn btn-primary edit">Edit</a>
                         <a (click)="removeArticle(case._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
             </ng-template>
-            <a [routerLink]="['/article','details', case._id ]" class="btn btn-primary">Details</a>
+            <a [routerLink]="['/article','category', case.category, 'details', case._id ]" class="btn btn-primary">Details</a>
         </div>
     </div>
     <h1>Screen Protectors</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let screenProtector of screenProtectors$ | async | slice:0:4">
+    <div class="card" style="width: 19rem;" *ngFor="let screenProtector of screenProtectors$ | async | slice:0:3">
         <img src="{{screenProtector.imageURL}}" class="card-img-top" alt="{{screenProtector.name}}">
         <div class="card-body">
             <h5 class="card-title">{{screenProtector.name}} <span>Likes: {{screenProtector.likes.length}}</span>
@@ -63,7 +63,7 @@
             <ng-template #admin>
                 <div class="admin">
                     <div class="right">
-                        <a [routerLink]="['/article','edit', screenProtector._id ]"
+                        <a [routerLink]="['/article','category', screenProtector.category, 'edit', screenProtector._id ]"
                             class="btn btn-primary edit">Edit</a>
                         <a (click)="removeArticle(screenProtector._id)" class="btn btn-primary delete">Delete</a>
                     </div>
@@ -75,11 +75,12 @@
                     <a (click)="addToFavorites(screenProtector._id)" class="btn btn-primary">Add to Favorite</a>
                 </div>
             </ng-template>
-            <a [routerLink]="['/article','details', screenProtector._id ]" class="btn btn-primary">Details</a>
+            <a [routerLink]="['/article','category', screenProtector.category, 'details', screenProtector._id ]"
+                class="btn btn-primary">Details</a>
         </div>
     </div>
     <h1>Accessories</h1>
-    <div class="card" style="width: 19rem;" *ngFor="let accessory of accessories$ | async | slice:0:4">
+    <div class="card" style="width: 19rem;" *ngFor="let accessory of accessories$ | async | slice:0:3">
         <img src="{{accessory.imageURL}}" class="card-img-top" alt="{{accessory.name}}">
         <div class="card-body">
             <h5 class="card-title">{{accessory.name}} <span>Likes: {{accessory.likes.length}}</span></h5>
@@ -89,7 +90,7 @@
             <ng-template #admin>
                 <div class="admin">
                     <div class="right">
-                        <a [routerLink]="['/article','edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
+                        <a [routerLink]="['/article','category', accessory.category, 'edit', accessory._id ]" class="btn btn-primary edit">Edit</a>
                         <a (click)="removeArticle(accessory._id)" class="btn btn-primary delete">Delete</a>
                     </div>
                 </div>
@@ -100,7 +101,8 @@
                     <a (click)="addToFavorites(accessory._id)" class="btn btn-primary">Add to Favorite</a>
                 </div>
             </ng-template>
-            <a [routerLink]="['/article','details', accessory._id ]" class="btn btn-primary">Details</a>
+            <a [routerLink]="['/article','category', accessory.category, 'details', accessory._id ]"
+                class="btn btn-primary">Details</a>
         </div>
     </div>
 </div>

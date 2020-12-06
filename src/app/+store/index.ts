@@ -22,6 +22,7 @@ export const user = {
 
 export const getArticleStore = createFeatureSelector('article');
 export const article = {
+  article: createSelector(getArticleStore, articleSelector.getArticleById),
   all: createSelector(getArticleStore, articleSelector.getArticleState),
   category: createSelector(getArticleStore, articleSelector.getCategory),
   phones: createSelector(getArticleStore, articleSelector.getPhones),

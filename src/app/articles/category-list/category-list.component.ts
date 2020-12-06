@@ -14,7 +14,9 @@ export class CategoryListComponent {
   category$: Observable<IArticle[]>;
   category: string;
   constructor(private route: ActivatedRoute, private store: Store) {
-    this.category = route.snapshot.params['name'];
-    this.category$ = store.select(article.category, { name: this.category });
+    this.route.params.subscribe(params => {
+      this.category = params.name;
+      this.category$ = store.select(article.category, { name: this.category });
+    })
   }
 }
