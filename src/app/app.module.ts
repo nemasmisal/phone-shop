@@ -9,23 +9,23 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducer as authReducer } from './+store/auth/reducer';
-
 import { AppRoutingModule } from './app-routing.module';
 import { ArticlesModule } from './articles/articles.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 import { AppComponent } from './app.component';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { ResponseHandlerInterceptorService } from './core/services/response-handler-interceptor.service';
-import { AdminModule } from './admin/admin.module';
-
+import { reducer as authReducer } from './+store/auth/reducer';
+import { AuthEffects } from './+store/auth/effects';
+import { KeyValuePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent
-
   ],
   imports: [
     BrowserModule,
@@ -35,15 +35,15 @@ import { AdminModule } from './admin/admin.module';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    StoreModule.forRoot({ auth: authReducer }),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ 'auth': authReducer }),
+    EffectsModule.forRoot([AuthEffects]),
     AppRoutingModule,
+    AuthModule,
     ArticlesModule,
     AdminModule,
     CoreModule,
     SharedModule,
     StoreDevtoolsModule.instrument({})
-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

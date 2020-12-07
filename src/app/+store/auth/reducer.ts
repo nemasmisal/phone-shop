@@ -22,6 +22,8 @@ const authReducer = createReducer(
   on(auth.registerFailed, (state, props) => ({ ...state, ...props }))
 );
 
+export const featureKey = 'auth';
+
 export function reducer(state: IAuthState, action: Action): IAuthState {
   return authReducer(state, action);
 }

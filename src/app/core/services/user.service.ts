@@ -17,22 +17,6 @@ export class UserService {
     return this.http.get<IUser>(apiURL + `/user/profile/${userId}`);
   }
 
-  checkAuth() {
-    return this.http.get(apiURL + '/user/checkAuth');
-  }
-
-  login(data: { username: string, password: string }): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/login', data);
-  }
-
-  register(data: { username: string, password: string }): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/register', data);
-  }
-
-  logout(): Observable<any> {
-    return this.http.get<any>(apiURL + '/user/logout');
-  }
-
   getBasket() {
     return this.http.get(apiURL + '/user/basket');
   }

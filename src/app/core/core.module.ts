@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from 'src/app/+store/auth/effects';
+import { KeyValuePipe } from './pipes/key-value.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [KeyValuePipe],
   imports: [
     CommonModule,
     HttpClientModule,
-    EffectsModule.forFeature([AuthEffects])
   ]
 })
 export class CoreModule { }
