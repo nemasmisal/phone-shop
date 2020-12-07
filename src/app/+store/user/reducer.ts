@@ -28,6 +28,8 @@ const userReducer = createReducer(
   })
 )
 
+export const featureKey = 'user';
+
 export function reducer(state: IUserState, action: Action): IUserState {
   return userReducer(state, action);
 }

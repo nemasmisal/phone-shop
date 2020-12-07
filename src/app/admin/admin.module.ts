@@ -6,6 +6,11 @@ import { AdminComponent } from './admin/admin.component';
 import { OrdersComponent } from './orders/orders.component';
 import { HistoryOrdersComponent } from './history-orders/history-orders.component';
 import { EditUsersComponent } from './edit-users/edit-users.component';
+import { AdminEffects } from '../+store/admin/effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import  * as adminReducer from '../+store/admin/reducer';
+
 
 
 
@@ -14,6 +19,8 @@ import { EditUsersComponent } from './edit-users/edit-users.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    EffectsModule.forFeature([AdminEffects]),
+    StoreModule.forFeature(adminReducer.featureKey, adminReducer.reducer),
     RouterModule.forChild([
       {
         path: 'orders',

@@ -14,6 +14,8 @@ const articleReducer = createReducer(
   on(article.getAllSuccess, (state, props) => ({ ...state, ...props }))
 )
 
+export const featureKey = 'article';
+
 export function reducer(state: IArticleState, action: Action): IArticleState {
   return articleReducer(state, action);
 }

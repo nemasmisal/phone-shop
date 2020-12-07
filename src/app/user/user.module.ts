@@ -10,7 +10,10 @@ import { BasketComponent } from './basket/basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { IsLoggedGuard } from '../core/guards/is-logged.guard';
 import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
-
+import { UserEffects } from '../+store/user/effects';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import * as userReducer from 'src/app/+store/user/reducer';
 
 
 @NgModule({
@@ -18,16 +21,18 @@ import { IsNotLoggedGuard } from '../core/guards/is-not-logged.guard';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    StoreModule.forFeature(userReducer.featureKey, userReducer.reducer),
+    EffectsModule.forFeature([UserEffects]),
     RouterModule.forChild([
       {
         path: 'register',
         component: RegisterComponent,
-        //canActivateChild: [IsNotLoggedGuard]
+        canActivateChild: [IsNotLoggedGuard]
       },
       {
         path: 'login',
         component: LoginComponent,
-        //canActivate: [IsNotLoggedGuard]
+        canActivate: [IsNotLoggedGuard]
 
       },
       {

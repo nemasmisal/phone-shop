@@ -18,6 +18,8 @@ const adminReducer = createReducer(
   on(admin.usersFailed, (state, props) => ({ ...state, ...props })),
 )
 
+export const featureKey = 'admin';
+
 export function reducer(state: IAdminState, action: Action): IAdminState {
   return adminReducer(state, action);
 }
