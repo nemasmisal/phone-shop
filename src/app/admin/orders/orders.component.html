@@ -4,9 +4,9 @@
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p *ngFor="let article of order.articles"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}} : {{article.price}}</a></p>
-      <footer class="blockquote-footer">Total amount: {{order.totalAmount}}<cite
-        title="Source Title">{{totalAmount}} </cite>
+      <p *ngFor="let article of order.articles"><a [routerLink]="['/', 'article', 'category', article.category, 'details', article._id]">{{article.name}} : {{article.price}}</a></p>
+      <footer class="blockquote-footer">Total amount: <cite
+        title="Source Title">{{order.totalAmount}}</cite>
         Place order: <button (click)="aproveOrder(order._id)" class="btn btn-primary">Aprove</button>
       </footer>
     </blockquote>

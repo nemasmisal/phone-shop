@@ -16,18 +16,23 @@
         <ng-template #admin>
             <div class="admin" *ngIf="admin">
                 <div class="right">
-                    <a class="btn btn-warning" [routerLink]="['/article', 'category', article.category, 'edit', article._id]">Edit</a>
+                    <a class="btn btn-warning"
+                        [routerLink]="['/article', 'category', article.category, 'edit', article._id]">Edit</a>
                     <a class="btn btn-danger" (click)="removeArticle(article._id)">Delete</a>
                 </div>
             </div>
         </ng-template>
         <ng-template #user>
-            <div class="user" *ngIf="(userId$ | async)">
+            <div class="user" *ngIf="(userId$ | async) as userId">
                 <a class="btn btn-outline-primary" (click)="addToFavorites(article._id)">Add to favorites</a>
                 <a class="btn btn-outline-primary" (click)="addToBasket(article._id)">Add to basket</a>
-                <!-- <a *ngIf="alreadyLiked" class="btn btn-outline-warning" (click)="like(article._id)">Like</a>
-                <a class="btn btn-outline-secondary">Write comment</a>
-                <p *ngIf="alreadyLiked" class="btn btn-outline-success">You are already like the product.</p> -->
+                <a *ngIf="!(article.likes | includeInArray : userId) else canGiveLike" class="btn btn-outline-warning"
+                    (click)="like(article._id)">Like</a>
+                <!-- <a class="btn btn-outline-secondary">Write comment</a> -->
+                <ng-template #canGiveLike>
+                    <p class="btn btn-outline-success">You already like it!</p>
+                </ng-template>
+
             </div>
         </ng-template>
         <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div>

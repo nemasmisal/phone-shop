@@ -12,7 +12,6 @@ import { BasketComponent } from './basket/basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { IsLoggedGuard } from 'src/app/core/guards/is-logged.guard';
 
-
 @NgModule({
   declarations: [ProfileComponent, BasketComponent, FavoritesComponent],
   imports: [

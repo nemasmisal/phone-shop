@@ -12,9 +12,10 @@ import { ArticleEffects } from '../+store/article/effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import * as articleReducer from 'src/app/+store/article/reducer';
+import { IncludeInArrayPipe } from '../core/pipes/include-in-array.pipe';
 
 @NgModule({
-  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent],
+  declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent, IncludeInArrayPipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,

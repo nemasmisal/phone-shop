@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="(basket$ | async); else noArticles"class="card-body">
     <blockquote class="blockquote mb-0">
-      <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}} : {{article.price}}</a><button (click)="removeFromBasket(article._id)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+      <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/article', 'category', article.category, 'details', article._id]">{{article.name}} : {{article.price}}</a><button (click)="removeFromBasket(article._id)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
       <footer class="blockquote-footer">Total amount:  <cite
         title="Source Title">{{totalAmount}} </cite>
         Place order:<button class="btn btn-outline-success" [disabled]="(basket$ | async).length < 1" (click)="placeOrder()">Order</button>

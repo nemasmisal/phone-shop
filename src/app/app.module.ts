@@ -21,7 +21,6 @@ import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { ResponseHandlerInterceptorService } from './core/services/response-handler-interceptor.service';
 import { reducer as authReducer } from './+store/auth/reducer';
 import { AuthEffects } from './+store/auth/effects';
-import { KeyValuePipe } from '@angular/common';
 
 @NgModule({
   declarations: [

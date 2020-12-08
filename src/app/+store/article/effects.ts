@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { forkJoin, of } from 'rxjs';
-import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ArticleService } from 'src/app/core/services/article.service';
 import { ActionTypes } from './action';
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ export class ArticleEffects {
 
   all$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getArticles),
-    mergeMap(() => {
+    switchMap(() => {
       return forkJoin({
         phones: this.articleService.getAllPhones(),
         cases: this.articleService.getAllCases(),
@@ -59,8 +59,9 @@ export class ArticleEffects {
     ofType(ActionTypes.likeArticle),
     switchMap((action: any) => this.articleService.likeArticle(action.id).pipe(
       tap(() => this.toastr.success('You like it!.')),
-      map(() => (this.router.navigate(['home']), { type: ActionTypes.likeArticleSuccess })),
+      map(() => ({ type: ActionTypes.getArticles})),
       catchError((err) => of({ type: ActionTypes.likeArticleFailed, ...err }))
     ))
   ))
+
 }

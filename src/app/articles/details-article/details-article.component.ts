@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -12,18 +12,20 @@ import { removeArticle, likeArticle } from 'src/app/+store/article/action';
   templateUrl: './details-article.component.html',
   styleUrls: ['./details-article.component.css']
 })
-export class DetailsArticleComponent {
+export class DetailsArticleComponent implements OnInit {
   admin$: Observable<boolean>;
   userId$: Observable<string>;
   article$: Observable<IArticle>;
-  alreadyLiked: Observable<boolean>;
+  alreadyLiked: boolean;
 
   constructor(private route: ActivatedRoute, private store: Store) {
-    this.admin$ = store.select(auth.admin);
+  }
+  ngOnInit() {
+    this.admin$ = this.store.select(auth.admin);
     this.userId$ = this.store.select(auth.userId);
     this.route.params.subscribe(params => {
       const { name, id } = params;
-      this.article$ = this.store.select(article.article, { articleId: id, category: name });
+      this.article$ = this.store.select(article.article, { articleId: id, category: name })
     })
   }
 
