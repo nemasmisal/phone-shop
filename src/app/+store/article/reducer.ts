@@ -11,7 +11,12 @@ const initialState: IArticleState = {
 
 const articleReducer = createReducer(
   initialState,
-  on(article.getAllSuccess, (state, props) => ({ ...state, ...props }))
+  on(article.getAllSuccess, (state, props) => ({ ...state, ...props })),
+  
+  // on(article.likeArticleSuccess, (state, props ) => {
+  //   const category = props.article.category;
+
+  // })
 )
 
 export const featureKey = 'article';

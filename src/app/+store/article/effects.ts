@@ -7,11 +7,14 @@ import { ArticleService } from 'src/app/core/services/article.service';
 import { ActionTypes } from './action';
 import { ToastrService } from 'ngx-toastr';
 import { IAction } from '../models'
+import * as asideActions from 'src/app/+store/aside/action'
+import { Store } from '@ngrx/store';
+import { getNewest } from 'src/app/+store/aside/action';
 
 
 @Injectable()
 export class ArticleEffects {
-  constructor(private actions$: Actions, private articleService: ArticleService, private router: Router, private toastr: ToastrService) { }
+  constructor(private actions$: Actions, private articleService: ArticleService, private router: Router, private toastr: ToastrService, private store: Store) { }
 
   all$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getArticles),
@@ -32,7 +35,7 @@ export class ArticleEffects {
     ofType<IAction>(ActionTypes.createArticle),
     switchMap(action => this.articleService.createArticle(action.payload).pipe(
       tap(() => this.toastr.success('New Article was created successful.')),
-      map(() => (this.router.navigate(['home']), { type: ActionTypes.createArticleSuccess })),
+      map(() => (this.router.navigate(['home']), { type: asideActions.ActionTypes.getNewest })),
       catchError((err) => of({ type: ActionTypes.createArticleFailed, ...err }))
     ))
   ))
@@ -50,7 +53,10 @@ export class ArticleEffects {
     ofType(ActionTypes.removeArticle),
     switchMap((action: any) => this.articleService.removeArticle(action.id).pipe(
       tap(() => this.toastr.success('Article was removed successful.')),
-      map(() => (this.router.navigate(['home']), { type: ActionTypes.removeArticleSuccess })),
+      map(() => {
+        this.store.dispatch(getNewest());
+        return (this.router.navigate(['home']), { type: ActionTypes.getArticles })
+      }),
       catchError((err) => of({ type: ActionTypes.removeArticleFailed, ...err }))
     ))
   ))
@@ -58,10 +64,9 @@ export class ArticleEffects {
   likeArticle$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.likeArticle),
     switchMap((action: any) => this.articleService.likeArticle(action.id).pipe(
-      tap(() => this.toastr.success('You like it!.')),
-      map(() => ({ type: ActionTypes.getArticles})),
+      tap(() => this.toastr.success('You liked it!')),
+      map(() => ({ type: ActionTypes.getArticles })),
       catchError((err) => of({ type: ActionTypes.likeArticleFailed, ...err }))
     ))
   ))
-
 }

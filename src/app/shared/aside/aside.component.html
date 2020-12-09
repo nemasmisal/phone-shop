@@ -4,12 +4,11 @@
     <li><a href="https://www.facebook.com/sharer.php?u=http://nemasmisal.online" class="fa fa-facebook"><i>
           Facebook</i></a></li>
     <li><a href="https://twitter.com/intent/tweet?url=http://nemasmisal.online&text=" class="fa fa-twitter"><i>
-          Tweeter</i></a></li>
+          Twitter</i></a></li>
     <li><a href="https://pinterest.com/pin/create/button/?url=http://nemasmisal.online&media=&description="
-        class="fa fa-pinterest"><i> Pinteres</i></a></li>
+        class="fa fa-pinterest"><i> Pinterest</i></a></li>
   </ul>
 </section>
-
 <section *ngIf="(newestArticles$ | async) as articles; else loading">
   <h2>New arrivals:</h2>
   <ul>
@@ -24,7 +23,7 @@
       <article>
         <h2>Case</h2>
         <p>{{articles.case.name}}</p>
-        <img src="{{articles.case.imageURL}}" class="li-img" alt="{{articles.phone.name}}">
+        <img src="{{articles.case.imageURL}}" class="li-img" alt="{{articles.case.name}}">
       </article>
     </li>
     <li
@@ -32,20 +31,18 @@
       <article>
         <h2>Screen Protector</h2>
         <p>{{articles.screenProtector.name}}</p>
-        <img src="{{articles.screenProtector.imageURL}}" class="li-img" alt="{{articles.phone.name}}">
+        <img src="{{articles.screenProtector.imageURL}}" class="li-img" alt="{{articles.screenProtector.name}}">
       </article>
     </li>
     <li [routerLink]="['/article','category', articles.accessory.category, 'details', articles.accessory._id]">
       <article>
         <h2>Accessory</h2>
         <p>{{articles.accessory.name}}</p>
-        <img src="{{articles.accessory.imageURL}}" class="li-img" alt="{{articles.phone.name}}">
+        <img src="{{articles.accessory.imageURL}}" class="li-img" alt="{{articles.accessory.name}}">
       </article>
     </li>
-    <!-- List of recommended articles continues -->
   </ul>
 </section>
-
 <ng-template #loading>
   <div class="spinner-border" role="status" class="text-center">
     <span class="sr-only">Loading...</span>

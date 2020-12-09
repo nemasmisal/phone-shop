@@ -1,4 +1,4 @@
-import { IArticle } from 'src/app/core/models';
+import { IArticle, INewestArticles } from 'src/app/core/models';
 
 export interface IArticleState {
   phones: IArticle[];

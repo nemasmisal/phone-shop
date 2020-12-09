@@ -14,12 +14,12 @@ export class CreateArticleComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      category: ['', [Validators.required, Validators.minLength(5)]],
-      description: ['', [Validators.required, Validators.minLength(5)]],
-      price: ['', [Validators.required, Validators.minLength(5)]],
-      quantity: ['', [Validators.required, Validators.minLength(5)]],
-      imageURL: ['', [Validators.required, Validators.minLength(5)]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[A-Za-z0-9 ]+')]],
+      category: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(20)]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      quantity: ['', [Validators.required, Validators.min(1)]],
+      imageURL: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^(https?:\/\/).+')]],
     })
   }
 
@@ -28,4 +28,7 @@ export class CreateArticleComponent implements OnInit {
     this.store.dispatch(createArticle({ payload: this.form.value }));
   }
 
+  get f() {
+    return this.form.controls;
+  }
 }

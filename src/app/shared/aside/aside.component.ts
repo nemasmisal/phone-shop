@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { aside } from 'src/app/+store/';
 import { INewestArticles } from 'src/app/core/models';
-import { ArticleService } from 'src/app/core/services/article.service';
+import { getNewest } from 'src/app/+store/aside/action';
 
 @Component({
   selector: 'app-aside',
@@ -10,10 +12,11 @@ import { ArticleService } from 'src/app/core/services/article.service';
 })
 export class AsideComponent implements OnInit {
   newestArticles$: Observable<INewestArticles>;
-  constructor(private articleService: ArticleService) { }
-
-  ngOnInit(): void {
-    this.newestArticles$ = this.articleService.getNewestArticle();
+  constructor(private store: Store) {
+    this.newestArticles$ = this.store.select(aside.newest);
   }
 
+  ngOnInit(): void {
+    this.store.dispatch(getNewest())
+  }
 }

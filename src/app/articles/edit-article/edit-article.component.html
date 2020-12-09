@@ -5,42 +5,67 @@
             <h4>Please fill all fields.</h4>
         </div>
     </div>
-    <form *ngIf="article$ | async as article; else loading" [formGroup]="form" (submit)="editArticle()">
+    <form *ngIf="article$ | async as article; else loading" [formGroup]="form" (ngSubmit)="editArticle()">
         <div class="row space-top">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-control-label" for="new-make">Name</label>
-                    <input value="{{article.name}}" class="form-control" type="text" formControlName="name">
+                    <input class="form-control" type="text" formControlName="name">
                 </div>
+                <div class="alert alert-danger" *ngIf="f.name.errors?.required && f.name.touched">Name is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="f.name.errors?.pattern">Name
+                    must includes only english letters and/or digits.</div>
+                <div class="alert alert-danger" *ngIf="f.name.errors?.minlength">
+                    Name must be at least 5 characters but not more then 20</div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone">Category</i> </span>
+                        <span class="input-group-text">Category</span>
                     </div>
-                    <select value="{{article.category}}" class="custom-select" formControlName="category">
+                    <select class="custom-select" formControlName="category">
                         <option value="phones">Phone</option>
                         <option value="cases">Case</option>
                         <option value="screenProtectors">Screen Protector</option>
                         <option value="accessories">Accessory</option>
                     </select>
                 </div>
+                <div class="alert alert-danger" *ngIf="f.category.errors?.required && f.category.touched">You must
+                    select category.</div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-year">Price</label>
-                    <input value="{{article.price}}" class="form-control" type="number" formControlName="price">
+                    <input class="form-control" type="number" formControlName="price">
                 </div>
+                <div class="alert alert-danger" *ngIf="f.price.errors?.required && f.price.touched">Price is
+                    required and must be a number.</div>
+                <div class="alert alert-danger" *ngIf="f.price.errors?.min">
+                    Price must be positive number.</div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-year">Quantity</label>
-                    <input value="{{article.quantity}}" class="form-control" type="number" formControlName="quantity">
+                    <input class="form-control" type="number" formControlName="quantity">
                 </div>
+                <div class="alert alert-danger" *ngIf="f.quantity.errors?.required && f.quantity.touched">Quantity is
+                    required and must be a number.</div>
+                <div class="alert alert-danger" *ngIf="f.quantity.errors?.min">
+                    Quantity must be at least 1</div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-description">Description</label>
-                    <textarea class="form-control" type="text"
-                        formControlName="description">{{article.description}}</textarea>
+                    <textarea class="form-control" type="text" formControlName="description"></textarea>
                 </div>
+                <div class="alert alert-danger" *ngIf="f.description.errors?.required && f.description.touched">
+                    Description for your product is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="f.description.errors?.minlength">
+                    Description must be at least 20 characters.</div>
                 <div class="form-group">
                     <label class="form-control-label" for="new-image">Image</label>
-                    <input value="{{article.imageURL}}" class="form-control" type="url" formControlName="imageURL">
+                    <input class="form-control" type="url" formControlName="imageURL">
                 </div>
-                <button type="submit" class="btn btn-primary" value="Create">Edit</button>
+                <div class="alert alert-danger" *ngIf="f.imageURL.errors?.required && f.imageURL.touched">
+                    Provided link with picture of your product is
+                    required.</div>
+                <div class="alert alert-danger" *ngIf="f.imageURL.errors?.pattern">
+                    Link should be real. Example : 'http://..' or 'https://..'</div>
+                <button [disabled]="form.invalid" class="btn btn-primary" value="Create">Create</button>
             </div>
         </div>
     </form>

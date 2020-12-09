@@ -30,6 +30,7 @@ export const getCategory = createAction(ActionTypes.getCategory);
 export const getCategorySuccess = createAction(ActionTypes.getCategorySuccess, props<{ payload }>());
 export const getACategoryFailed = createAction(ActionTypes.getCategoryFailed, props<{ error: any }>());
 
+
 export const createArticle = createAction(ActionTypes.createArticle, props<{ payload: IArticle }>());
 export const createArticleSuccess = createAction(ActionTypes.createArticleSuccess);
 export const createArticleFailed = createAction(ActionTypes.createArticleFailed, props<{ error: any }>());
@@ -43,5 +44,5 @@ export const removeArticleSuccess = createAction(ActionTypes.removeArticleSucces
 export const removeArticleFailed = createAction(ActionTypes.removeArticleFailed, props<{ error: any }>());
 
 export const likeArticle = createAction(ActionTypes.likeArticle, props<{ id: string }>());
-export const likeArticleSuccess = createAction(ActionTypes.likeArticleSuccess);
+export const likeArticleSuccess = createAction(ActionTypes.likeArticleSuccess, props<{ article: IArticle }>());
 export const likeArticleFailed = createAction(ActionTypes.likeArticleFailed, props<{ error: any }>());

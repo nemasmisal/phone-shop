@@ -3,6 +3,7 @@ import * as authSelector from './auth/selectors';
 import * as userSelector from './user/selectors';
 import * as articleSelector from './article/selectors'
 import * as adminSelector from './admin/selectors';
+import * as asidetSelector from './aside/selectors'
 
 export const getAuthStore = createFeatureSelector('auth');
 export const auth = {
@@ -28,7 +29,7 @@ export const article = {
   phones: createSelector(getArticleStore, articleSelector.getPhones),
   cases: createSelector(getArticleStore, articleSelector.getCases),
   screenProtectors: createSelector(getArticleStore, articleSelector.getScreenProtectors),
-  accessories: createSelector(getArticleStore, articleSelector.getAccessories)
+  accessories: createSelector(getArticleStore, articleSelector.getAccessories),
 }
 
 export const getAdminStore = createFeatureSelector('admin');
@@ -39,3 +40,7 @@ export const admin = {
   userById: createSelector(getAdminStore, adminSelector.getUser)
 }
 
+export const getAsideStore = createFeatureSelector('aside');
+export const aside = {
+  newest: createSelector(getAsideStore, asidetSelector.getNewest)
+}

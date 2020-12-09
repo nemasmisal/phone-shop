@@ -27,12 +27,12 @@ export class EditArticleComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.categoryName = this.route.snapshot.params['name'];
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      category: ['', [Validators.required, Validators.minLength(5)]],
-      description: ['', [Validators.required, Validators.minLength(5)]],
-      price: ['', [Validators.required, Validators.minLength(5)]],
-      quantity: ['', [Validators.required, Validators.minLength(5)]],
-      imageURL: ['', [Validators.required, Validators.minLength(5)]]
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), Validators.pattern('[A-Za-z0-9 ]+')]],
+      category: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(20)]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      quantity: ['', [Validators.required, Validators.min(1)]],
+      imageURL: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^(https?:\/\/).+')]],
     })
     this.article$ = this.store.select(article.article, { articleId: this.id, category: this.categoryName })
       .pipe(tap(article => this.form.patchValue(article)));
@@ -41,5 +41,8 @@ export class EditArticleComponent implements OnInit {
   editArticle() {
     if (this.form.invalid) { return; }
     this.store.dispatch(editArticle({ id: this.id, payload: this.form.value }))
+  }
+  get f() {
+    return this.form.controls
   }
 }
