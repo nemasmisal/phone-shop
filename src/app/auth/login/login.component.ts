@@ -10,8 +10,8 @@ import * as auth from '../../+store/auth/actions';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private store: Store) { }
   form: FormGroup;
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit() {
     this.form = this.fb.group({

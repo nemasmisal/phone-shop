@@ -15,7 +15,7 @@
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p *ngFor="let article of favorites$ | async"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}}</a></p>
+        <p *ngFor="let article of favorites$ | async"><a [routerLink]="['/article', 'category', article.category, 'details', article._id]">{{article.name}}</a></p>
         <footer class="blockquote-footer">Total articles in Favorites: <cite
             title="Source Title">{{(favorites$ | async).length}} </cite>
         </footer>
@@ -28,7 +28,7 @@
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/', 'article', 'details', article._id]">{{article.name}}</a></p>
+        <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/article', 'category', article.category, 'details', article._id]">{{article.name}}</a></p>
         <footer class="blockquote-footer">Total articles in Basket: <cite
             title="Source Title">{{(basket$ | async).length}}</cite>
         </footer>
