@@ -1,13 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
-body{
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight:300;
-  background-color:lightblue;
-  color:#FFF;
-}
-section{
-  text-align:center;
-}
+
 .footer #button{
 	width:35px;
 	height:35px;
@@ -53,7 +45,7 @@ section{
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-	height: 10em;
+	height: 8em;
 }
 .footer #container{
   margin-top:5px;
@@ -67,20 +59,30 @@ section{
 .footer #cont{
   position:relative;
   top:-45px;
-  right:190px;
-	width:150px;
+	width:auto;
 	height:auto;
 	margin:0 auto;
+  text-align:center;
+  display: flex;
+  justify-content: center;
 }
 .footer_center{
-	width:500px;
-	float:left;
-  text-align:center;
+	width:auto;
+  margin-top: 50px;
 }
-.footer h3{
+.footer h4{
 	font-family: 'Helvetica';
-	font-size: 30px;
-	font-weight: 100;
-	margin-top:70px;
-	margin-left:40px;
+	font-size: 20px;
+  margin-left:40px;
+  color: aliceblue;
+}
+.footer h5 {
+  color: aliceblue;
+}
+.footer h5 a {
+  text-decoration: none;
+  color: darkgoldenrod;
+}
+.footer h5 a:hover {
+  color: blueviolet;
 }

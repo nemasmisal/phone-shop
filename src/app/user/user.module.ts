@@ -10,7 +10,6 @@ import * as userReducer from 'src/app/+store/user/reducer';
 import { ProfileComponent } from './profile/profile.component';
 import { BasketComponent } from './basket/basket.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { IsLoggedGuard } from 'src/app/core/guards/is-logged.guard';
 
 @NgModule({
   declarations: [ProfileComponent, BasketComponent, FavoritesComponent],
@@ -23,17 +22,14 @@ import { IsLoggedGuard } from 'src/app/core/guards/is-logged.guard';
       {
         path: 'profile/:id',
         component: ProfileComponent,
-        canActivate: [IsLoggedGuard]
       },
       {
         path: 'basket',
         component: BasketComponent,
-        canActivate: [IsLoggedGuard]
       },
       {
         path: 'favorites',
         component: FavoritesComponent,
-        canActivate: [IsLoggedGuard]
       }
     ])
   ]

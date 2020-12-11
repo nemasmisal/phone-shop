@@ -30,6 +30,7 @@ export const article = {
   cases: createSelector(getArticleStore, articleSelector.getCases),
   screenProtectors: createSelector(getArticleStore, articleSelector.getScreenProtectors),
   accessories: createSelector(getArticleStore, articleSelector.getAccessories),
+  topLiked: createSelector(getArticleStore, articleSelector.topThreeLiked)
 }
 
 export const getAdminStore = createFeatureSelector('admin');
