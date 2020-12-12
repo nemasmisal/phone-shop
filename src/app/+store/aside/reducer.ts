@@ -1,6 +1,7 @@
 import { Action, createReducer, on, props } from '@ngrx/store';
 import * as newest from './action';
-import { IAsideState } from '../models'
+import { IAsideState } from '../models';
+import { IArticle } from 'src/app/core/models'
 
 const initialState: IAsideState = {
   phone: {},

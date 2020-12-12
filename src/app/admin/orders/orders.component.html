@@ -1,14 +1,26 @@
-<div *ngFor="let order of orders$ | async" class="card">
-  <div class="card-header">
-    Order creator: {{order.creator.username}}
-  </div>
-  <div class="card-body">
+<div class="container">
+  <ng-container *ngIf="(orders$ | async).length > 0; then orders else loading"></ng-container>
+  <ng-template #loading>
     <blockquote class="blockquote mb-0">
-      <p *ngFor="let article of order.articles"><a [routerLink]="['/', 'article', 'category', article.category, 'details', article._id]">{{article.name}} : {{article.price}}</a></p>
-      <footer class="blockquote-footer">Total amount: <cite
-        title="Source Title">{{order.totalAmount}}</cite>
-        Place order: <button (click)="aproveOrder(order._id)" class="btn btn-primary">Aprove</button>
-      </footer>
+      <p >List</p>
+      <footer class="blockquote-footer">No Orders <cite title="Source Title"></cite>Yet :/</footer>
     </blockquote>
-  </div>
+  </ng-template>
+  <ng-template #orders>
+    <div *ngFor="let order of orders$ | async" class="card">
+      <div class="card-header">
+        Order creator: {{order.creator.username}}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p *ngFor="let article of order.articles"><a
+              [routerLink]="['/', 'article', 'category', article.category, 'details', article._id]">{{article.name}} :
+              {{article.price}}</a></p>
+          <footer class="blockquote-footer">Total amount: <cite title="Source Title">{{order.totalAmount}}</cite>
+            Place order: <button (click)="aproveOrder(order._id)" class="btn btn-primary">Aprove</button>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </ng-template>
 </div>

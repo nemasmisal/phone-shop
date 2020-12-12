@@ -12,7 +12,7 @@
               <ul>
                 <li><a [routerLink]="['admin', 'users']">Edit User</a></li>
               </ul>
-            </div> <!-- /.item -->
+            </div>
             <div class="item">
               <h3>Articles</h3>
               <ul>
@@ -22,18 +22,18 @@
                 <li><a [routerLink]="['article', 'category', 'screenProtectors']">Screen Protectors</a></li>
                 <li><a [routerLink]="['article', 'category', 'accessories']">Accessories</a></li>
               </ul>
-            </div> <!-- /.item -->
+            </div>
             <div class="item">
               <h3>Orders</h3>
               <ul>
                 <li><a [routerLink]="['admin', 'historyOrders']">Aproved</a></li>
                 <li><a [routerLink]="['admin', 'orders']">Waiting for aprove</a></li>
               </ul>
-            </div> <!-- /.item -->
-          </div><!-- /.container -->
-        </div><!-- /.mega-menu -->
+            </div>
+          </div>
+        </div>
       </ng-template>
-    </li><!-- /.dropdown -->
+    </li>
     <li class='dropdown' *ngIf="!(admin$ | async)">
       <a [routerLink]="['home']">Category <i class="fa fa-angle-down"></i> </a>
       <div class='mega-menu'>
@@ -42,32 +42,31 @@
             <h5>Phones</h5>
             <a [routerLink]="['article', 'category', 'phones']"><img
                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.samsung.com%2Fis%2Fimage%2Fsamsung%2Fuk%2Fgalaxy-note20%2Fgallery%2Fuk-galaxy-z-fold2-sm-f916-sm-f916bznabtu-frontmysticbronze-thumb-274139626&f=1&nofb=1"></a>
-          </div> <!-- /.item -->
+          </div>
           <div class="item">
             <h5>Cases</h5>
             <a [routerLink]="['article', 'category', 'cases']"><img
                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngriver.com%2Fwp-content%2Fuploads%2F2018%2F03%2FDownload-Phone-Case-PNG-Image-420x261-For-Designing-Use.png&f=1&nofb=1"></a>
-          </div> <!-- /.item -->
+          </div>
           <div class="item">
             <h5>Screen Protectors</h5>
             <a [routerLink]="['article', 'category', 'screenProtectors']"><img
                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsc01.alicdn.com%2Fkf%2FHTB18LCfawMPMeJjy1Xd761srXXab%2FBaseus-iPX-0-3mm-Silk-3D-Anti.png_350x350.png&f=1&nofb=1"></a>
-          </div> <!-- /.item -->
+          </div>
           <div class="item">
             <h5>Accessories</h5>
             <a [routerLink]="['article','category', 'accessories']"><img
                 src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fnextshop.pk%2Fwp-content%2Fuploads%2F2018%2F08%2Faccessories.png&f=1&nofb=1"></a>
-          </div> <!-- /.item -->
-        </div><!-- .container -->
-      </div><!-- .mega-menu-->
-    </li><!-- .dropdown -->
+          </div>
+        </div>
+      </div>
+    </li>
     <li *ngIf="(userId$ | async) && !(admin$ | async)"><a [routerLink]="['user', 'favorites']">My Favorites</a></li>
     <li *ngIf="(userId$ | async)&& !(admin$ | async)"><a [routerLink]="['user', 'basket']">My Basket</a></li>
     <li *ngIf="!(userId$ | async)"><a [routerLink]="['auth', 'login']">Login</a></li>
     <li *ngIf="!(userId$ | async)"><a [routerLink]="['auth', 'register']">Register</a></li>
     <li *ngIf="(userId$ | async)"><a [routerLink]="['user', 'profile', (userId$ | async)]">Profile</a></li>
-    <li *ngIf="(userId$ | async)"><a class="btn" (click)="logout()" >Log Out</a></li> 
+    <li *ngIf="(userId$ | async)"><a class="btn" (click)="logout()">Log Out</a></li>
   </ul>
 </header>
-
 <ng-template #notLogged></ng-template>

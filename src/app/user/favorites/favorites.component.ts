@@ -21,8 +21,7 @@ export class FavoritesComponent implements OnInit {
     this.store.dispatch(favorites())
   }
 
-  removeFromFavorites(articleId) {
+  removeFromFavorites(articleId: string) {
     this.store.dispatch(removeFromFavorites({ payload: articleId }));
   }
-
 }

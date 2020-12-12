@@ -1,10 +1,20 @@
-<div *ngFor="let order of (historyOrders$ | async)" class="card">
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p *ngFor="let article of order.order">{{article}}</p>
-      <footer class="blockquote-footer">Total amount: {{order.totalAmount}}<cite title="Source Title"></cite>
-        Order placed: {{order.created_at}}
-      </footer>
-    </blockquote>
-  </div>
+<div class="container">
+  <ng-container *ngIf="(historyOrders$ | async).length > 0;then history else loading"></ng-container>
+  <ng-template #loading>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </ng-template>
+  <ng-template #history>
+    <div *ngFor="let order of (historyOrders$ | async)" class="card">
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p *ngFor="let article of order.order">{{article}}</p>
+          <footer class="blockquote-footer">Total amount: {{order.totalAmount}}<cite title="Source Title"></cite>
+            Order placed: {{order.created_at}}
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </ng-template>
 </div>

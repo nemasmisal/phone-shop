@@ -2,16 +2,18 @@
   <div class="card-header">
     Users
   </div>
-  <div *ngIf="(users$ | async); else noUsers" class="card-body">
+  <div *ngIf="(users$ | async).length > 0; else loading" class="card-body">
     <blockquote class="blockquote mb-0">
       <p *ngFor="let user of (users$ | async)">username:
         {{user.username}}, admin: {{user.admin}}<button type="button" class="close"
           ><a [routerLink]="['/', 'admin', 'edit', user._id]">Edit</a></button></p>
-      <footer class="blockquote-footer">Total users: <cite title="Source Title">{{(users$ | async).length}} </cite>
+      <footer class="blockquote-footer">Total users: <cite title="Source Title">{{(users$ | async).length}}</cite>
       </footer>
     </blockquote>
   </div>
-  <ng-template #noUsers>
-    <h3>No registered users yet :/</h3>
+  <ng-template #loading>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
   </ng-template>
 </div>

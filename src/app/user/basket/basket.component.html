@@ -2,7 +2,7 @@
   <div class="card-header">
     Basket
   </div>
-  <div *ngIf="(basket$ | async); else noArticles"class="card-body">
+  <div *ngIf="(basket$ | async).length > 0; else noArticles"class="card-body">
     <blockquote class="blockquote mb-0">
       <p *ngFor="let article of (basket$ | async)"><a [routerLink]="['/article', 'category', article.category, 'details', article._id]">{{article.name}} : {{article.price}}</a><button (click)="removeFromBasket(article._id)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
       <footer class="blockquote-footer">Total amount:  <cite
@@ -15,7 +15,7 @@
       <h3>No products added to your basket, but you can star shopping right now !</h3>
       <h4><a class="btn btn-outline-primary" [routerLink]="['/','article', 'category', 'phones']">Phones</a></h4>
       <h4><a class="btn btn-outline-primary" [routerLink]="['/','article', 'category', 'cases']">Cases</a></h4>
-      <h4><a class="btn btn-outline-primary" [routerLink]="['/','article', 'category', 'screnProtectors']">Screen Protectors</a></h4>
+      <h4><a class="btn btn-outline-primary" [routerLink]="['/','article', 'category', 'screenProtectors']">Screen Protectors</a></h4>
       <h4><a class="btn btn-outline-primary" [routerLink]="['/','article', 'category', 'accessories']">Accessories</a></h4>
   </ng-template>
 </div>

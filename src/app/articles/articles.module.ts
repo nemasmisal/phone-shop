@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, KeyValuePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { ArticleComponent } from './article/article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
