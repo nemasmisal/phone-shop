@@ -34,3 +34,5 @@ export const usersFailed = createAction(ActionTypes.getUsersFailed, props<{ erro
 export const updateUser = createAction(ActionTypes.updateUser, props<{ username: string, password: string, admin: boolean, userId: string }>());
 export const updateUserSuccess = createAction(ActionTypes.updateUserSuccess);
 export const updateUserFailed = createAction(ActionTypes.updateUserFailed, props<{ error: any }>());
+
+export const aproveOrder = createAction(ActionTypes.aproveOrder, props<{ orderId: string }>());

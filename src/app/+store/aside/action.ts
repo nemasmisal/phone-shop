@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { INewestArticles } from 'src/app/core/models';
+import { IAsideState } from '../models';
 
 export const ActionTypes = {
   getNewest: '[Get Newest Articles] Loading',
@@ -8,5 +8,5 @@ export const ActionTypes = {
 }
 
 export const getNewest = createAction(ActionTypes.getNewest);
-export const getNewestSuccess = createAction(ActionTypes.getNewestSuccess, props<{ action: INewestArticles }>());
+export const getNewestSuccess = createAction(ActionTypes.getNewestSuccess, props<{ action: IAsideState }>());
 export const getANewestFailed = createAction(ActionTypes.getNewestFailed, props<{ error: any }>());

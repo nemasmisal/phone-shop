@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, Observable, zip } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment'
-import { IArticle, INewestArticles } from '../models'
-
+import { IArticle } from '../models'
+import { IAsideState } from 'src/app/+store/models'
 const apiURL = environment.apiURL;
 
 @Injectable({
@@ -65,7 +65,7 @@ export class ArticleService {
     return this.http.post(apiURL + '/user/favorites/add', { articleId });
   }
 
-  getNewestArticle(): Observable<INewestArticles> {
-    return this.http.get<INewestArticles>(apiURL + '/article/newest')
+  getNewestArticle(): Observable<IAsideState> {
+    return this.http.get<IAsideState>(apiURL + '/article/newest')
   }
 }

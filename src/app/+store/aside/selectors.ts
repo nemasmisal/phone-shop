@@ -1,3 +1,3 @@
-import { INewestArticles } from 'src/app/core/models';
+import { IAsideState } from '../models';
 
-export const getNewest = (state: INewestArticles) => state;
+export const getNewest = (state: IAsideState) => state;

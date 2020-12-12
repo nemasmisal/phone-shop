@@ -25,6 +25,15 @@ export class AdminEffects {
     ))
   ))
 
+  aproveOrder$ = createEffect(() => this.actions$.pipe(
+    ofType(ActionTypes.aproveOrder),
+    switchMap((payload) => this.orderService.aproveOrder((payload as any).orderId).pipe(
+      tap(() =>this.toastr.success('Order was successfully aproved.')),
+      map(() => ({ type: ActionTypes.getOrders })),
+      catchError((err) => of({ type: ActionTypes.getOrdersFailed, ...err }))
+    ))
+  ))
+
   historyOrders$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getHistoryOrders),
     switchMap(() => this.orderService.getHistoryOrders().pipe(
@@ -45,7 +54,7 @@ export class AdminEffects {
     ofType(ActionTypes.updateUser),
     switchMap((payload) => this.userService.updateUser(payload).pipe(
       tap(() => this.toastr.success('User data was successfully updated.')),
-      map(() => ((this.router.navigate(['admin', 'users'])),{ type: ActionTypes.updateUserSuccess })),
+      map(() => ((this.router.navigate(['admin', 'users'])), { type: ActionTypes.updateUserSuccess })),
       catchError((err) => of({ type: ActionTypes.updateUserFailed, ...err }))
     ))
   ))

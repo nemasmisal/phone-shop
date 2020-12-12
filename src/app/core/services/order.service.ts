@@ -22,8 +22,6 @@ export class OrderService {
   }
 
   aproveOrder(orderId: string) {
-    return this.http.get(apiURL + `/admin/orders/aprove/${orderId}`).subscribe(() => {
-      this.router.navigate(['home']);
-    }, err => console.error(err));
+    return this.http.get(apiURL + `/admin/orders/aprove/${orderId}`);
   }
 }

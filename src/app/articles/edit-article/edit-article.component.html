@@ -1,7 +1,6 @@
 <div class="container">
     <div class="row space-top">
         <div class="col-md-12">
-            <h1>Create New Article</h1>
             <h4>Please fill all fields.</h4>
         </div>
     </div>
@@ -16,7 +15,7 @@
                     required.</div>
                 <div class="alert alert-danger" *ngIf="f.name.errors?.pattern">Name
                     must includes only english letters and/or digits.</div>
-                <div class="alert alert-danger" *ngIf="f.name.errors?.minlength">
+                <div class="alert alert-danger" *ngIf="f.name.errors?.minlength || f.name.errors?.maxlength">
                     Name must be at least 5 characters but not more then 20</div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -65,7 +64,7 @@
                     required.</div>
                 <div class="alert alert-danger" *ngIf="f.imageURL.errors?.pattern">
                     Link should be real. Example : 'http://..' or 'https://..'</div>
-                <button [disabled]="form.invalid" class="btn btn-primary" value="Create">Create</button>
+                <button [disabled]="form.invalid" class="btn btn-primary" value="Create">Update</button>
             </div>
         </div>
     </form>

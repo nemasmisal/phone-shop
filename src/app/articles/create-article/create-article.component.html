@@ -16,7 +16,7 @@
                     required.</div>
                 <div class="alert alert-danger" *ngIf="f.name.errors?.pattern">Name
                     must includes only english letters and/or digits.</div>
-                <div class="alert alert-danger" *ngIf="f.name.errors?.minlength">
+                <div class="alert alert-danger" *ngIf="f.name.errors?.minlength || f.name.errors?.maxlength">
                     Name must be at least 5 characters but not more then 20</div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">

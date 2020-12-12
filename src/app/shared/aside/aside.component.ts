@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { aside } from 'src/app/+store/';
-import { INewestArticles } from 'src/app/core/models';
+import { IAsideState } from 'src/app/+store/models';
 import { getNewest } from 'src/app/+store/aside/action';
 
 @Component({
@@ -11,7 +11,7 @@ import { getNewest } from 'src/app/+store/aside/action';
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent implements OnInit {
-  newestArticles$: Observable<INewestArticles>;
+  newestArticles$: Observable<IAsideState>;
   constructor(private store: Store) {
     this.newestArticles$ = this.store.select(aside.newest);
   }

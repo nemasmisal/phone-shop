@@ -1,6 +1,6 @@
 <div class="row" *ngIf="article$ | async as article; else loading">
     <div class="title">
-        <h1 class="my-4">Title : {{article.name}}</h1>
+        <h1 class="my-4">{{article.name}}</h1>
     </div>
     <div class="col-md-8 img-container">
         <img src="{{article.imageURL}}" alt="{{article.name}}" />
@@ -35,7 +35,7 @@
 
             </div>
         </ng-template>
-        <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div>
+        <!-- <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div> -->
     </div>
 </div>
 <ng-template #loading>

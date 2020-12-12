@@ -1,16 +1,8 @@
 import { Action, createReducer, on, props } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models';
 import * as newest from './action';
+import { IAsideState } from '../models'
 
-
-interface INewestState {
-  phone: IArticle | {};
-  case: IArticle | {};
-  screenProtector: IArticle | {};
-  accessory: IArticle | {}
-}
-
-const initialState: INewestState = {
+const initialState: IAsideState = {
   phone: {},
   case: {},
   screenProtector: {},
@@ -19,11 +11,11 @@ const initialState: INewestState = {
 
 const asideReducer = createReducer(
   initialState,
-  on(newest.getNewestSuccess, (state, props) => ({ ...state, ...props.action}))
+  on(newest.getNewestSuccess, (state, props) => ({ ...state, ...props.action }))
 )
 
 export const featureKey = 'aside';
 
-export function reducer(state: INewestState, action: Action): INewestState {
+export function reducer(state: IAsideState, action: Action): IAsideState {
   return asideReducer(state, action);
 }

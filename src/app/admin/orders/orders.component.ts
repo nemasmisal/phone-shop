@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IOrder } from 'src/app/core/models';
-import { OrderService } from '../../core/services/order.service';
 import { admin } from 'src/app/+store';
-import { getOrders } from 'src/app/+store/admin/actions';
+import { getOrders, aproveOrder } from 'src/app/+store/admin/actions';
 
 @Component({
   selector: 'app-orders',
@@ -14,16 +12,15 @@ import { getOrders } from 'src/app/+store/admin/actions';
 })
 export class OrdersComponent implements OnInit {
   orders$: Observable<IOrder[]>;
-  constructor(private orderService: OrderService, private router: Router, private store: Store) {
+  constructor(private store: Store) {
     this.orders$ = store.select(admin.orders);
-   }
+  }
 
   ngOnInit(): void {
     this.store.dispatch(getOrders());
   }
 
   aproveOrder(orderId: string) {
-    this.orderService.aproveOrder(orderId);
-    this.router.navigate(['home']);
+    this.store.dispatch(aproveOrder({ orderId }));
   }
 }

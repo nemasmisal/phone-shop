@@ -30,6 +30,7 @@ export class DetailsArticleComponent implements OnInit {
   }
 
   like(articleId: string) {
+    this.alreadyLiked = true;
     this.store.dispatch(likeArticle({ id: articleId }));
   }
 

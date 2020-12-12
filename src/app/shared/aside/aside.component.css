@@ -23,3 +23,8 @@ li:hover {
    color: darkslategrey;
   cursor: pointer;
 }
+
+section {
+  background-color: white;
+  border: solid 5px white;
+}
