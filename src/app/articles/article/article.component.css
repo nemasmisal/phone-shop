@@ -26,11 +26,27 @@
 }
 
 .card-body a {
-    margin: 1px;
+    margin:1px 3px;
     font-size: 15px;
     text-align: center;
+    text-decoration: none;
+    width: 47%;
 }
 
+.details {
+    width: 100%;
+    text-align: left;
+}
+
+.details a {
+    width: 97%;   
+}
+
+.mat-stroked-button:hover {
+    color: #fff;
+    background-color: #DD2C00;
+    border-color:#DD2C00;
+}
 .edit {
     background-color: orange;
     border-color: black;
@@ -47,6 +63,7 @@
 
 .user {
     margin: 1px;
+    width: 100%;
 }
 
 .admin {

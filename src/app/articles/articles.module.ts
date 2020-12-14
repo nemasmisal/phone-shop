@@ -13,11 +13,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import * as articleReducer from 'src/app/+store/article/reducer';
 import { IncludeInArrayPipe } from '../core/pipes/include-in-array.pipe';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent, IncludeInArrayPipe],
   imports: [
     CommonModule,
+    MatButtonModule,
     ReactiveFormsModule,
     StoreModule.forFeature(articleReducer.featureKey, articleReducer.reducer),
     EffectsModule.forFeature([ArticleEffects]),

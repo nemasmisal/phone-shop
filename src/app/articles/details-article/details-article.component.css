@@ -25,8 +25,32 @@
 
 .user a {
   margin: 3px;
+  text-decoration: none;
+  width: 47%;
+}
+.user p {
+width: 98%;
 }
 
+.like a {
+  width: 98%;
+  border: 1px solid #FFAB00;
+  color: #FFAB00;
+}
+.like a:hover{
+  color: #fff;
+  background-color: #FFAB00;
+}
 .admin a {
   margin: 3px;
+}
+
+.mat-stroked-button {
+  border: 1px solid  #DD2C00;
+}
+
+.mat-stroked-button:hover {
+  color: #fff;
+  background-color: #DD2C00;
+  border-color:#DD2C00;
 }

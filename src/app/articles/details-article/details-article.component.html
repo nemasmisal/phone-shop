@@ -24,15 +24,16 @@
         </ng-template>
         <ng-template #user>
             <div class="user" *ngIf="(userId$ | async) as userId">
-                <a class="btn btn-outline-primary" (click)="addToFavorites(article._id)">Add to favorites</a>
-                <a class="btn btn-outline-primary" (click)="addToBasket(article._id)">Add to basket</a>
-                <a *ngIf="!(article.likes | includeInArray : userId) else canGiveLike" class="btn btn-outline-warning"
-                    (click)="like(article._id)">Like</a>
-                <!-- <a class="btn btn-outline-secondary">Write comment</a> -->
-                <ng-template #canGiveLike>
-                    <p class="btn btn-outline-success">You already like it!</p>
-                </ng-template>
-
+                <a mat-stroked-button color="primary" (click)="addToFavorites(article._id)">Add to favorites</a>
+                <a mat-stroked-button color="primary" (click)="addToBasket(article._id)">Add to basket</a>
+                <div class="like">
+                    <a *ngIf="!(article.likes | includeInArray : userId) else canGiveLike" mat-stroked-button
+                        color="accent" (click)="like(article._id)">Like</a>
+                    <!-- <a class="btn btn-outline-secondary">Write comment</a> -->
+                    <ng-template #canGiveLike>
+                        <p class="btn btn-outline-success">You already like it!</p>
+                    </ng-template>
+                </div>
             </div>
         </ng-template>
         <!-- <div class="col-md-8" *ngFor="let comment of article.comments">{{comment}}</div> -->

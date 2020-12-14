@@ -9,21 +9,21 @@
                 <ng-container *ngIf="(admin$ | async) then admin; else user"></ng-container>
                 <ng-template #admin>
                     <div class="admin">
-                        <div class="right">
-                            <a [routerLink]="['/article','category', article.category, 'edit' , article._id ]"
-                                class="btn btn-primary edit">Edit</a>
-                            <a (click)="removeArticle(article._id)" class="btn btn-primary delete">Delete</a>
-                        </div>
+                        <a [routerLink]="['/article','category', article.category, 'edit' , article._id ]"
+                            mat-stroked-button color="primary">Edit</a>
+                        <a (click)="removeArticle(article._id)" mat-stroked-button color="primary">Delete</a>
                     </div>
                 </ng-template>
                 <ng-template #user>
                     <div class="user" *ngIf="(userId$ | async)">
-                        <a (click)="addToBasket(article._id)" class="btn btn-primary">Add to Basket</a>
-                        <a (click)="addToFavorites(article._id)" class="btn btn-primary">Add to Favorite</a>
+                        <a mat-stroked-button color="primary" (click)="addToBasket(article._id)">Add to Basket</a>
+                        <a mat-stroked-button color="primary" (click)="addToFavorites(article._id)">Add to Favorite</a>
                     </div>
                 </ng-template>
-                <a [routerLink]="['/article','category', article.category , 'details', article._id ]"
-                    class="btn btn-primary">Details</a>
+                <div class="details">
+                    <a mat-stroked-button color="primary"
+                        [routerLink]="['/article','category', article.category , 'details', article._id ]">Details</a>
+                </div>
             </div>
         </div>
     </div>
