@@ -1,45 +1,35 @@
-.row {
-  margin: 35px;
-  width: 70%;
+.card-container{
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  background: white;
+  margin: 4rem 1rem;
+  padding: 1rem;
+  min-width: 19rem;
 }
-
-.img-container {
-  width: 50%;
-  float: left;
+.card-body{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  align-items: center;
+  justify-items: center;
 }
-
-.img-container img {
-  height: 500px;
-}
-
-.text-container {
-  width: 20%;
-  float: left;
-  padding: 20px;
-}
-
 .title {
   width: 100%;
   padding-left: 30px;
 }
 
-.user a {
-  margin: 3px;
-  text-decoration: none;
-  width: 47%;
-}
-.user p {
-width: 98%;
+.user button {
+  display: inline-block;
 }
 
-.like a {
+.like button {
   width: 98%;
   border: 1px solid #FFAB00;
   color: #FFAB00;
 }
-.like a:hover{
+.like button:hover{
   color: #fff;
   background-color: #FFAB00;
+  cursor: auto;
 }
 .admin a {
   margin: 3px;
@@ -53,4 +43,31 @@ width: 98%;
   color: #fff;
   background-color: #DD2C00;
   border-color:#DD2C00;
+}
+.card-title {
+  text-align: center;
+}
+
+.card-img {
+  width: 18rem;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-text {
+  padding: 3%;
+  text-align: left;
+  margin: 0 auto
+}
+
+.card-buttons {
+  margin: 0 auto;
+}
+.card-buttons button {
+  margin:1px 3px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
 }

@@ -21,6 +21,7 @@ import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { ResponseHandlerInterceptorService } from './core/services/response-handler-interceptor.service';
 import { reducer as authReducer } from './+store/auth/reducer';
 import { AuthEffects } from './+store/auth/effects';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,20 +30,21 @@ import { AuthEffects } from './+store/auth/effects';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatIconModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
     StoreModule.forRoot({ 'auth': authReducer }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, ]),
     AppRoutingModule,
     AuthModule,
     ArticlesModule,
     AdminModule,
     CoreModule,
     SharedModule,
-    StoreDevtoolsModule.instrument({})
+    StoreDevtoolsModule.instrument({}),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },

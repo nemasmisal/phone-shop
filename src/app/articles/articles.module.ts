@@ -14,13 +14,14 @@ import { StoreModule } from '@ngrx/store';
 import * as articleReducer from 'src/app/+store/article/reducer';
 import { IncludeInArrayPipe } from '../core/pipes/include-in-array.pipe';
 import { MatButtonModule } from '@angular/material/button';
-
+import  { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [CreateArticleComponent, ArticleComponent, DetailsArticleComponent, EditArticleComponent, CategoryListComponent, IncludeInArrayPipe],
   imports: [
     CommonModule,
     MatButtonModule,
+    MatIconModule,
     ReactiveFormsModule,
     StoreModule.forFeature(articleReducer.featureKey, articleReducer.reducer),
     EffectsModule.forFeature([ArticleEffects]),

@@ -1,70 +1,78 @@
-@media (max-width: 768px) {
-    #social-sign-in .icon-5x {
-        font-size: 7em;
-    }
-}
-@media (max-width: 480px) {
-    #social-sign-in .icon-5x {
-        font-size: 4.5em;
-    }
-}
-@media (min-width: 1199px) {
-    #social-sign-in .icon-5x {
-        font-size: 7em;
-    }
-}
-
 #signupForm .input-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* get font-awesome to work with BS3 */
 .input-group-addon .icon-2x {
-    width: 28px;
-    min-width: 28px;
-    display: inline-block;
+  width: 28px;
+  min-width: 28px;
+  display: inline-block;
 }
 
 .inline-block > li {
-    position: relative;
-    display: inline-block;
-    margin: 0 10px 10px 0;
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 10px 0;
 }
 
-/* Why doesn't OR work? Tested with Chrome 29, FF 24 or IE 11 */
-@media (max-width: 480px), (min-width: 1199px) { 
-    #social-sign-in .icon-5x {
-        font-size: 7em;
-    }
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: none;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    text-decoration: none;
+.checkbox-inline,
+.radio-inline {
+  margin-right: 28px;
+  font-size: 16px;
 }
 
-.checkbox-inline, .radio-inline {
-    margin-right: 28px;
-    font-size: 16px;
+.title,
+.body {
+  padding: 10px;
 }
 
+.login-link {
+  margin: 1rem auto;
+}
 .container {
-    margin-top: 150px;
+  margin: 4.1rem 2rem;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+  background: white;
+  min-width: 18rem;
+  padding: 10px;
 }
 
-.row {
-    display: block;
+button {
+  min-width: 13rem;
+  margin: 1px 3px;
+  border: 1px solid #ffab00;
+  color: #ffab00;
+  background: white;
+  text-align: center;
+  font-size: 1rem;
+  outline: none;
 }
 
-.msg {
-    width: 50%;
-    float: left;
-    padding: 20;
+button:hover {
+  background: #ffab00;
+  color: white;
+  cursor: pointer;
 }
 
-.form {
-    width: 50%;
-    float: right;
+input {
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid black;
+  color: black;
 }
 
-
-
+.alert {
+  width: 11rem;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid red;
+  background: white;
+  color: red;
+}

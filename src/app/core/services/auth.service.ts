@@ -13,18 +13,18 @@ export class AuthService {
   constructor(private http: HttpClient) { }
   
   checkAuth() {
-    return this.http.get(apiURL + '/user/checkAuth');
+    return this.http.get(apiURL + '/auth/checkAuth');
   }
 
   login(data: { username: string, password: string }): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/login', data);
+    return this.http.post<IUser>(apiURL + '/auth/login', data);
   }
 
   register(data: { username: string, password: string }): Observable<IUser> {
-    return this.http.post<IUser>(apiURL + '/user/register', data);
+    return this.http.post<IUser>(apiURL + '/auth/register', data);
   }
 
   logout(): Observable<any> {
-    return this.http.get<any>(apiURL + '/user/logout');
+    return this.http.get<any>(apiURL + '/auth/logout');
   }
 }

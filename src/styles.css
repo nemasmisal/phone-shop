@@ -1,4 +1,107 @@
 /* You can add global styles to this file, and also import other style files */
+:host {
+    --primary: grey;
+    --secondary: black;
+    margin: 0 auto;
+  }
+   html {
+     background-color: #f8f8f8;
+   }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    background: #f8f8f8;
+  }
+  /* reset */
+  body,
+  p,
+  a,
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+  li {
+    list-style-type: none;
+  }
+  
+  /* base style */
+  body {
+    background: var(--primary);
+    overflow-x: hidden;
+    font-family: "Roboto Slab";
+  }
+  .button {
+    background: none;
+    border: 2px solid var(--secondary);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+    display: inline-block;
+  }
+  .button:hover {
+    color: #222;
+    background: var(--secondary);
+  }
+  input,
+  textarea {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 2px solid #9893d8;
+    color: #f2f2f2;
+  }
+  
+  /* fonts */
+  @font-face {
+    font-family: "Roboto Slab", "serif";
+    src: url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color:black;
+    font-weight: normal;
+  }
+  p,
+  a,
+  li {
+    color: black;
+  }
+  h1,
+  h3 {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h4 {
+    font-size: 1.1em;
+  }
+  .content {
+      grid-column: 1/13;
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  app-aside {
+    display: none;
+  }
+
+   /* Medium devices (tablets, 876px and up) */
+
+@media screen and (min-width: 876px) {
+
+  body {
+    font-size: 18px;
+  }
+  app-aside {
+    display: block;
+  }
+  .content {
+    grid-column: 1/9;
+  }
+}

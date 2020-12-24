@@ -1,47 +1,49 @@
-.category {
-    display: inline-block;
-    margin-top: 60px;
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+    gap: 0.5rem;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
 }
-.card {
-    display: inline-block;
-    margin: 10px;
+
+h1 {
+    padding-left: 1.4rem;
 }
 
 .spinner {
     margin-top: 160px;
 }
 
-.card-img-top {
-    width: 302px;
-    height: 340px;
+.card-img img {
+    width: 14rem;
+    height: 13rem;
 }
 
 .card-body {
-    padding: 3%;
-    padding-bottom: 50px;
+  padding: 3%;
 }
 
-.card-body span {
-   float: right;
+.mat-icon {
+    vertical-align: sub;
+}
+.card-body {
+   text-align: center;
+   margin: auto;
 }
 
-.card-body a {
+.card-body button {
     margin:1px 3px;
     font-size: 15px;
+    text-align: center;    
+}
+
+.button-container-details {
     text-align: center;
-    text-decoration: none;
-    width: 47%;
 }
-
-.details {
+.button-container-details a {
     width: 100%;
-    text-align: left;
 }
-
-.details a {
-    width: 97%;   
-}
-
 .mat-stroked-button:hover {
     color: #fff;
     background-color: #DD2C00;
@@ -57,13 +59,16 @@
     border-color: black;
 }
 
-.right {
-    float: right;
+.card-wrapper{
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+    margin: 5px;
+    background: white;
+    border-radius: 4px;
 }
 
-.user {
+.buttons-container-user {
     margin: 1px;
-    width: 100%;
+    text-align: center;
 }
 
 .admin {
