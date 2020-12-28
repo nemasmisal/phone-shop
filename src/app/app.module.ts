@@ -33,7 +33,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule,
     ToastrModule.forRoot({
       timeOut: 2000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-top-left',
       preventDuplicates: true,
     }),
     StoreModule.forRoot({ 'auth': authReducer }),

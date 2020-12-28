@@ -1,107 +1,123 @@
-/* You can add global styles to this file, and also import other style files */
-:host {
-    --primary: grey;
-    --secondary: black;
-    margin: 0 auto;
-  }
-   html {
-     background-color: #f8f8f8;
-   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 10px;
-    background: #f8f8f8;
-  }
-  /* reset */
-  body,
-  p,
-  a,
-  ul,
-  li {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  }
-  li {
-    list-style-type: none;
-  }
-  
-  /* base style */
-  body {
-    background: var(--primary);
-    overflow-x: hidden;
-    font-family: "Roboto Slab";
-  }
-  .button {
-    background: none;
-    border: 2px solid var(--secondary);
-    color: var(--primary);
-    padding: 6px 12px;
-    border-radius: 3px;
-    text-transform: uppercase;
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
-    display: inline-block;
-  }
-  .button:hover {
-    color: #222;
-    background: var(--secondary);
-  }
-  input,
-  textarea {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 10px 16px;
-    border-radius: 20px;
-    border: 2px solid #9893d8;
-    color: #f2f2f2;
-  }
-  
-  /* fonts */
-  @font-face {
-    font-family: "Roboto Slab", "serif";
-    src: url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    color:black;
-    font-weight: normal;
-  }
-  p,
-  a,
-  li {
-    color: black;
-  }
-  h1,
-  h3 {
-    font-size: 1.2em;
-  }
-  h2 {
-    font-size: 1.4em;
-  }
-  h4 {
-    font-size: 1.1em;
-  }
-  .content {
-      grid-column: 1/13;
-  }
+/* Global variables and some basic rulles */
+:root {
+  --primary-bgn: #f8f8f8;
+  --secondary-bgn: white;
+  --btn-primary-color: red;
+  --btn-secondary-color: yellow;
+  --text-color: black;
+  margin: 0 auto;
+}
+html {
+  background: var(--primary-bgn);
+}
 
-  app-aside {
-    display: none;
-  }
+/* reset */
+body,
+p,
+a,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
 
-   /* Medium devices (tablets, 876px and up) */
+/* base style */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
 
-@media screen and (min-width: 876px) {
+app-navbar {
+  grid-column: span 13;
+}
+.content {
+  grid-column: span 13;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+app-footer {
+  grid-column: span 13;
+}
 
+body {
+  background: var(--primary);
+  font-size: 18px;
+  overflow-x: hidden;
+  font-family: "Roboto Slab";
+}
+.button {
+  background: none;
+  border: 2px solid var(--btn-primary-color);
+  color: var(--btn-primary-color);
+  padding: 6px 12px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+.button:hover {
+  color: white;
+  background: var(--btn-primary-color);
+}
+input,
+textarea {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 2px solid black;
+  color: var(--text-color);
+}
+
+/* fonts */
+@font-face {
+  font-family: "Roboto Slab", "serif";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-color);
+  font-weight: normal;
+}
+p,
+a,
+li {
+  color: var(--text-color);
+}
+h1,
+h3 {
+  font-size: 1.2rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.1rem;
+}
+
+/* Small tablets and laptops styles (620px and up) */
+@media screen and (min-width: 620px) {
   body {
     font-size: 18px;
   }
-  app-aside {
-    display: block;
+}
+
+/* Large tablets & laptops (960 and up) */
+@media screen and (min-width: 960px) {
+  body {
+    font-size: 20px;
   }
-  .content {
-    grid-column: 1/9;
+}
+
+/* Desktop styles (1200px and up) */
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 22px;
   }
 }

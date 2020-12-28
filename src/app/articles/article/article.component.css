@@ -1,8 +1,11 @@
+main {
+    margin: 0 auto;
+}
 .grid-section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-    gap: 0.5rem;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(10.4rem,1fr));
+    gap: 0.3rem;
+    padding: 5px;
     margin: 5px;
     text-align: center;
 }
@@ -16,10 +19,12 @@ h1 {
 }
 
 .card-img img {
-    width: 14rem;
-    height: 13rem;
+    width: 9rem;
+    height: 8rem;
 }
-
+.card-img {
+    padding-top: 15px;
+}
 .card-body {
   padding: 3%;
 }
@@ -42,7 +47,7 @@ h1 {
     text-align: center;
 }
 .button-container-details a {
-    width: 100%;
+    width: 80%;
 }
 .mat-stroked-button:hover {
     color: #fff;
@@ -61,9 +66,10 @@ h1 {
 
 .card-wrapper{
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
-    margin: 5px;
     background: white;
     border-radius: 4px;
+    max-width: 15rem;
+    padding: 2%;
 }
 
 .buttons-container-user {
@@ -73,4 +79,8 @@ h1 {
 
 .admin {
     margin: 3.5px;
+}
+
+p {
+    margin-bottom: 15px;
 }

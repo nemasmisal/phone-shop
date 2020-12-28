@@ -1,49 +1,52 @@
-<main *ngIf="articles$ as articles; else loading">
-  <div *ngFor="let category of articles | async | keyvalue | slice: 0:4">
-    <h1><a [routerLink]="['/article','category',category.key]">{{ category.key | uppercase }}</a></h1>
-    <section class="grid-section">
-      <div class="card-wrapper" *ngFor="let article of category.value | slice: 0:3">
-        <div class="card-img">
-          <img src="{{ article.imageURL }}" alt="{{ article.name }}" />
-        </div>
-        <div class="card-body">
-          <div><span>{{ article.likes.length }}</span>
-            <mat-icon>star</mat-icon>
+<ng-content *ngIf="articles$ | async; then articles; else loading"></ng-content>
+<ng-template #articles>
+  <main>
+    <div *ngFor="let category of articles$ | async | keyvalue | slice: 0:4">
+      <h1><a [routerLink]="['/article','category',category.key]">{{ category.key | uppercase }}</a></h1>
+      <section class="grid-section">
+        <div class="card-wrapper" *ngFor="let article of category.value | slice: 0:4">
+          <div class="card-img">
+            <img src="{{article.imageURL}}" alt="{{article.name}}" />
           </div>
-          <h3 class="card-title">{{article.name}}</h3>
-          <p class="card-text">{{ article.description | slice:0:20 }}...</p>
-          <ng-container *ngIf="admin$ | async; then admin; else user"></ng-container>
-          <ng-template #admin>
-            <div class="buttons-container-admin">
-              <a [routerLink]="[
-                  '/article',
-                  'category',
-                  article.category,
-                  'edit',
-                  article._id
-                ]" mat-stroked-button color="primary">Edit</a>
-              <a (click)="removeArticle(article._id)" mat-stroked-button color="primary">Delete</a>
+          <div class="card-body">
+            <div><span>{{ article.likes.length }}</span>
+              <mat-icon>star</mat-icon>
             </div>
-          </ng-template>
-          <ng-template #user>
-            <div class="buttons-container-user" *ngIf="userId$ | async">
-              <button mat-icon-button color="primary" (click)="addToBasket(article._id)">
-                <mat-icon>shopping_cart</mat-icon>
-              </button>
-              <button mat-icon-button color="primary" (click)="addToFavorites(article._id)">
-                <mat-icon>favorite</mat-icon>
-              </button>
+            <h3 class="card-title">{{article.name}}</h3>
+            <p class="card-price">{{article.price}} $</p>
+            <ng-container *ngIf="admin$ | async; then admin; else user"></ng-container>
+            <ng-template #admin>
+              <div class="buttons-container-admin">
+                <a [routerLink]="[
+                    '/article',
+                    'category',
+                    article.category,
+                    'edit',
+                    article._id
+                  ]" mat-stroked-button color="primary">Edit</a>
+                <a (click)="removeArticle(article._id)" mat-stroked-button color="primary">Delete</a>
+              </div>
+            </ng-template>
+            <ng-template #user>
+              <div class="buttons-container-user" *ngIf="userId$ | async">
+                <button mat-icon-button color="primary" (click)="addToBasket(article._id)">
+                  <mat-icon>shopping_cart</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" (click)="addToFavorites(article._id)">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+              </div>
+            </ng-template>
+            <div class="button-container-details">
+              <a class="button" mat-stroked-button color="primary"
+                [routerLink]="['/article','category', article.category, 'details', article._id]">Details</a>
             </div>
-          </ng-template>
-          <div class="button-container-details">
-            <a class="button" mat-stroked-button color="primary"
-              [routerLink]="['/article','category', article.category, 'details', article._id]">Details</a>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-</main>
+      </section>
+    </div>
+  </main>
+</ng-template>
 <ng-template #loading>
   <div class="spinner">
     <div class="spinner-border" role="status">
