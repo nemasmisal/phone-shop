@@ -16,6 +16,16 @@ import { getNewest } from 'src/app/+store/aside/action';
 export class ArticleEffects {
   constructor(private actions$: Actions, private articleService: ArticleService, private router: Router, private toastr: ToastrService, private store: Store) { }
 
+  init$ = createEffect(() => this.actions$.pipe(
+    ofType('@ngrx/effects/init'),
+    switchMap(() => {
+      return this.articleService.getAllArticles().pipe(
+        map(articles => ({ type: ActionTypes.getArticlesSuccess, articles })),
+        catchError((err) => of({ type: ActionTypes.getArticlesFailed, ...err }))
+      )
+    })
+  ))
+
   all$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getArticles),
     switchMap(() => {

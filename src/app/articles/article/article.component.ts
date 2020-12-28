@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { auth } from 'src/app/+store';
 import { article } from 'src/app/+store';
-import { removeArticle, getAll } from 'src/app/+store/article/action';
+import { removeArticle } from 'src/app/+store/article/action';
 import { addToBasket, addToFavorites } from 'src/app/+store/user/actions';
 import { IArticleState } from 'src/app/+store/models';
 import { ThemePalette } from '@angular/material/core';
@@ -14,7 +14,7 @@ import { ThemePalette } from '@angular/material/core';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent {
   @Input()
   color: ThemePalette;
    
@@ -25,10 +25,6 @@ export class ArticleComponent implements OnInit {
     this.articles$ = store.select(article.all);
     this.userId$ = store.select(auth.userId);
     this.admin$ = store.select(auth.admin);
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(getAll());
   }
 
   addToBasket(articleId: string) {

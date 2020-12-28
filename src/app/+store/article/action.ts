@@ -22,9 +22,9 @@ export const ActionTypes = {
   likeArticleFailed: '[Like Article] Failed',
 }
 
-export const getAll = createAction(ActionTypes.getArticles);
-export const getAllSuccess = createAction(ActionTypes.getArticlesSuccess, props<{ props }>());
-export const getAllFailed = createAction(ActionTypes.getArticlesFailed, props<{ error: any }>());
+export const getArticles = createAction(ActionTypes.getArticles);
+export const getArticlesSuccess = createAction(ActionTypes.getArticlesSuccess, props<{ articles: IArticle[] }>());
+export const getArticlesFailed = createAction(ActionTypes.getArticlesFailed, props<{ error: any }>());
 
 export const getCategory = createAction(ActionTypes.getCategory);
 export const getCategorySuccess = createAction(ActionTypes.getCategorySuccess, props<{ payload }>());

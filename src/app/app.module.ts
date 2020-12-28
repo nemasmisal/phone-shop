@@ -20,8 +20,10 @@ import { AppComponent } from './app.component';
 import { JwtInterceptorService } from './core/services/jwt-interceptor.service';
 import { ResponseHandlerInterceptorService } from './core/services/response-handler-interceptor.service';
 import { reducer as authReducer } from './+store/auth/reducer';
+import { reducer as articleReducer } from './+store/article/reducer';
 import { AuthEffects } from './+store/auth/effects';
 import {MatIconModule} from '@angular/material/icon';
+import { ArticleEffects } from './+store/article/effects';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,8 @@ import {MatIconModule} from '@angular/material/icon';
       positionClass: 'toast-top-left',
       preventDuplicates: true,
     }),
-    StoreModule.forRoot({ 'auth': authReducer }),
-    EffectsModule.forRoot([AuthEffects, ]),
+    StoreModule.forRoot({ 'auth': authReducer, 'article': articleReducer }),
+    EffectsModule.forRoot([AuthEffects, ArticleEffects ]),
     AppRoutingModule,
     AuthModule,
     ArticlesModule,

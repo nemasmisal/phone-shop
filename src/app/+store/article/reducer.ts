@@ -1,4 +1,4 @@
-import { Action, createReducer, on, props } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as article from './action';
 import { IArticleState } from '../models'
 
@@ -11,12 +11,13 @@ const initialState: IArticleState = {
 
 const articleReducer = createReducer(
   initialState,
-  on(article.getAllSuccess, (state, props) => ({ ...state, ...props })),
-  
-  // on(article.likeArticleSuccess, (state, props ) => {
-  //   const category = props.article.category;
-
-  // })
+  on(article.getArticlesSuccess, (state, { articles }) => {
+    const articlesObj = articles.reduce((acc, curr) => {
+      acc[curr.category].push(curr);
+      return acc;
+    }, { phones: [], cases: [], accessories: [], screenProtectors: [] });
+    return { ...state, ...articlesObj }
+  })
 )
 
 export const featureKey = 'article';
