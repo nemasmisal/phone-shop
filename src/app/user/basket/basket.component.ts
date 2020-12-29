@@ -30,7 +30,7 @@ export class BasketComponent implements OnInit {
   }
 
   removeFromBasket(articleId: string) {
-    this.store.dispatch(removeFromBasket({ payload: articleId }));
+    this.store.dispatch(removeFromBasket({ payload: { id: articleId } }));
   }
 
 }

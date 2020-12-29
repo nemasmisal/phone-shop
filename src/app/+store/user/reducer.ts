@@ -15,15 +15,15 @@ const userReducer = createReducer(
   on(user.basketSuccess, (state, props) => ({ ...state, ...props })),
   on(user.basketFailed, (state, props) => ({ ...state, ...props.error })),
   on(user.addToBasket, state => ({ ...state })),
-  on(user.removeFromBasket, (state, { payload }) => {
-    const basket = state.basket.filter((article: IArticle) => article._id !== payload);
+  on(user.removeFromBasket, (state, action) => {
+    const basket = state.basket.filter((article: IArticle) => article._id !== action.payload.id);
     return { ...state, basket };
   }),
   on(user.removeFromBasketFailed, (state, props) => ({ ...state, ...props })),
   on(user.orderBasketSuccess, state => ({ ...state, basket: [] })),
   on(user.favoritesSuccess, (state, props) => ({ ...state, ...props })),
-  on(user.removeFromFavorites, (state, { payload }) => {
-    const favorites = state.favorites.filter((article: IArticle) => article._id !== payload);
+  on(user.removeFromFavorites, (state, action) => {
+    const favorites = state.favorites.filter((article: IArticle) => article._id !== action.payload.id);
     return { ...state, favorites };
   })
 )

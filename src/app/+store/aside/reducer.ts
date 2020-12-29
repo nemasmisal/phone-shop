@@ -1,18 +1,17 @@
-import { Action, createReducer, on, props } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as newest from './action';
 import { IAsideState } from '../models';
-import { IArticle } from 'src/app/core/models'
 
 const initialState: IAsideState = {
-  phone: {},
-  case: {},
-  screenProtector: {},
-  accessory: {}
+  phone: { _id: '', name: '', category: '', description: '', price: 1, quantity: 1, imageURL: '', comments: [''], creator: '', likes: [''], created_at: '', updatedAt: '', __v: 0 },
+  case: { _id: '', name: '', category: '', description: '', price: 1, quantity: 1, imageURL: '', comments: [''], creator: '', likes: [''], created_at: '', updatedAt: '', __v: 0 },
+  screenProtector: { _id: '', name: '', category: '', description: '', price: 1, quantity: 1, imageURL: '', comments: [''], creator: '', likes: [''], created_at: '', updatedAt: '', __v: 0 },
+  accessory: { _id: '', name: '', category: '', description: '', price: 1, quantity: 1, imageURL: '', comments: [''], creator: '', likes: [''], created_at: '', updatedAt: '', __v: 0 }
 }
 
 const asideReducer = createReducer(
   initialState,
-  on(newest.getNewestSuccess, (state, props) => ({ ...state, ...props.action }))
+  on(newest.getNewestSuccess, (state, { articles }) => ({ ...state, ...articles }))
 )
 
 export const featureKey = 'aside';

@@ -12,7 +12,7 @@ export class AsideEffects {
   newest$ = createEffect(() => this.actions$.pipe(
     ofType(ActionTypes.getNewest),
     switchMap(() => this.articleService.getNewestArticle().pipe(
-      map((action) => ({ type: ActionTypes.getNewestSuccess, action})),
+      map((articles) => ({ type: ActionTypes.getNewestSuccess, articles})),
       catchError((err) => of({ type: ActionTypes.getNewestFailed, ...err }))
     ))
   ))

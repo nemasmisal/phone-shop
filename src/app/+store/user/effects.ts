@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { UserService } from 'src/app/core/services/user.service';
 import { ActionTypes } from './actions';
-import { IAction } from '../models'
+import { IAction } from '../models';
 
 @Injectable()
 export class UserEffects {
@@ -20,8 +20,8 @@ export class UserEffects {
   ))
 
   addToBasket$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.addToBasket),
-    mergeMap(action => this.userService.addToBasket((action as IAction).payload).pipe(
+    ofType<IAction>(ActionTypes.addToBasket),
+    mergeMap(action => this.userService.addToBasket(action.payload.id).pipe(
       tap(() => this.toastr.success('Added to your basket.')),
       map(() => ({ type: ActionTypes.addToBasketSuccess })),
       catchError((err) => of({ type: ActionTypes.addToBasketFailed, ...err }))
@@ -29,8 +29,8 @@ export class UserEffects {
   ))
 
   removeFromBasket$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.removeFromBasket),
-    mergeMap(action => this.userService.removeFromBasket((action as IAction).payload).pipe(
+    ofType<IAction>(ActionTypes.removeFromBasket),
+    mergeMap(action => this.userService.removeFromBasket(action.payload.id).pipe(
       tap(() => this.toastr.error('Removed from your basket.')),
       map(() => ({ type: ActionTypes.removeFromFavoritesSuccess, action })),
       catchError((err) => of({ type: ActionTypes.removeFromBasketFailed, ...err }))
@@ -55,8 +55,8 @@ export class UserEffects {
   ))
 
   addToFavorites$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.addToFavorites),
-    mergeMap(action => this.userService.addToFavorites((action as IAction).payload).pipe(
+    ofType<IAction>(ActionTypes.addToFavorites),
+    mergeMap(action => this.userService.addToFavorites(action.payload.id).pipe(
       tap(() => this.toastr.success('Added in to your favorites.')),
       map(() => ({ type: ActionTypes.addToFavoritesSuccess })),
       catchError((err) => of({ type: ActionTypes.removeFromFavoritesFailed, ...err }))
@@ -64,8 +64,8 @@ export class UserEffects {
   ))
 
   removeFromFavorites$ = createEffect(() => this.actions$.pipe(
-    ofType(ActionTypes.removeFromFavorites),
-    mergeMap(action => this.userService.removeFromFavorites((action as IAction).payload).pipe(
+    ofType<IAction>(ActionTypes.removeFromFavorites),
+    mergeMap(action => this.userService.removeFromFavorites(action.payload.id).pipe(
       tap(() => this.toastr.error('Not your favorite anymore.')),
       map(() => ({ type: ActionTypes.removeFromFavoritesSuccess, action })),
       catchError((err) => of({ type: ActionTypes.removeFromFavoritesFailed, ...err }))

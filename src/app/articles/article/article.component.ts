@@ -17,7 +17,7 @@ import { ThemePalette } from '@angular/material/core';
 export class ArticleComponent {
   @Input()
   color: ThemePalette;
-   
+
   userId$: Observable<string>;
   admin$: Observable<boolean>;
   articles$: Observable<IArticleState>;
@@ -28,14 +28,14 @@ export class ArticleComponent {
   }
 
   addToBasket(articleId: string) {
-    this.store.dispatch(addToBasket({ payload: articleId }));
+    this.store.dispatch(addToBasket({ payload: { id: articleId } }));
   }
 
   addToFavorites(articleId: string) {
-    this.store.dispatch(addToFavorites({ payload: articleId }));
+    this.store.dispatch(addToFavorites({ payload: { id: articleId } }));
   }
 
   removeArticle(articleId: string) {
-    this.store.dispatch(removeArticle({ id: articleId }));
+    this.store.dispatch(removeArticle({ payload: { id: articleId } }));
   }
 }

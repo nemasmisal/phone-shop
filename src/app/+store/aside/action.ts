@@ -8,5 +8,5 @@ export const ActionTypes = {
 }
 
 export const getNewest = createAction(ActionTypes.getNewest);
-export const getNewestSuccess = createAction(ActionTypes.getNewestSuccess, props<{ action: IAsideState }>());
+export const getNewestSuccess = createAction(ActionTypes.getNewestSuccess, props<{ articles: IAsideState }>());
 export const getANewestFailed = createAction(ActionTypes.getNewestFailed, props<{ error: any }>());

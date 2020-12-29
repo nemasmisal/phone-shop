@@ -31,18 +31,18 @@ export class DetailsArticleComponent implements OnInit {
 
   like(articleId: string) {
     this.alreadyLiked = true;
-    this.store.dispatch(likeArticle({ id: articleId }));
+    this.store.dispatch(likeArticle({ payload: { id: articleId } }));
   }
 
   addToBasket(articleId: string) {
-    this.store.dispatch(addToBasket({ payload: articleId }));
+    this.store.dispatch(addToBasket({ payload: { id: articleId } }));
   }
 
   addToFavorites(articleId: string) {
-    this.store.dispatch(addToFavorites({ payload: articleId }));
+    this.store.dispatch(addToFavorites({ payload: { id: articleId } }));
   }
 
   removeArticle(articleId: string) {
-    this.store.dispatch(removeArticle({ id: articleId }));
+    this.store.dispatch(removeArticle({ payload: { id: articleId } }));
   }
 }

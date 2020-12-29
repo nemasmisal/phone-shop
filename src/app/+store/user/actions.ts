@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IArticle } from 'src/app/core/models/article'
+import { IArticle } from 'src/app/core/models/article';
 
 export const ActionTypes = {
   getBasket: '[User Basket Page] Loading',
@@ -32,11 +32,11 @@ export const basket = createAction(ActionTypes.getBasket);
 export const basketSuccess = createAction(ActionTypes.getBasketSuccess, props<{ basket: IArticle[] }>());
 export const basketFailed = createAction(ActionTypes.getBasketFailed, props<{ error: any }>());
 
-export const addToBasket = createAction(ActionTypes.addToBasket, props<{ payload }>());
+export const addToBasket = createAction(ActionTypes.addToBasket, props<{ payload: { id: string } }>());
 export const addToBasketSuccess = createAction(ActionTypes.addToBasket);
 export const addToBasketFailed = createAction(ActionTypes.addToBasket, props<{ error: string }>());
 
-export const removeFromBasket = createAction(ActionTypes.removeFromBasket, props<{ payload }>());
+export const removeFromBasket = createAction(ActionTypes.removeFromBasket, props<{ payload: { id: string } }>());
 export const removefromBasketSuccess = createAction(ActionTypes.removeFromBasketSuccess, props<{ payload }>());
 export const removeFromBasketFailed = createAction(ActionTypes.removeFromBasketFailed, props<{ error: string }>());
 
@@ -48,10 +48,10 @@ export const favorites = createAction(ActionTypes.getFavorites);
 export const favoritesSuccess = createAction(ActionTypes.getFavoritesSuccess, props<{ favorites: [] }>());
 export const favoritestFailed = createAction(ActionTypes.getFavoritesFailed, props<{ error: string }>());
 
-export const addToFavorites = createAction(ActionTypes.addToFavorites, props<{ payload }>());
+export const addToFavorites = createAction(ActionTypes.addToFavorites, props<{ payload: { id: string } }>());
 export const addToFavoritesSuccess = createAction(ActionTypes.addToFavorites);
 export const addToFavoritesFailed = createAction(ActionTypes.addToFavoritesFailed, props<{ error: string }>());
 
-export const removeFromFavorites = createAction(ActionTypes.removeFromFavorites, props<{ payload }>());
+export const removeFromFavorites = createAction(ActionTypes.removeFromFavorites, props<{ payload: { id: string } }>());
 export const removeFromFavoritesSuccess = createAction(ActionTypes.removeFromFavoritesSuccess, props<{ payload }>());
 export const removeFromFavoritesFailed = createAction(ActionTypes.removeFromFavoritesFailed, props<{ error: string }>());

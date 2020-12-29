@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as authSelector from './auth/selectors';
 import * as userSelector from './user/selectors';
-import * as articleSelector from './article/selectors'
+import * as articleSelector from './article/selectors';
 import * as adminSelector from './admin/selectors';
-import * as asidetSelector from './aside/selectors'
+import * as asidetSelector from './aside/selectors';
 
 export const getAuthStore = createFeatureSelector('auth');
 export const auth = {

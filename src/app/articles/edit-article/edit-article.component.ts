@@ -40,7 +40,7 @@ export class EditArticleComponent implements OnInit {
 
   editArticle() {
     if (this.form.invalid) { return; }
-    this.store.dispatch(editArticle({ id: this.id, payload: this.form.value }))
+    this.store.dispatch(editArticle({ payload: { id: this.id, article: this.form.value } }))
   }
   get f() {
     return this.form.controls
